@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles/index.css">
+    <title>PomoTree</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo nav-item">
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M20.655 22.122v-2.197c1.907-.418 3.345-2.235 3.345-4.41 0-1.381-.292-1.662-3.536-10.041-.012 0-.16-.459-.646-.459-.488 0-.633.461-.643.461-.611 1.58-1.11 2.863-1.528 3.937.73 1.813.853 2.414.853 3.435 0 1.969-.884 3.737-2.289 4.935.59 1.085 1.59 1.883 2.771 2.142v1.744c-1.538-.339-3.53-.586-6.065-.637v-2.761c2.599-.436 4.583-2.7 4.583-5.423 0-1.687-.384-2.031-4.653-12.271-.014 0-.209-.562-.847-.562-.643 0-.833.564-.847.564-4.633 11.145-4.653 10.837-4.653 12.269 0 2.723 1.984 4.987 4.583 5.423v2.761c-2.562.051-4.571.303-6.116.648v-1.755c1.186-.263 2.187-1.077 2.769-2.186-1.375-1.198-2.236-2.946-2.236-4.891 0-.934.024-1.277.844-3.324-.424-1.088-.938-2.41-1.567-4.05-.011 0-.157-.459-.638-.459-.484 0-.627.461-.637.461-3.487 9.119-3.502 8.867-3.502 10.039 0 2.175 1.423 3.992 3.311 4.41v2.208c-2.587.852-3.311 1.882-3.311 1.882h24s-.732-1.038-3.345-1.893z"/></svg>
+          </div>
+          <div class="title">PomoTree</div>
+        </div>
+        <div class="container">
+          <a href="#" class="profile nav-item">Profile</a>
+          <a href="#" class="logout nav-item">Logout</a>
+          <a href="#" class="login nav-item">Login</a>
+          <a href="#" class="signin nav-item">Sign In</a>
+        </div>
+      </div>
+      <div id="body">
+        <!-- task modal -->
+        <div class="task-modal">
+          <div class="task__modal--box">
+            <div class="header">
+              
+              <div class="name">Add Task</div>
+              <div class="btn-close">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div class="title-box">
+                <div class="name">Title:</div>
+                <input type="text" placeholder="Title" id="title">
+              </div>
+              <div class="date-box">
+                <div class="name">Date:</div>
+                <input type="date" id="date" name="trip-start" >
+              </div>
+              <div class="tags-box">
+                <div class="name">Tags:</div>
+                <input type="text" placeholder="Tags" id="tags" list="suggestions" autocomplete="off">
+                
+              </div>
+              <div class="description-box">
+                <div class="name">Description:</div>
+                <input type="text" placeholder="Take note" id="description" autocomplete="off">
+              </div>
+            </div>
+            <div class="footer">
+              <button type="button" class="delete-btn button">Delete</button>
+              <div class="footer--flex">
+                <button type="button" class="cancel-btn button">Cancel</button>
+                <button type="button" class="save-btn button">Save</button>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        
+        <!-- pomodoro -->
+        <div class="pomodoro">
+          <div class="pomodoro__box">
+            <div class="circle"></div>
+            <div class="box">
+              <div class="period">
+                <div class="study">Pomodoro</div>
+                <div class="s-break">Short Break</div>
+                <div class="l-break">Long Break</div>
+              </div>
+              <div class="timestamp">0:00</div>
+              <div class="footer">
+                <div class="start">Start</div>
+                <!-- <div class="stop">Stop</div> -->
+              </div>
+            </div>
+          </div>
+          <div class="tasklist">
+            <div class="tasklist__box">
+              <div class="header">
+                <div class="name">Tasks</div>
+                <div class="btn-option">
+                  <i class="fas fa-ellipsis-v"></i>
+                </div>
+              </div>
+              <div class="tasks">
+                <!-- task sample -->
+                <div class="task">
+                  <div class="btn-check active">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="name">
+                    <div class="title">Task 1</div>
+                    <div class="date">Thu Nov 25 2021 19:16:21</div>
+                    <div class="note">The next generation of the web’s favorite icon library + toolkit is now available as a Beta release! Try out the Free version. Subscribe to Font Awesome Pro to get even more!</div>
+                  </div>
+                  <div class="btn-option">
+                    <i class="fas fa-ellipsis-v"></i>
+                  </div>
+                </div>
+
+              </div>
+              <div class="btn-add">
+                <div class="plus-icon">
+                  <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="name">Add Task</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+
+      </div>
+    </div>
+
+    <script src="./scripts/time.js"></script>
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>
