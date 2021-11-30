@@ -3,14 +3,22 @@ const $$ = document.querySelectorAll.bind(document);
 
 const closeTaskBtn = $('.btn-close');
 const addTaskBtn = $('.btn-add');
-const taskModal = $('.task-modal');
+const taskModal = $('.task__modal');
 const titleTask = $('#title');
 const dateTask = $('#date');
 const tagsTask = $('#tags');
 const descTask = $('#description');
-const deleteBtn = $('.delete-btn');
-const cancelBtn = $('.cancel-btn');
-const saveBtn = $('.save-btn');
+const deleteBtn = $('.task__modal .delete-btn');
+const cancelBtn = $('.task__modal .cancel-btn');
+const saveBtn = $('.task__modal .save-btn');
+// profile var
+const profileBtn = $('.nav__items .profile')
+const profileModal = $('.profile__modal');
+const profileClose = $('.profile-close');
+// setting var
+const settingBtn = $('.nav__items .setting')
+const settingModal = $('.setting__modal');
+const settingClose = $('.setting-close');
 
 const user = {
   tags: [
@@ -137,8 +145,25 @@ const app = {
   },
   hangleEvent: function () {
     const _this = this;
-    // when click add task button
+    // setting button (open close)
+    settingBtn.addEventListener('click',function(){
+      settingModal.style.display = "block";
+    })
+    settingClose.addEventListener('click', function(){
+      settingModal.style.display = "none";
+    })
+    // profile button (open,close)
+    profileBtn.addEventListener('click',function(){
+      profileModal.style.display = "block";
+    })
+    profileClose.addEventListener('click', function(){
+      profileModal.style.display = "none";
+    })
 
+
+
+
+    // when click "add task" button
     addTaskBtn.addEventListener('click',function(){
       taskModal.style.display = "block";
       deleteBtn.style.display = "none";
@@ -157,7 +182,6 @@ const app = {
       taskModal.style.display = "none";
     })
     saveBtn.addEventListener('click', function(){
-      
       taskModal.style.display = "none";
       app.tasks.push(_this.addTask());
       user.tasksStore = app.tasks;

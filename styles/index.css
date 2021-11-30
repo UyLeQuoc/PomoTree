@@ -8,27 +8,46 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+/* default */
+.mt-16{
+  margin-top: 16px
+}
+
+
 /* Nav */
 .nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 60px;
 }
-.nav .brand {
+.nav__brand {
   display: flex;
   flex-flow: row;
   align-items: center;
+  margin-left: 10px;
 }
-.nav .container {
+.nav__brand--name {
+  margin-left: 10px;
+}
+.nav__items {
   display: flex;
   flex-flow: row;
   justify-content: flex-end;
   align-items: center;
 }
-.nav .nav-item {
-  padding: 10px;
+.nav .nav__item {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 5px 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
 }
-
+.nav__item--name{
+  margin-left: 5px;
+}
 /* Body */
 #body {
   width: 100%;
@@ -37,7 +56,8 @@
 .pomodoro {
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  /* flex-flow: row wrap; */
+  flex-flow: column;
   justify-content: center;
 }
 
@@ -86,9 +106,47 @@
   padding: 10px 50px;
   cursor: pointer;
 }
+/* modal */
+.task__modal--box .header,
+.profile__modal--box .header,
+.setting__modal--box .header {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  margin-bottom: 20px;
+}
 
+.task__modal--box .footer,
+.profile__modal--box .footer,
+.setting__modal--box .footer {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-name {
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(187, 187, 187);
+}
+.modal-close {
+  font-size: 20px;
+  color: rgb(187, 187, 187);
+  transition: all 0.3s ease-in;
+}
+.modal-close:hover {
+  color: rgb(150, 150, 150);
+  cursor: pointer;
+}
+.modal-input{
+  background-color: rgb(239, 239, 239);
+  border: 1px solid rgb(206, 205, 205);
+  border-radius: 8px;
+  padding: 10px 0;
+  width: 100%;
+}
 /* task modal */
-.task-modal{
+.task__modal{
   display: none;
   position: fixed; 
   z-index: 1;
@@ -100,31 +158,16 @@
   overflow: auto;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
-
-  
 }
 .task__modal--box {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
+  padding: 20px 30px;
+  border-radius: 8px;
   width: 80%;
+  max-width: 480px;
 }
-.task__modal--box .header {
-  display: flex;
-  justify-content: space-between;
-  flex-flow: row;
-}
-
-
-
-.task__modal--box .footer {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.task__modal--box .footer--flex {
+.task__modal--box .footer-button {
   width: 100%;
   display: flex;
   flex-flow: row;
@@ -132,17 +175,35 @@
   align-items: center;
   align-content: stretch;
 }
+.task__modal--box .save-btn {
+  color: white;
+  background:rgb(92, 92, 92);
+}
+.task__modal--box .save-btn:hover {
+  background-color: rgb(39, 39, 39);
+}
+.task__modal--box .delete-btn {
+  color:rgb(150, 150, 150);
+}
 .task__modal--box .cancel-btn {
   margin-right: 10px;
+  color:rgb(150, 150, 150);
+}
+.task__modal--box .delete-btn:hover,
+.task__modal--box .cancel-btn:hover {
+  color: rgb(44, 44, 44);
+  border: 1px solid rgb(44, 44, 44);
 }
 .task__modal--box .button {
   height: 40px;
   width: 70px;
   font-weight: 700;
+  border: 1px solid rgb(150, 150, 150);
+  transition: all 0.2s ease-in;
 }
-/* adjust modal */
-.adjust__modal--overlay{
-  /* display: none; */
+/* profile modal */
+.profile__modal{
+  display: none;
   position: fixed; 
   z-index: 1;
   padding-top: 100px;
@@ -154,12 +215,36 @@
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
 }
-.adjust__modal {
+.profile__modal--box {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
+  padding: 20px 30px;
+  border-radius: 8px;
   width: 80%;
+  max-width: 480px;
+}
+
+/* setting modal */
+.setting__modal{
+  display: none;
+  position: fixed; 
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.setting__modal--box {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 480px;
 }
 
 /* body-tasklist */
@@ -177,6 +262,7 @@
   padding: 20px;
   background-color: rgb(217, 85, 80);
   border-radius: 20px;
+  min-width: 480px;
 }
 .tasklist__box .header{
   display: flex;
@@ -213,7 +299,7 @@
   background-color: white;
   border-radius: 8px;
   padding: 15px 15px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.1s ease-in;
   transition: border 0.1s ease-in;
 }
@@ -221,7 +307,7 @@
   margin-top: 10px;
 }
 .tasklist__box .task:hover{
-  border-left: 3px solid green;
+  border-left: 3px solid rgb(240, 68, 77);
   border-right: 3px solid transparent;
   margin-right: 3px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
