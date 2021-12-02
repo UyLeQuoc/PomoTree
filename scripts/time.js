@@ -52,7 +52,7 @@ function pomodoroSettingTime() {
   shortBreakMode.classList.remove("active");
   longBreakMode.classList.remove("active");
   // test case
-  time =2;
+  // time =2;
 }
 function shortBreakSettingTime() {
   console.log(2)
@@ -63,7 +63,7 @@ function shortBreakSettingTime() {
   shortBreakMode.classList.add("active");
   longBreakMode.classList.remove("active");
   // test case
-  time =2;
+  // time =2;
 }
 function longBreakSettingTime() {
   console.log(3)
@@ -74,7 +74,7 @@ function longBreakSettingTime() {
   shortBreakMode.classList.remove("active");
   longBreakMode.classList.add("active");
   // test case
-  time =2;
+  // time =2;
 }
 
 
