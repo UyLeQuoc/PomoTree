@@ -26,17 +26,17 @@ const user = {
   ],
   tasksStore: [
     {
-      id: 1,
+      id: 721839,
       title: "Task 1",
       date: "2021-07-23",
-      tags: "School",
+      tag: "School",
       description: "The next generation of the web’s favorite icon library + toolkit is now available as a Beta release! Try out the Free version. Subscribe to Font Awesome Pro to get even more!"
     },
     {
-      id: 2,
+      id: 123780,
       title: "Task 1",
       date: "2021-11-20",
-      tags: "Work",
+      tag: "Work",
       description: "The next generation of the web’s favorite icon library + toolkit is now available as a Beta release! Try out the Free version. Subscribe to Font Awesome Pro to get even more!"
     },
   ],
@@ -101,7 +101,7 @@ const app = {
       id: newId,
       title: newTitle,
       date: newDate,
-      tags: tagsTask.value,
+      tag: tagsTask.value,
       description: descTask.value,
     };
     this.resetTask();
@@ -111,7 +111,7 @@ const app = {
     deleteBtn.id = task.id;
     titleTask.value = task.title;
     dateTask.value = task.date;
-    tagsTask.value = task.tags;
+    tagsTask.value = task.tag;
     descTask.value = task.description;
     this.isEdit = true;
   },
@@ -183,8 +183,8 @@ const app = {
     })
     saveBtn.addEventListener('click', function(){
       taskModal.style.display = "none";
-      app.tasks.push(_this.addTask());
-      user.tasksStore = app.tasks;
+      _this.tasks.push(_this.addTask());
+      user.tasksStore = _this.tasks;
       _this.renderTasks();
     })
   },
@@ -196,3 +196,6 @@ const app = {
 };
 
 app.start();
+
+
+

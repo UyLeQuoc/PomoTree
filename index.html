@@ -12,6 +12,9 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/index.css">
+    <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/time.js" defer></script>
+    <!-- <script src="./scripts/app.js" type="module" defer></script> -->
     <title>PomoTree</title>
   </head>
   <body>
@@ -94,13 +97,22 @@
               </div>
             </div>
             <div class="body">
-              <div class="name">Username</div>
-
-
-              
+              <div class="setting__time">Time (Minutes)</div>
+              <div class="pomodoro-duration">
+                <div class="name">Pomodoro</div>
+                <input class="setting-input" type="number" value="25">
+              </div>
+              <div class="short-duration">
+                <div class="name">Pomodoro</div>
+                <input class="setting-input" type="number" value="5">
+              </div>
+              <div class="long-duration">
+                <div class="name">Pomodoro</div>
+                <input class="setting-input" type="number" value="15">
+              </div>
             </div>
             <div class="footer">
-              <!-- <button type="button" class="ok-btn button">Ok</button> -->
+              <button type="button" class="setting-btn button">Ok</button>
               </div>
             </div>
           </div>
@@ -135,14 +147,14 @@
             <div class="circle"></div>
             <div class="box">
               <div class="period">
-                <div class="study">Pomodoro</div>
+                <div class="study active">Pomodoro</div>
                 <div class="s-break">Short Break</div>
                 <div class="l-break">Long Break</div>
               </div>
               <div class="timestamp">0:00</div>
               <div class="footer">
                 <div class="start">Start</div>
-                <!-- <div class="stop">Stop</div> -->
+                <div class="stop">Stop</div>
               </div>
             </div>
           </div>
@@ -186,7 +198,5 @@
       </div>
     </div>
 
-    <script src="./scripts/main.js"></script>
-    <script src="./scripts/time.js"></script>
   </body>
 </html>

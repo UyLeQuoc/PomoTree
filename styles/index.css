@@ -13,7 +13,9 @@
 .mt-16{
   margin-top: 16px
 }
-
+.hidden {
+  display: none;
+}
 
 /* Nav */
 .nav {
@@ -59,6 +61,7 @@
   /* flex-flow: row wrap; */
   flex-flow: column;
   justify-content: center;
+  background-color: rgb(217, 85, 80);
 }
 
 /* body-pemodoro */
@@ -78,9 +81,10 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  border: 2px solid black;
-  border-radius: 20px;
-  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 30px 30px;
+
 }
 .pomodoro__box .period {
   display: flex;
@@ -92,19 +96,47 @@
 {
   margin: 0 8px;
   padding: 4px 12px;
-  border: 1px solid black;
   cursor: pointer;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+.pomodoro__box .study.active{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.pomodoro__box .s-break.active{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.pomodoro__box .l-break.active{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.pomodoro__box .timestamp {
+  font-weight: bold;
+  font-size: 80px;
+  color: white;
 }
 
-.pomodoro__box .timestamp {
-  font-weight: bolder;
-  font-size: 100px;
+.pomodoro__box .footer .stop {
+  background-color: #D2222D;
 }
 .pomodoro__box .footer .start {
-  border: 1px solid #888;
+  background-color: #238823;
+}
+.pomodoro__box .footer .stop,
+.pomodoro__box .footer .start {
   border-radius: 4px;
   padding: 10px 50px;
   cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-weight: bold;
+  transition: all 0.2s ease-in;
+}
+.pomodoro__box .footer .stop:hover,
+.pomodoro__box .footer .start:hover {
+  opacity: 0.8;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 /* modal */
 .task__modal--box .header,
@@ -301,16 +333,15 @@
   padding: 15px 15px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.1s ease-in;
+  border-left: 3px solid rgb(240, 68, 77);
   transition: border 0.1s ease-in;
 }
 .tasklist__box .task + .task {
   margin-top: 10px;
 }
 .tasklist__box .task:hover{
-  border-left: 3px solid rgb(240, 68, 77);
-  border-right: 3px solid transparent;
-  margin-right: 3px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
+  border: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 .tasklist__box .task .name {
   flex-grow: 1;
