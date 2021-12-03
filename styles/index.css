@@ -35,7 +35,7 @@
 }
 .nav__items {
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   justify-content: flex-end;
   align-items: center;
 }
@@ -50,6 +50,7 @@
 .nav__item--name{
   margin-left: 5px;
 }
+
 /* Body */
 #body {
   width: 100%;
@@ -62,8 +63,9 @@
   flex-flow: column;
   justify-content: center;
   background-color: rgb(217, 85, 80);
+  /* background-color: rgb(34,139,34); */
 }
-
+ 
 /* body-pemodoro */
 .pomodoro__box {
   display: flex;
@@ -72,30 +74,57 @@
   flex-grow: 2;
 }
 .pomodoro__box .circle {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
-  border: 10px solid gray;
+  border: 5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 30px 0;
 }
+/* tree */
+.pomodoro .circle .image {
+  width: 100%;
+  height: 100%;
+  background-position:center;
+  background-image: url(../images/tree/tree-0.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* -webkit-animation: fadeinout 1s linear forwards;
+  animation: fadeinout 1s linear forwards; */
+}
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
 .pomodoro__box .box {
   display: flex;
   flex-flow: column;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  padding: 30px 30px;
-
+  padding: 20px;
+  position: relative;
 }
 .pomodoro__box .period {
   display: flex;
   flex-flow: row;
+  padding: 12px;
 }
 .pomodoro__box .study,
 .pomodoro__box .s-break,
 .pomodoro__box .l-break
 {
-  margin: 0 8px;
-  padding: 4px 12px;
+  margin: 0 4px;
+  padding: 4px 6px;
   cursor: pointer;
   color: white;
   font-size: 12px;
@@ -115,8 +144,15 @@
   font-weight: bold;
   font-size: 80px;
   color: white;
+  padding-bottom: 12px;
 }
-
+.pomodoro__box .footer .skip {
+  position: absolute;
+  right: 20px;
+  bottom: 30px;
+  color: white;
+  cursor: pointer;
+}
 .pomodoro__box .footer .stop {
   background-color: #D2222D;
 }
@@ -292,9 +328,9 @@
 .tasklist__box{
   max-width: 800px;
   padding: 20px;
-  background-color: rgb(217, 85, 80);
+  /* background-color: rgb(217, 85, 80); */
   border-radius: 20px;
-  min-width: 480px;
+  min-width: 300px;
 }
 .tasklist__box .header{
   display: flex;
@@ -380,15 +416,12 @@
 }
 .task .btn-check{
   color: rgb(172, 171, 171);
+  color:rgb(217, 85, 80);
   font-size: 25px;
   cursor: pointer;
 }
 .task .btn-check:hover{
   opacity: 0.8;
-}
-.btn-check.active{
-  color:rgb(217, 85, 80);
-  opacity: 1;
 }
 /* add task box */
 .tasklist__box .btn-add {

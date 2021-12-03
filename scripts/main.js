@@ -15,12 +15,14 @@ const saveBtn = $('.task__modal .save-btn');
 const profileBtn = $('.nav__items .profile')
 const profileModal = $('.profile__modal');
 const profileClose = $('.profile-close');
+const treeAmount = $('.profile-tree .amount');
 // setting var
 const settingBtn = $('.nav__items .setting')
 const settingModal = $('.setting__modal');
 const settingClose = $('.setting-close');
 
 const user = {
+  trees: 5,
   tags: [
     "School","Home","FreeTime","Work"
   ],
@@ -40,6 +42,15 @@ const user = {
       description: "The next generation of the web’s favorite icon library + toolkit is now available as a Beta release! Try out the Free version. Subscribe to Font Awesome Pro to get even more!"
     },
   ],
+  tasksDone: [
+    {
+      id: 11,
+      title: "Task 1",
+      date: "2021-07-23",
+      tag: "School",
+      description: "The next generation of the web’s favorite icon library + toolkit is now available as a Beta release! Try out the Free version. Subscribe to Font Awesome Pro to get even more!"
+    },
+  ]
 };
 
 
@@ -50,7 +61,7 @@ const app = {
     const htmls = this.tasks.map((task) => {
       const newElement =  `
       <div class="task" data-id-task="${task.id}">
-        <div class="btn-check active">
+        <div class="btn-check">
           <i class="fas fa-check-circle"></i>
         </div>
         <div class="name">
@@ -80,12 +91,36 @@ const app = {
         }
         // get id from click and edit iidTask
         const idEdit = app.tasks.find(task => task.id === Number(taskEdit.getAttribute('data-id-task')))
-        console.log(idEdit);
+        console.log(taskEdit);
         app.editTask(idEdit);
         taskModal.style.display = "block";
         deleteBtn.style.display = "block";
       })
     });
+    // add event when click done
+    const doneBtns = $$('.task .btn-check');
+    doneBtns.forEach(doneBtn => {
+    doneBtn.addEventListener('click', function(e){
+        let doneTask;
+        if (e.target.classList == "btn-check"){
+          doneTask = e.currentTarget.parentNode;
+          console.log(doneTask)
+        } 
+        else if (e.target.parentNode.classList == "btn-check"){
+          doneTask = e.currentTarget.parentNode;
+          console.log(doneTask)
+        }
+        // get id from click
+        const id = Number(doneTask.getAttribute('data-id-task'));
+        const idDone = app.tasks.find(task => task.id === id)
+        app.deleteTask(id);
+
+        // UPDATE FILEBASE
+        user.tasksDone.push(idDone);
+        app.renderTasks();
+      })
+    });
+    
     // console.log($$('.task .btn-option'));
   },
   addTask: function () {
@@ -160,9 +195,6 @@ const app = {
       profileModal.style.display = "none";
     })
 
-
-
-
     // when click "add task" button
     addTaskBtn.addEventListener('click',function(){
       taskModal.style.display = "block";
@@ -187,6 +219,8 @@ const app = {
       user.tasksStore = _this.tasks;
       _this.renderTasks();
     })
+    
+
   },
   start: function () {
     this.hangleEvent();
@@ -196,6 +230,3 @@ const app = {
 };
 
 app.start();
-
-
-

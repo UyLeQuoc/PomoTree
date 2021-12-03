@@ -1,6 +1,7 @@
 const timeStamp = $('.timestamp');
 const startBtn = $('.pomodoro__box .start');
 const stopBtn = $('.pomodoro__box .stop');
+const skipBtn = $('.pomodoro__box .skip');
 const pomodoroMode = $('.period .study');
 const shortBreakMode = $('.period .s-break');
 const longBreakMode = $('.period .l-break');
@@ -8,21 +9,26 @@ const pomodoroDuration = $('.pomodoro-duration .setting-input');
 const shortBreakDuration = $('.short-duration .setting-input');
 const longBreakDuration = $('.long-duration .setting-input');
 const acceptSettingBtn = $('.setting__modal .setting-btn');
+const treeImage = $('.pomodoro .circle .image');
 let isCountDown = false;
-let countDown;
-let count = 0;
+let countDown, imageIndex = 0;
+let countBreak = 0;
 
 // default value
 timeStamp.innerHTML = `${pomodoroDuration.value}:00`
 stopBtn.classList.toggle('hidden');
+skipBtn.classList.add('hidden');
 let mode = "pomodoro";
-let startingMinutes = Number(pomodoroDuration.value);
+let startingMinutes =  Math.floor(Number(pomodoroDuration.value));
 let time = startingMinutes * 60;
+
+
+// EVENT
 
 // 3 mode (pomodoro)
 acceptSettingBtn.addEventListener("click", function() {
   timeStamp.innerHTML = `${pomodoroDuration.value}:00`
-  startingMinutes = Number(pomodoroDuration.value);
+  startingMinutes =  Math.floor(Number(pomodoroDuration.value));
   time = startingMinutes * 60;
   stopCountDown();
 })
@@ -41,55 +47,6 @@ longBreakMode.addEventListener("click", function() {
   longBreakSettingTime();
   stopCountDown();
 })
-
-// add time html and setting countDown time
-function pomodoroSettingTime() {
-  console.log(1)
-  timeStamp.innerHTML = `${pomodoroDuration.value}:00`
-  startingMinutes = Number(pomodoroDuration.value);
-  time = startingMinutes * 60;
-  pomodoroMode.classList.add("active");
-  shortBreakMode.classList.remove("active");
-  longBreakMode.classList.remove("active");
-  // test case
-  // time =2;
-}
-function shortBreakSettingTime() {
-  console.log(2)
-  timeStamp.innerHTML = `${shortBreakDuration.value}:00`
-  startingMinutes = Number(shortBreakDuration.value);
-  time = startingMinutes * 60;
-  pomodoroMode.classList.remove("active");
-  shortBreakMode.classList.add("active");
-  longBreakMode.classList.remove("active");
-  // test case
-  // time =2;
-}
-function longBreakSettingTime() {
-  console.log(3)
-  timeStamp.innerHTML = `${longBreakDuration.value}:00`
-  startingMinutes = Number(longBreakDuration.value);
-  time = startingMinutes * 60;
-  pomodoroMode.classList.remove("active");
-  shortBreakMode.classList.remove("active");
-  longBreakMode.classList.add("active");
-  // test case
-  // time =2;
-}
-
-
-// start and stop countdown function
-function startCountDown(){
-  countDown = setInterval(updateCountdown, 1000);
-  startBtn.classList.add('hidden');
-  stopBtn.classList.remove('hidden');
-}
-function stopCountDown(){
-  clearInterval(countDown);
-  startBtn.classList.remove('hidden');
-  stopBtn.classList.add('hidden');
-}
-
 // when click start
 startBtn.addEventListener("click", function() {
   isCountDown = true;
@@ -100,18 +57,89 @@ stopBtn.addEventListener("click", function() {
   isCountDown = false;
   stopCountDown();
 })
+skipBtn.addEventListener("click", function() {
+  time = 0;
+  setTimeout(stopCountDown,1000);
+})
+
+// FUNCTION
+
+// add time html and setting countDown time
+function pomodoroSettingTime() {
+  console.log(1)
+  timeStamp.innerHTML = `${pomodoroDuration.value}:00`
+  startingMinutes =  Math.floor(Number(pomodoroDuration.value));
+  time = startingMinutes * 60;
+  pomodoroMode.classList.add("active");
+  shortBreakMode.classList.remove("active");
+  longBreakMode.classList.remove("active");
+  imageIndex = 0;
+  changeTreeImage(imageIndex)
+  // test case 2
+  // timeStamp.innerHTML = `00:15`
+  // startingMinutes = 0.25;
+  // time =15;
+}
+function shortBreakSettingTime() {
+  console.log(2)
+  timeStamp.innerHTML = `${shortBreakDuration.value}:00`
+  startingMinutes =  Math.floor(Number(shortBreakDuration.value));
+  time = startingMinutes * 60;
+  pomodoroMode.classList.remove("active");
+  shortBreakMode.classList.add("active");
+  longBreakMode.classList.remove("active");
+  changeBreakImage()
+  // test case
+  // timeStamp.innerHTML = `00:15`
+  // startingMinutes = 0.25;
+  // time =15;
+}
+function longBreakSettingTime() {
+  console.log(3)
+  timeStamp.innerHTML = `${longBreakDuration.value}:00`
+  startingMinutes = Math.floor(Number(longBreakDuration.value));
+  time = startingMinutes * 60;
+  pomodoroMode.classList.remove("active");
+  shortBreakMode.classList.remove("active");
+  longBreakMode.classList.add("active");
+  changeBreakImage()
+  // test case
+  // timeStamp.innerHTML = `00:15`
+  // startingMinutes = 0.25;
+  // time =15;
+}
+// start and stop countdown function
+function startCountDown(){
+  countDown = setInterval(updateCountdown, 1000);
+  startBtn.classList.add('hidden');
+  stopBtn.classList.remove('hidden');
+  skipBtn.classList.remove('hidden');
+}
+function stopCountDown(){
+  clearInterval(countDown);
+  startBtn.classList.remove('hidden');
+  stopBtn.classList.add('hidden');
+  skipBtn.classList.add('hidden');
+}
 function updateCountdown() {
   const minutes = Math.floor(time/60);
   let seconds = time % 60 < 10 ? '0' + time % 60 : time % 60;
   time--;
+  // Progress CountDown 
+  let progressPercent = ((startingMinutes*60 - time)*100 / (startingMinutes*60));
+  //console.log(startingMinutes, startingMinutes*60 - time, progressPercent)
+  checkProgress(progressPercent);
   timeStamp.innerHTML = `${minutes}:${seconds}`
+
+  //When countDown = 0;
   if (time === -1){
     if (mode == "pomodoro") {
-      count += 1 ;
-      console.log(count,"index");
-      if (count === 3){
+      plantOneTree();
+      countBreak += 1;
+      console.log(countBreak,"index");
+      if (countBreak === 3){
         mode = "longbreak";
-        count = 0;
+        countBreak = 0;
         longBreakSettingTime();
       }
       else {
@@ -125,5 +153,27 @@ function updateCountdown() {
     }
   }
 }
-
-
+function checkProgress(percent) {
+  let percentRound = Math.floor(percent);
+  let index = Math.floor(percentRound/4);
+  if (imageIndex != index && mode == "pomodoro"){
+    imageIndex = index;
+    changeTreeImage(imageIndex)
+    console.log(index);
+  }
+  else if(mode != "pomodoro"){
+    changeBreakImage();
+  }
+}
+function changeTreeImage(index){
+  if (index>25) index=25;
+  treeImage.style.backgroundImage = `url(./images/tree/tree-${index}.png)`;
+}
+function changeBreakImage(){
+  treeImage.style.backgroundImage = `url(./images/panda.gif)`;
+}
+function plantOneTree() {
+  // upload firebase
+  user.trees += 1;
+  treeAmount.innerHTML = user.trees;
+}
