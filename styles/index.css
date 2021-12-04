@@ -16,7 +16,9 @@
 .hidden {
   display: none;
 }
-
+.block {
+  display: block !important;
+}
 /* Nav */
 .nav {
   display: flex;
@@ -314,6 +316,42 @@
   width: 80%;
   max-width: 480px;
 }
+.setting__modal--box .setting__time {
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(139, 138, 138);
+}
+.pomodoro-durantion,
+.short-duration,
+.long-duration{
+  margin-top: 16px;
+}
+.setting__modal--box .name{
+  margin-left: 10px;
+  color: rgb(117, 116, 116);
+}
+.setting__modal--box .setting-input {
+  width: 100%;
+  padding: 10px 10px;
+  font-weight: 600;
+  
+}
+.setting__modal--box .footer{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.setting__modal--box .setting-btn {
+  padding: 5px 20px;
+  color: white;
+  background:rgb(92, 92, 92);
+  border: none;
+  border-radius: 4px;
+  transition: all ease-in 0.2s;
+}
+.setting__modal--box .setting-btn:hover {
+  opacity: 0.8;
+}
 
 /* body-tasklist */
 .tasklist {
@@ -339,6 +377,7 @@
   align-items: center;
   padding: 20px 15px;
   border-bottom: 3px solid white;
+  position: relative;
 }
 .header .btn-option {
   color: white;
@@ -384,6 +423,50 @@
 }
 .tasklist__box .btn-add {
   display: flex;
+}
+
+.tasklist .btn-all-option{
+  border: 1px solid white;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+.tasklist .btn-all-option:hover {
+  opacity: 0.6;
+}
+.tasklist .options-box{
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 15px;
+  background-color: white;
+  border: 1px solid rgb(206, 205, 205);
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.options-box .done-all,
+.options-box .delete-all{
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+.options-box .done-all:hover,
+.options-box .delete-all:hover{
+  opacity: 0.8;
+}
+.options-box .title{
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 600;
 }
 .task .btn-option {
   padding: 10px 15px;

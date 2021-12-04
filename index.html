@@ -99,20 +99,20 @@
             <div class="body">
               <div class="setting__time">Time (Minutes)</div>
               <div class="pomodoro-duration">
-                <div class="name">Pomodoro</div>
+                <div class="name">Pomodoro Duration</div>
                 <input class="setting-input" type="number" value="25">
               </div>
               <div class="short-duration">
-                <div class="name">Pomodoro</div>
+                <div class="name">Short Break Duration</div>
                 <input class="setting-input" type="number" value="5">
               </div>
               <div class="long-duration">
-                <div class="name">Pomodoro</div>
+                <div class="name">Long Break Duration</div>
                 <input class="setting-input" type="number" value="15">
               </div>
             </div>
             <div class="footer">
-              <button type="button" class="setting-btn button">Ok</button>
+              <button type="button" class="setting-btn button">Save</button>
               </div>
             </div>
           </div>
@@ -165,14 +165,25 @@
                   <i class="fas fa-forward"></i>
                 </div>
               </div>
+              <audio class="time-up" src="./sounds/rings/DigitalClockRing.mp3"></audio>
             </div>
           </div>
           <div class="tasklist">
             <div class="tasklist__box">
               <div class="header">
                 <div class="name">Tasks</div>
-                <div class="btn-option">
-                  <i class="fas fa-ellipsis-v"></i>
+                <div class="btn-all-option">
+                  <i class="fas fa-ellipsis-v icon-option"></i>
+                </div>
+                <div class="options-box">
+                  <div class="done-all">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="title">Done all tasks</div>
+                  </div>
+                  <div class="delete-all">
+                    <i class="far fa-trash-alt"></i>
+                    <div class="title">Delete all tasks</div>
+                  </div>
                 </div>
               </div>
               <div class="tasks">

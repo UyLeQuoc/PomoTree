@@ -11,6 +11,8 @@ const descTask = $('#description');
 const deleteBtn = $('.task__modal .delete-btn');
 const cancelBtn = $('.task__modal .cancel-btn');
 const saveBtn = $('.task__modal .save-btn');
+const optionAllBox = $('.btn-all-option');
+
 // profile var
 const profileBtn = $('.nav__items .profile')
 const profileModal = $('.profile__modal');
@@ -90,8 +92,8 @@ const app = {
           taskEdit = e.currentTarget.parentNode;
         }
         // get id from click and edit iidTask
-        const idEdit = app.tasks.find(task => task.id === Number(taskEdit.getAttribute('data-id-task')))
-        console.log(taskEdit);
+        const idEdit = app.tasks.find(task => task.id === Number(taskEdit.getAttribute('data-id-task')));
+        $('.modal-name').innerHTML = "Edit Task";  
         app.editTask(idEdit);
         taskModal.style.display = "block";
         deleteBtn.style.display = "block";
@@ -187,18 +189,43 @@ const app = {
     settingClose.addEventListener('click', function(){
       settingModal.style.display = "none";
     })
+    $('.setting__modal').addEventListener('click',function(e){
+      if (e.target.classList == 'setting__modal') {
+        settingModal.style.display = "none";
+      }
+    })
     // profile button (open,close)
     profileBtn.addEventListener('click',function(){
       profileModal.style.display = "block";
+      treeAmount.innerHTML = user.trees;
     })
     profileClose.addEventListener('click', function(){
       profileModal.style.display = "none";
+    })
+    $('.profile__modal').addEventListener('click',function(e){
+      if (e.target.classList == 'profile__modal') {
+        profileModal.style.display = "none";
+      }
+    })
+    // event done-all button
+    $('.done-all').addEventListener('click',function(){
+      user.tasksDone = user.tasksDone.concat(_this.tasks);
+      _this.tasks = [];
+      user.tasksStore = [];
+      _this.renderTasks();
+    })
+    // event delete-all button
+    $('.delete-all').addEventListener('click',function(){
+      _this.tasks = [];
+      user.tasksStore = [];
+      _this.renderTasks();
     })
 
     // when click "add task" button
     addTaskBtn.addEventListener('click',function(){
       taskModal.style.display = "block";
       deleteBtn.style.display = "none";
+      $('.modal-name').innerHTML = "Add Task";      
       _this.isEdit = false;
       _this.resetTask();
     })
@@ -220,7 +247,32 @@ const app = {
       _this.renderTasks();
     })
     
-
+    // when click option to select all in tasks box
+    let isOptionOpen = false;
+    optionAllBox.addEventListener('click',function(e){
+      if (e.target.classList == "btn-all-option"){
+        $('.options-box').classList.toggle('block');
+        isOptionOpen = true;
+      } 
+      else if (e.target.parentNode.classList == "btn-all-option"){
+        $('.options-box').classList.toggle('block');
+        isOptionOpen = true
+      }
+    })
+    $('body').addEventListener('click',function(e) {
+      if (e.target.classList != "btn-all-option" && isOptionOpen){
+        $('.options-box').classList.remove('block');
+        isOptionOpen = false
+      }
+      if (e.target.parentNode.classList == "btn-all-option"){
+        $('.options-box').classList.add('block');
+      }
+    })
+    taskModal.addEventListener('click',function(e){
+      if (e.target.classList == 'task__modal') {
+        taskModal.style.display = "none";
+      }
+    })
   },
   start: function () {
     this.hangleEvent();
@@ -228,5 +280,4 @@ const app = {
     this.suggestTags();
   }
 };
-
 app.start();

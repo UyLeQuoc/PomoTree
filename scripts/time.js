@@ -10,6 +10,7 @@ const shortBreakDuration = $('.short-duration .setting-input');
 const longBreakDuration = $('.long-duration .setting-input');
 const acceptSettingBtn = $('.setting__modal .setting-btn');
 const treeImage = $('.pomodoro .circle .image');
+const timeUpAudio = $('.time-up');
 let isCountDown = false;
 let countDown, imageIndex = 0;
 let countBreak = 0;
@@ -133,6 +134,7 @@ function updateCountdown() {
 
   //When countDown = 0;
   if (time === -1){
+    timeUpAudio.play();
     if (mode == "pomodoro") {
       plantOneTree();
       countBreak += 1;
@@ -159,7 +161,6 @@ function checkProgress(percent) {
   if (imageIndex != index && mode == "pomodoro"){
     imageIndex = index;
     changeTreeImage(imageIndex)
-    console.log(index);
   }
   else if(mode != "pomodoro"){
     changeBreakImage();
