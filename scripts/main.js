@@ -23,6 +23,7 @@ const settingBtn = $('.nav__items .setting')
 const settingModal = $('.setting__modal');
 const settingClose = $('.setting-close');
 
+
 const user = {
   trees: 5,
   tags: [
@@ -57,116 +58,7 @@ const user = {
 
 
 const app = {
-  isEdit: false,
-  tasks: user.tasksStore,
-  renderTasks: function () {
-    const htmls = this.tasks.map((task) => {
-      const newElement =  `
-      <div class="task" data-id-task="${task.id}">
-        <div class="btn-check">
-          <i class="fas fa-check-circle"></i>
-        </div>
-        <div class="name">
-          <div class="title">${task.title} ${task.id}</div>
-          <div class="date">${task.date}</div>
-          <div class="note">${task.description}</div>
-        </div>
-        <div class="btn-option">
-          <i class="fas fa-ellipsis-v"></i>
-        </div>
-      </div>
-      `;
-      return newElement;
-    })
-    $('.tasks').innerHTML = htmls.join('');
-
-    // add event click when click option 
-    const optionBtns = $$('.task .btn-option');
-    optionBtns.forEach(optionBtn => {
-      optionBtn.addEventListener('click', function(e){
-        let taskEdit;
-        if (e.target.classList == "btn-option"){
-          taskEdit = e.currentTarget.parentNode;
-        } 
-        else if (e.target.parentNode.classList == "btn-option"){
-          taskEdit = e.currentTarget.parentNode;
-        }
-        // get id from click and edit iidTask
-        const idEdit = app.tasks.find(task => task.id === Number(taskEdit.getAttribute('data-id-task')));
-        $('.modal-name').innerHTML = "Edit Task";  
-        app.editTask(idEdit);
-        taskModal.style.display = "block";
-        deleteBtn.style.display = "block";
-      })
-    });
-    // add event when click done
-    const doneBtns = $$('.task .btn-check');
-    doneBtns.forEach(doneBtn => {
-    doneBtn.addEventListener('click', function(e){
-        let doneTask;
-        if (e.target.classList == "btn-check"){
-          doneTask = e.currentTarget.parentNode;
-          console.log(doneTask)
-        } 
-        else if (e.target.parentNode.classList == "btn-check"){
-          doneTask = e.currentTarget.parentNode;
-          console.log(doneTask)
-        }
-        // get id from click
-        const id = Number(doneTask.getAttribute('data-id-task'));
-        const idDone = app.tasks.find(task => task.id === id)
-        app.deleteTask(id);
-
-        // UPDATE FILEBASE
-        user.tasksDone.push(idDone);
-        app.renderTasks();
-      })
-    });
-    
-    // console.log($$('.task .btn-option'));
-  },
-  addTask: function () {
-    // check if we just edit task
-    if (this.isEdit) this.deleteTask(this.deleteTask(deleteBtn.id));
-    let today = new Date();
-    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    console.log(date);
-    let newDate = dateTask.value == "" ? date : dateTask.value;
-    let newTitle = titleTask.value == "" ? "New Note" : titleTask.value;
-    const newId = this.isEdit ? Number(deleteBtn.id) : Math.floor(Math.random()*1000000)
-    let newTask = {
-      id: newId,
-      title: newTitle,
-      date: newDate,
-      tag: tagsTask.value,
-      description: descTask.value,
-    };
-    this.resetTask();
-    return newTask;
-  },
-  editTask: function (task) {
-    deleteBtn.id = task.id;
-    titleTask.value = task.title;
-    dateTask.value = task.date;
-    tagsTask.value = task.tag;
-    descTask.value = task.description;
-    this.isEdit = true;
-  },
-  deleteTask: function(id){
-    console.log(app.tasks);
-    const index = this.tasks.findIndex(function(task){
-      return task.id == id;
-    })
-    console.log(index);
-    if (index !== -1) this.tasks.splice(index, 1);
-    user.tasksStore = this.tasks;
-  },
-  resetTask: function (){
-    titleTask.value = '';
-    dateTask.value = '';
-    tagsTask.value = '';
-    descTask.value = '';
-  },
+  
   suggestTags: function () {
     const tagSuggest = $('.tags-box');
     const newElement = document.createElement("datalist");
@@ -207,46 +99,25 @@ const app = {
         profileModal.style.display = "none";
       }
     })
-    // event done-all button
-    $('.done-all').addEventListener('click',function(){
-      user.tasksDone = user.tasksDone.concat(_this.tasks);
-      _this.tasks = [];
-      user.tasksStore = [];
-      _this.renderTasks();
-    })
-    // event delete-all button
-    $('.delete-all').addEventListener('click',function(){
-      _this.tasks = [];
-      user.tasksStore = [];
-      _this.renderTasks();
-    })
-
+    
     // when click "add task" button
     addTaskBtn.addEventListener('click',function(){
       taskModal.style.display = "block";
       deleteBtn.style.display = "none";
-      $('.modal-name').innerHTML = "Add Task";      
-      _this.isEdit = false;
-      _this.resetTask();
+      $('.modal-name').innerHTML = "Add Task";  
+      $('.task__modal .save-btn').id = "";
+      titleTask.value = '';
+      dateTask.value = '';
+      tagsTask.value = '';
+      descTask.value = '';
     })
     closeTaskBtn.addEventListener('click', function(){
-      taskModal.style.display = "none";
-    })
-    deleteBtn.addEventListener('click', function(){
-      _this.deleteTask(deleteBtn.id);
-      _this.renderTasks();
       taskModal.style.display = "none";
     })
     cancelBtn.addEventListener('click', function(){
       taskModal.style.display = "none";
     })
-    saveBtn.addEventListener('click', function(){
-      taskModal.style.display = "none";
-      _this.tasks.push(_this.addTask());
-      user.tasksStore = _this.tasks;
-      _this.renderTasks();
-    })
-    
+
     // when click option to select all in tasks box
     let isOptionOpen = false;
     optionAllBox.addEventListener('click',function(e){
@@ -276,7 +147,6 @@ const app = {
   },
   start: function () {
     this.hangleEvent();
-    this.renderTasks();
     this.suggestTags();
   }
 };

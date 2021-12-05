@@ -368,7 +368,7 @@
   padding: 20px;
   /* background-color: rgb(217, 85, 80); */
   border-radius: 20px;
-  min-width: 300px;
+  min-width: 400px;
 }
 .tasklist__box .header{
   display: flex;

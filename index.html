@@ -12,9 +12,9 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./styles/index.css">
+    <script src="./scripts/app.js" type="module" defer></script>
     <script src="./scripts/main.js" defer></script>
     <script src="./scripts/time.js" defer></script>
-    <!-- <script src="./scripts/app.js" type="module" defer></script> -->
     <title>PomoTree</title>
   </head>
   <body>
@@ -47,6 +47,28 @@
           
         </div>
       </div>
+
+      <div>
+        <h2>login</h2>
+        <form class="login">
+					<label for="login username">Username</label>
+					<input type="text" name="email" required>
+					<label for="login username">password</label>
+					<input type="password" name="password" required>
+					<button>Login</button>
+				</form>   
+        <button class="logout">Logout</button>
+
+				<h2>signup</h2>
+				<form class="signup">
+					<label for="username">Username</label>
+					<input type="text" name="email" required>
+					<label for="username">Password</label>
+					<input type="password" name="password" required>
+					<button>Signup</button>
+				</form> 
+      </div>
+      
       <div id="body">
         <!-- task modal -->
         <div class="task__modal">
