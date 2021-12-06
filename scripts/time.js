@@ -16,23 +16,20 @@ let countDown, imageIndex = 0;
 let countBreak = 0;
 
 // default value
-timeStamp.innerHTML = `${pomodoroDuration.value}:00`
+// timeStamp.innerHTML = `${pomodoroDuration.value}:00`
+// stopBtn.classList.toggle('hidden');
+// skipBtn.classList.add('hidden');
+let time, startingMinutes;
+let mode = "pomodoro";
 stopBtn.classList.toggle('hidden');
 skipBtn.classList.add('hidden');
-let mode = "pomodoro";
-let startingMinutes =  Math.floor(Number(pomodoroDuration.value));
-let time = startingMinutes * 60;
+// let startingMinutes =  Math.floor(Number(pomodoroDuration.value));
+// let time = startingMinutes * 60;
 
 
 // EVENT
 
 // 3 mode (pomodoro)
-acceptSettingBtn.addEventListener("click", function() {
-  timeStamp.innerHTML = `${pomodoroDuration.value}:00`
-  startingMinutes =  Math.floor(Number(pomodoroDuration.value));
-  time = startingMinutes * 60;
-  stopCountDown();
-})
 pomodoroMode.addEventListener("click", function() {
   mode = "pomodoro";
   pomodoroSettingTime();
@@ -175,6 +172,6 @@ function changeBreakImage(){
 }
 function plantOneTree() {
   // upload firebase
-  user.trees += 1;
-  treeAmount.innerHTML = user.trees;
+  $('.profile-tree .amount').value = Number($('.profile-tree .amount').value)+1;
+  
 }

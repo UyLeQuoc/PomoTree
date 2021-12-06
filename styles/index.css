@@ -359,9 +359,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  
 }
-
 
 .tasklist__box{
   max-width: 800px;
@@ -369,6 +367,7 @@
   /* background-color: rgb(217, 85, 80); */
   border-radius: 20px;
   min-width: 400px;
+  max-width: 400px;
 }
 .tasklist__box .header{
   display: flex;
@@ -398,6 +397,8 @@
   display: flex;
   flex-flow: column;
   margin-top: 10px;
+  overflow-y: scroll;
+  height: 50vh;
 }
 .tasklist__box .task {
   display: flex;
@@ -483,11 +484,14 @@
 }
 .task .name {
   padding: 0 10px;
+  flex: 1;
+  overflow: hidden;
 }
 .task .title {
   max-width: 400px;
   font-size: 20px;
   font-weight: 600;
+  
 }
 .task .date {
   font-size: 14px;

@@ -1,0 +1,59 @@
+
+@media screen and (max-width: 1024px) {
+    .wrapper{
+        display: flex;
+        justify-content: center;
+        margin-top: 12%;
+    }
+    .content{
+        margin: 0 auto;
+        margin: 0 auto;
+        width: 70%;
+    }
+    
+    .img{
+        margin: 0 auto;
+        width: 412px;
+        height: 412px;
+    }
+    .sign-in{
+        margin: 0 auto;
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .wrapper{
+        display: block;
+    }
+    .sidebar {
+        display: none;
+        margin-top: 10rem;
+    }
+    .content{
+      
+        width: 90%;
+        margin-top: 10rem;
+    }
+    
+    .img{
+        margin: 0 auto;
+        width: 512px;
+        height: 512px;
+    }
+    .sign-in{
+        margin: 0 auto;
+    }
+}
+
+@media  screen and (max-width: 600px) {
+    .content{
+        margin-top: 5rem;
+    }
+    .sign-in{
+        margin: 0 auto;
+        width: 90%; 
+    }
+}
+  

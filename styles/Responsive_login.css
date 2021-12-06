@@ -1,0 +1,191 @@
+/* Sign In  */
+@media screen and (max-width: 1024px) {
+    /* .wrapper{
+        display: flex;
+    }
+    .content{
+       margin: 0 auto;
+        width: 90%;
+        margin-top: 26%;
+    }
+    
+    .img{
+        margin: 0 auto;
+        width: 512px;
+        height: 512px;
+    } */
+    .sign-in{
+        margin: 0;
+    }
+    .content{
+        top: 10%;
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        width: 80%;
+    }
+    #mail-verify {
+        position: absolute;
+        width: auto;
+        height: 20%;
+        top: 10%;
+        bottom: 20%;
+        left: 17%;
+        width: 60%;
+        right: 20%;
+        /* margin: 0px auto; */
+        z-index: 2;
+        background: white;
+        display: flex;
+        place-content: space-around;
+        flex-direction: column;
+        box-sizing: initial;
+        padding: 40px;
+        border-radius: 20px;
+        display: none;
+    }
+   
+    
+  }
+
+
+@media screen and (max-width: 800px) {
+    /* .wrapper{
+        display: block;
+    }
+    .sidebar {
+        display: none;
+    }
+    .content{
+      
+        width: 90%;
+        margin-top: 10rem;
+    }
+    
+    .img{
+        margin: 0 auto;
+        width: 512px;
+        height: 512px;
+    } */
+    .sign-in{
+        margin: 0;
+    }
+    .content{
+        top: 10%;
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        width: 80%;
+    }
+    #mail-verify {
+        position: absolute;
+        width: auto;
+        height: 20%;
+        top: 10%;
+        bottom: 20%;
+        left: 15%;
+        width: 60%;
+        right: 20%;
+        /* margin: 0px auto; */
+        z-index: 2;
+        background: white;
+        display: flex;
+        place-content: space-around;
+        flex-direction: column;
+        box-sizing: initial;
+        padding: 40px;
+        border-radius: 20px;
+        display: none;
+    }
+  }
+
+@media  screen and (max-width: 600px) {
+    .sign-in{
+        margin: 0;
+    }
+    .content{
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        right: 10%;
+        width: 80%;
+        height: 50%;
+    }
+    #mail-verify {
+        position: absolute;
+        width: auto;
+        height: 20%;
+        top: 10%;
+        bottom: 20%;
+        left: 14%;
+        width: 60%;
+        right: 20%;
+        /* margin: 0px auto; */
+        z-index: 2;
+        background: white;
+        display: flex;
+        place-content: space-around;
+        flex-direction: column;
+        box-sizing: initial;
+        padding: 40px;
+        border-radius: 20px;
+        display: none;
+    }
+    /* style drop  */
+    .drop-1{
+        top: 20%;
+        left: 20%;
+        
+    }
+    .drop-2{
+        bottom: 20%;
+        right: 30%;
+    }
+    .drop-3{
+        top: 15%;
+        right: 5%;
+        height: 100px;
+        width: 100px;
+    }
+    .drop-4{
+        bottom: 10%;
+        right: 8%;
+        height: 100px;
+        width: 100px;
+    }
+    .drop-5{
+        bottom: 80%;
+        left: 10%;
+        height: 100px;
+        width: 100px;
+    }
+    .drop-6{
+        bottom: 15%;
+        left: 10%;
+        height: 100px;
+        width: 100px;
+    }
+}
+  
+@media screen and (max-width: 420px) {
+    #mail-verify {
+        position: absolute;
+        width: auto;
+        height: 20%;
+        top: 10%;
+        bottom: 20%;
+        left: 10%;
+        width: 60%;
+        right: 20%;
+        /* margin: 0px auto; */
+        z-index: 2;
+        background: white;
+        display: flex;
+        place-content: space-around;
+        flex-direction: column;
+        box-sizing: initial;
+        padding: 40px;
+        border-radius: 20px;
+        display: none;
+    }
+}

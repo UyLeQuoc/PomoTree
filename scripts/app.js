@@ -26,7 +26,7 @@ const db = getFirestore();
 const usersColRef = collection(db, 'users');
 const tasksColRef = collection(db, 'users', 'username1', 'tasks');
 
-printTasksFromFirebase()
+// printTasksFromFirebase()
 
 const saveBtn = document.querySelector('.save-btn')
 saveBtn.addEventListener('click', (e) => {
@@ -39,6 +39,14 @@ saveBtn.addEventListener('click', (e) => {
 	resetModalTask()
 })
 
+// accept setting
+const settingSave = document.querySelector('.setting__modal .setting-btn');
+settingSave.addEventListener("click", function() {
+	updateInfoToFirebase()
+  document.querySelector('.setting__modal').style.display = "none";
+})
+
+
 // event done-all button
 const doneAllBtn = document.querySelector('.done-all');
 doneAllBtn.addEventListener('click',function(){
@@ -47,6 +55,12 @@ doneAllBtn.addEventListener('click',function(){
 		uploadDoneTaskToFirebase(doneBtn.id)
 	})
 	printTasksFromFirebase()
+})
+
+const profileUpdate = document.querySelector('.nav__items .profile')
+profileUpdate.addEventListener('click',function(){
+	document.querySelector('.profile__modal').style.display = "block";
+	updateInfoToFirebase();
 })
 
 // event delete-all button
@@ -60,6 +74,16 @@ document.querySelector('.delete-all').addEventListener('click',function(){
 	printTasksFromFirebase()
 })
 
+const logoutBtn =document.querySelector('.logout');
+logoutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+      signOut(auth)
+        .then(() => {
+          window.location = "login.html"
+        }).catch((error) => {
+          alert(error.message)
+        }); 
+})
 
 function addTaskToFirebase() {
     let date = settingToday();
@@ -187,46 +211,62 @@ function resetModalTask(){
 	descTask.value = '';
 }
 
-
-
-//done
-const login = document.querySelector('.login');
-login.addEventListener('submit', (e) => {
-	e.preventDefault();
-	signInWithEmailAndPassword(auth, login.email.value, login.password.value)
-		.then()
-		.catch(err => console.log(err));
-})
-
-//done
-const logout = document.querySelector('.logout');
-logout.addEventListener('click', () => {
-	signOut(auth)
-		.then(() => console.log('user loged out'))
-		.catch(err => console.log(err));
-})
-
-// done
-const signup = document.querySelector('.signup');
-signup.addEventListener('submit', (e) => {
-	e.preventDefault();
-	createUserWithEmailAndPassword(auth, signup.email.value, signup.password.value)
-		.then((cred) => {createUserProfile(cred.user.uid)})
-		.catch(err => console.log(err.message))
-})
-
+function updateInfoFromFirebase() {
+	getDoc(doc(db, 'users', window.sessionStorage.getItem('UID')))
+	.then(snapshot => {
+		console.log(snapshot.data())
+		let pomo = snapshot.data().pomodoroDuration;
+		$('.pomodoro-duration .setting-input').value = Number(snapshot.data().pomodoroDuration)
+		$('.short-duration .setting-input').value = Number(snapshot.data().shortBreakDuration)
+		$('.long-duration .setting-input').value = Number(snapshot.data().longBreakDuration)
+		$('.profile-tree .amount').value = Number(snapshot.data().trees)
+		// dedault
+		$('.timestamp').innerHTML = `${pomo}:00`;
+		startingMinutes =  Math.floor(Number(pomo));
+		time = startingMinutes * 60;
+	})
+}
+function updateInfoToFirebase() {
+	updateDoc(doc(db, 'users', window.sessionStorage.getItem('UID')), {
+		pomodoroDuration: Number($('.pomodoro-duration .setting-input').value),
+		shortBreakDuration: Number($('.short-duration .setting-input').value),
+		longBreakDuration: Number($('.long-duration .setting-input').value),
+		trees: Number($('.profile-tree .amount').value)
+	})
+	.then()
+	.catch()
+}
 // done
 onAuthStateChanged(auth, userCred => {
-	if (userCred) {window.sessionStorage.setItem('UID', userCred.uid)} else {window.sessionStorage.removeItem('UID')};
+	if (userCred) {
+		window.sessionStorage.setItem('UID', userCred.uid)
+		document.querySelector('.gmail').innerHTML = userCred.email;
+		updateTagsFromFirebase()
+		updateInfoFromFirebase()
+		printTasksFromFirebase()
+	} else {
+		window.sessionStorage.removeItem('UID')
+		window.location = "login.html";
+};
 	console.log(userCred);
 });
 
-
-function createUserProfile (UID){
-	setDoc(doc(db, 'users', UID), {
-		// upload firebase
-
+function updateTagsFromFirebase() {
+	getDoc(doc(db, 'users', window.sessionStorage.getItem('UID')))
+	.then(snapshot => {
+		suggestTags(snapshot.data().tags)
 	})
-	.then(console.log('user profile created'))
-	.catch(err => console.log(err));
+}
+function suggestTags(tags) {
+	const tagSuggest = $('.tags-box');
+	const newElement = document.createElement("datalist");
+	const htmls = tags.map((tag => {
+		return `
+		<option value=${tag}>
+		`;
+	}));
+	newElement.id = "suggestions";
+	newElement.innerHTML = htmls.join('');
+	tagSuggest.appendChild(newElement);
+	console.log(newElement);
 }
