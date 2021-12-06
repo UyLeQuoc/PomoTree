@@ -44,6 +44,7 @@ const settingSave = document.querySelector('.setting__modal .setting-btn');
 settingSave.addEventListener("click", function() {
 	updateInfoToFirebase()
   document.querySelector('.setting__modal').style.display = "none";
+	setTimeout(updateInfoFromFirebase,2000)
 })
 
 
