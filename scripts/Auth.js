@@ -34,28 +34,30 @@
     // const lenght = SignupForm['password'].value.length;
    
     const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // sau khi đã đăng nhập được thì xử lý trong đây
-            const user = userCredential.user;
-            createUserProfile(userCredential.user.uid)
-            // in ra innerHTML bạn đã đăng nhập thành công
-            announce.innerHTML = "<p class = 'text-danger'>Bạn đã tạo tài khoản thành công</p>"
-        })
-        .catch((error) => {
-            announce.innerHTML = "<p class = 'text-danger'>Địa chỉ email của bạn đã tồn tại</p>"
-            console.log(error);
-        });
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // sau khi đã đăng nhập được thì xử lý trong đây
+    const user = userCredential.user;
+    createUserProfile(userCredential.user.uid)
+      .then(() => {
+        // in ra innerHTML bạn đã đăng nhập thành công
+        announce.innerHTML = "<p class = 'text-danger'>Bạn đã tạo tài khoản thành công</p>";
+        window.location.assign("index.html");
+      })
+      .catch((err) => console.log(err));
+  })
+  .catch((error) => {
+    announce.innerHTML = "<p class = 'text-danger'>Địa chỉ email của bạn đã tồn tại</p>"
+    console.log(error);
+  });
 })
 
 function createUserProfile (UID){
-	setDoc(doc(db, 'users', UID), {
+	return setDoc(doc(db, 'users', UID), {
     trees:0,
     pomodoroDuration: 25,
     shortBreakDuration: 10,
     longBreakDuration: 15,
     tags: ["Home", "Freetime", "Work", "School"],
 	})
-	.then(console.log('user profile created'))
-	.catch(err => console.log(err));
 }

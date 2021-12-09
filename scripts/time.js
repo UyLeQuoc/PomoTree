@@ -23,8 +23,8 @@ let time, startingMinutes;
 let mode = "pomodoro";
 stopBtn.classList.toggle('hidden');
 skipBtn.classList.add('hidden');
-// let startingMinutes =  Math.floor(Number(pomodoroDuration.value));
-// let time = startingMinutes * 60;
+// startingMinutes =  Math.floor(Number(pomodoroDuration.value));
+// time = startingMinutes * 60;
 
 
 // EVENT
@@ -66,7 +66,7 @@ skipBtn.addEventListener("click", function() {
 function pomodoroSettingTime() {
   console.log(1)
   timeStamp.innerHTML = `${pomodoroDuration.value}:00`
-  startingMinutes =  Math.floor(Number(pomodoroDuration.value));
+  startingMinutes =  Math.ceil(Number(pomodoroDuration.value));
   time = startingMinutes * 60;
   pomodoroMode.classList.add("active");
   shortBreakMode.classList.remove("active");
@@ -81,12 +81,12 @@ function pomodoroSettingTime() {
 function shortBreakSettingTime() {
   console.log(2)
   timeStamp.innerHTML = `${shortBreakDuration.value}:00`
-  startingMinutes =  Math.floor(Number(shortBreakDuration.value));
+  startingMinutes =  Math.ceil(Number(shortBreakDuration.value));
   time = startingMinutes * 60;
   pomodoroMode.classList.remove("active");
   shortBreakMode.classList.add("active");
   longBreakMode.classList.remove("active");
-  changeBreakImage()
+  changeShortBreakImage()
   // test case
   // timeStamp.innerHTML = `00:15`
   // startingMinutes = 0.25;
@@ -95,12 +95,12 @@ function shortBreakSettingTime() {
 function longBreakSettingTime() {
   console.log(3)
   timeStamp.innerHTML = `${longBreakDuration.value}:00`
-  startingMinutes = Math.floor(Number(longBreakDuration.value));
+  startingMinutes = Math.ceil(Number(longBreakDuration.value));
   time = startingMinutes * 60;
   pomodoroMode.classList.remove("active");
   shortBreakMode.classList.remove("active");
   longBreakMode.classList.add("active");
-  changeBreakImage()
+  changeLongBreakImage()
   // test case
   // timeStamp.innerHTML = `00:15`
   // startingMinutes = 0.25;
@@ -159,15 +159,22 @@ function checkProgress(percent) {
     imageIndex = index;
     changeTreeImage(imageIndex)
   }
-  else if(mode != "pomodoro"){
-    changeBreakImage();
+  else if(mode == "shortbreak"){
+    changeShortBreakImage();
+  }
+  else if(mode == "longbreak"){
+    changeLongBreakImage();
   }
 }
+
 function changeTreeImage(index){
   if (index>25) index=25;
   treeImage.style.backgroundImage = `url(./images/tree/tree-${index}.png)`;
 }
-function changeBreakImage(){
+function changeShortBreakImage(){
+  treeImage.style.backgroundImage = `url(./images/tree/tree-25.png)`;
+}
+function changeLongBreakImage(){
   treeImage.style.backgroundImage = `url(./images/panda.gif)`;
 }
 function plantOneTree() {

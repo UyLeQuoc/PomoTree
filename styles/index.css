@@ -502,7 +502,11 @@
   /* display: none; */
 }
 .task .btn-check{
-  color: rgb(172, 171, 171);
+  color:#238823;
+  font-size: 25px;
+  cursor: pointer;
+}
+.task .btn-check .fa-times-circle{
   color:rgb(217, 85, 80);
   font-size: 25px;
   cursor: pointer;
@@ -535,4 +539,8 @@
 }
 .btn-add .name{
   padding: 0 10px;
+}
+
+.calendar input {
+  display: none;
 }

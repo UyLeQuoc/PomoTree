@@ -11,10 +11,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="./styles/index.css">
     <script src="./scripts/app.js" type="module" defer></script>
     <script src="./scripts/main.js" defer></script>
     <script src="./scripts/time.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./scripts/filter.js" type="module" defer></script>
     <title>PomoTree</title>
   </head>
   <body>
@@ -26,7 +29,15 @@
           </div>
           <div class="nav__brand--name">PomoTree</div>
         </div>
+        <button class="menu">
+          <i class="fas fa-bars"></i>
+          <div class="menu-title">Menu</div>
+        </button>
         <div class="nav__items">
+          <button class="music nav__item">
+            <i class="fas fa-music"></i>
+            <div class="nav__item--name">Music</div>
+          </button>
           <button class="setting nav__item">
             <i class="fas fa-cog"></i>
             <div class="nav__item--name">Setting</div>
@@ -165,6 +176,23 @@
             </div>
           </div>
           <div class="tasklist">
+
+            <div class="filters">
+              <div class="calendar">
+                <input type="datetime">
+              </div>
+              <div class="tags">
+                <label>Tags</label>
+                <button class="tagHome">Home</button>
+                <button class="tagWork">Work</button>
+                <button class="tagFreetime">Freetime</button>
+                <button class="tagSchool">School</button>
+                <button class="done">Done</button>
+                <button class="notdone">Not done</button>
+                <button class="all">All</button>
+              </div>
+            </div>
+
             <div class="tasklist__box">
               <div class="header">
                 <div class="name">Tasks</div>

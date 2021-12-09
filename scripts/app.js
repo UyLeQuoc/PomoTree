@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
-import { getFirestore, collection, getDocs, doc, getDoc, addDoc, setDoc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js"
+import { getFirestore, collection, getDocs, doc, getDoc, addDoc, setDoc, deleteDoc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,28 +23,30 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
 const db = getFirestore();
-const usersColRef = collection(db, 'users');
-const tasksColRef = collection(db, 'users', 'username1', 'tasks');
 
-// printTasksFromFirebase()
 
 const saveBtn = document.querySelector('.save-btn')
 saveBtn.addEventListener('click', (e) => {
 	if(e.target.id != ""){
-		deleteTaskFromFirebase(e.target.id)
+		console.log(e.target.id);
+		updateTaskToFirebase(e.target.id);
 	}
-	addTaskToFirebase()
+	else {
+		addTaskToFirebase()
+	}
 	taskModal.style.display = "none";
-	printTasksFromFirebase()
+	printQueriedTasksFromFirebase('isDone', false);
+	// $(`.${filterMode}`).click();
 	resetModalTask()
 })
 
 // accept setting
 const settingSave = document.querySelector('.setting__modal .setting-btn');
 settingSave.addEventListener("click", function() {
-	updateInfoToFirebase()
+	updateInfoToFirebase();
   document.querySelector('.setting__modal').style.display = "none";
-	setTimeout(updateInfoFromFirebase,2000)
+	pomodoroSettingTime()
+	stopCountDown()
 })
 
 
@@ -53,9 +55,12 @@ const doneAllBtn = document.querySelector('.done-all');
 doneAllBtn.addEventListener('click',function(){
 	const doneBtns = $$('.task .btn-check');
   doneBtns.forEach(doneBtn => {
+		console.log(doneBtn.id);
+		console.log(doneBtn);
 		uploadDoneTaskToFirebase(doneBtn.id)
 	})
-	printTasksFromFirebase()
+	printQueriedTasksFromFirebase('isDone', false);
+	
 })
 
 const profileUpdate = document.querySelector('.nav__items .profile')
@@ -72,7 +77,8 @@ document.querySelector('.delete-all').addEventListener('click',function(){
 		console.log(doneBtn.id)
 		deleteTaskFromFirebase(doneBtn.id)
 	})
-	printTasksFromFirebase()
+	printQueriedTasksFromFirebase('isDone', false);
+	// $(`.${filterMode}`).click();
 })
 
 const logoutBtn =document.querySelector('.logout');
@@ -100,15 +106,30 @@ function addTaskToFirebase() {
 	.catch(err => console.log(err, "add file to firebase failed"));
 }
 
+function updateTaskToFirebase(idTask) {
+	let date = settingToday();
+	let newDate = dateTask.value == "" ? date : dateTask.value;
+	let newTitle = titleTask.value == "" ? "New Note" : titleTask.value;
+updateDoc(doc(db, 'users', window.sessionStorage.getItem('UID'), 'tasks', idTask), {
+	title: newTitle,
+	date: newDate,
+	tag: tagsTask.value,
+	description: descTask.value,
+}).then(console.log('task update'))
+.catch(err => console.log(err, "update file to firebase failed"));
+}
+
 function printTasksFromFirebase() {
+	$('.tasklist__box .header .name').innerHTML = `All Tasks`;
 	getDocs(collection(db, 'users', window.sessionStorage.getItem('UID'), 'tasks'))
 	.then(snapshot => {
 		let htmls = snapshot.docs.map((task) => {
-			if (!task.data().isDone){
+			let icon = task.data().isDone == true ? "times-circle" : "check-circle";
+			console.log(task)
 				const newElement =  `
-					<div class="task" data-id-task="${task.id}">
-						<div class="btn-check" id=${task.id}">
-							<i class="fas fa-check-circle"></i>
+					<div class="task" data-id-task="${task.id}" data-isDone="${task.data().isDone}">
+						<div class="btn-check" id="${task.id} ${task.data().isDone}">
+							<i class="fas fa-${icon}"></i>
 						</div>
 						<div class="name">
 							<div class="title">${task.data().title}</div>
@@ -121,11 +142,40 @@ function printTasksFromFirebase() {
 					</div>
 					`;
 				return newElement;
-			}
 		})
 		$('.tasks').innerHTML = htmls.join('');
 		addOptionEvent();
 		addDoneEvent()
+	})
+}
+
+function printQueriedTasksFromFirebase(field, value) {
+	$('.tasklist__box .header .name').innerHTML = `${value} Tasks`;
+	$('.tasks').innerHTML = '';
+	getDocs(query(collection(db, 'users', window.sessionStorage.getItem('UID'), 'tasks'), where(field, "==", value)))
+	.then(snapshot => {
+		let htmls = snapshot.docs.map((task) => {
+				let icon = task.data().isDone == true ? "times-circle" : "check-circle";
+				const newElement =  `
+					<div class="task" data-id-task="${task.id}" data-isDone="${task.data().isDone}">
+						<div class="btn-check" id="${task.id}">
+							<i class="fas fa-${icon}"></i>
+						</div>
+						<div class="name">
+							<div class="title">${task.data().title}</div>
+							<div class="date">${task.data().date}</div>
+							<div class="note">${task.data().description}</div>
+						</div>
+						<div class="btn-option" id="${task.id}">
+							<i class="fas fa-ellipsis-v"></i>
+						</div>
+					</div>
+					`;
+				return newElement;
+		})
+		$('.tasks').innerHTML = htmls.join('');
+		addOptionEvent();
+		addDoneEvent();
 	})
 }
 
@@ -157,7 +207,8 @@ function addOptionEvent() {
 						deleteTaskFromFirebase(idTask);
 						// test
 						taskModal.style.display = "none";
-						printTasksFromFirebase()
+						printQueriedTasksFromFirebase('isDone', false);
+						// $(`.${filterMode}`).click();
 					})
 				})
 				.catch(err => console.log(err,"Get data error"))
@@ -170,18 +221,26 @@ function addDoneEvent() {
 	const doneBtns = $$('.task .btn-check');
     doneBtns.forEach(doneBtn => {
       doneBtn.addEventListener('click', function(e){
+				console.log(e.target.classList)
         let taskDone;
-        if (e.target.classList == "btn-check"){
+        if (e.target.classList== "btn-check"){
           taskDone = e.currentTarget.parentNode;
         } 
         else if (e.target.parentNode.classList == "btn-check"){
           taskDone = e.currentTarget.parentNode;
-        }
-				console.log(taskDone)
+				console.log(taskDone.getAttribute('data-isDone'))
 				// get data
+				const isDone = taskDone.getAttribute('data-isDone')
 				const idTask = taskDone.getAttribute('data-id-task')
-				uploadDoneTaskToFirebase(idTask)
-				printTasksFromFirebase();
+				if (isDone == 'true') {
+					uploadNotDoneTaskToFirebase(idTask);
+				}
+				else if(isDone == 'false'){
+					uploadDoneTaskToFirebase(idTask);
+				}
+				printQueriedTasksFromFirebase('isDone', false);
+				// $(`.${filterMode}`).click();
+				}
       })
     });
 }
@@ -202,6 +261,13 @@ function uploadDoneTaskToFirebase(ID) {
 	.then()
 	.catch()
 }
+function uploadNotDoneTaskToFirebase(ID) {
+	updateDoc(doc(db, 'users', window.sessionStorage.getItem('UID'), 'tasks', ID), {
+		isDone: false,
+	})
+	.then()
+	.catch()
+}
 function deleteTaskFromFirebase(ID) {
 	deleteDoc(doc(db, 'users', window.sessionStorage.getItem('UID'), 'tasks',ID))
 }
@@ -215,23 +281,23 @@ function resetModalTask(){
 function updateInfoFromFirebase() {
 	getDoc(doc(db, 'users', window.sessionStorage.getItem('UID')))
 	.then(snapshot => {
-		console.log(snapshot.data())
-		let pomo = snapshot.data().pomodoroDuration;
-		$('.pomodoro-duration .setting-input').value = Number(snapshot.data().pomodoroDuration)
-		$('.short-duration .setting-input').value = Number(snapshot.data().shortBreakDuration)
-		$('.long-duration .setting-input').value = Number(snapshot.data().longBreakDuration)
+		console.log(snapshot.data() == undefined)
+		let pomo = snapshot.data() == undefined ? 25 : Number(snapshot.data().pomodoroDuration);
+		$('.pomodoro-duration .setting-input').value = Number(snapshot.data()) == undefined ? 25 : Number(snapshot.data().pomodoroDuration);
+		$('.short-duration .setting-input').value = Number(snapshot.data()) == undefined ? 5 : Number(snapshot.data().shortBreakDuration);
+		$('.long-duration .setting-input').value = Number(snapshot.data()) == undefined ? 15 : Number(snapshot.data().longBreakDuration);
 		$('.profile-tree .amount').value = Number(snapshot.data().trees)
 		// dedault
 		$('.timestamp').innerHTML = `${pomo}:00`;
-		startingMinutes =  Math.floor(Number(pomo));
+		startingMinutes =  Math.floor(pomo);
 		time = startingMinutes * 60;
 	})
 }
 function updateInfoToFirebase() {
 	updateDoc(doc(db, 'users', window.sessionStorage.getItem('UID')), {
-		pomodoroDuration: Number($('.pomodoro-duration .setting-input').value),
-		shortBreakDuration: Number($('.short-duration .setting-input').value),
-		longBreakDuration: Number($('.long-duration .setting-input').value),
+		pomodoroDuration: Math.ceil(Number($('.pomodoro-duration .setting-input').value)),
+		shortBreakDuration:  Math.ceil(Number($('.short-duration .setting-input').value)),
+		longBreakDuration:  Math.ceil(Number($('.long-duration .setting-input').value)),
 		trees: Number($('.profile-tree .amount').value)
 	})
 	.then()
@@ -244,7 +310,7 @@ onAuthStateChanged(auth, userCred => {
 		document.querySelector('.gmail').innerHTML = userCred.email;
 		updateTagsFromFirebase()
 		updateInfoFromFirebase()
-		printTasksFromFirebase()
+		printQueriedTasksFromFirebase('isDone', false);
 	} else {
 		window.sessionStorage.removeItem('UID')
 		window.location = "login.html";
@@ -255,10 +321,12 @@ onAuthStateChanged(auth, userCred => {
 function updateTagsFromFirebase() {
 	getDoc(doc(db, 'users', window.sessionStorage.getItem('UID')))
 	.then(snapshot => {
-		suggestTags(snapshot.data().tags)
+		suggestTags()
 	})
 }
-function suggestTags(tags) {
+
+function suggestTags() {
+	let tags = ["Home", "Freetime", "Work", "School"]
 	const tagSuggest = $('.tags-box');
 	const newElement = document.createElement("datalist");
 	const htmls = tags.map((tag => {
@@ -271,3 +339,4 @@ function suggestTags(tags) {
 	tagSuggest.appendChild(newElement);
 	console.log(newElement);
 }
+export {printQueriedTasksFromFirebase, printTasksFromFirebase};
