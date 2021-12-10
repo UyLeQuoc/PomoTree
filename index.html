@@ -13,11 +13,13 @@
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/musicModal.css">
     <script src="./scripts/app.js" type="module" defer></script>
     <script src="./scripts/main.js" defer></script>
     <script src="./scripts/time.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./scripts/filter.js" type="module" defer></script>
+    <script src="./scripts/music.js" defer></script>
     <title>PomoTree</title>
   </head>
   <body>
@@ -54,6 +56,80 @@
       </div>
 
       <div id="body">
+        <!-- music modal -->
+        <div class="music__modal">
+          <div class="music__modal--box">
+            <div class="header">
+              <div class="modal-name">Music</div>
+              <div class="music-close modal-close">
+                  <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div id="dashboard">
+                <span>Now Playing:</span>
+              <p class="name-wrap"></p>
+               <!-- button -->
+              <div id="control">
+                <div class="btn btn-repeat">
+                  <i class="fas fa-redo"></i>
+                </div>
+                <div class="btn btn-prev">
+                  <i class="fas fa-step-backward"></i>
+                </div>
+                <div class="btn btn-pause-play">
+                  <i class="fas fa-pause icon-pause"></i>
+                  <i class="fas fa-play icon-play"></i>
+                </div>
+                <div class="btn btn-next">
+                  <i class="fas fa-step-backward"></i>
+                </div>
+                <div class="btn btn-random">
+                  <i class="fas fa-random"></i>
+                </div>
+              </div>
+              <!-- Time -->
+              <div id="time">
+                <span class="currentTime">0:00</span>
+                <input
+                  id="progress"
+                  class="progress"
+                  max="100"
+                  min="0"
+                  step="1"
+                  type="range"
+                  value="0"
+                />
+                <span class="duration">0:00</span>
+              </div>
+              <!-- Volume -->
+              <div id="volume">
+                <div class="volume-min vl-btn">
+                  <i class="fas fa-volume-mute"></i>
+                </div>
+                <input
+                  id="volume-progress"
+                  class="progress"
+                  max="50"
+                  min="0"
+                  step="1"
+                  type="range"
+                  value="100"
+                />
+                <div class="volume-max vl-btn">
+                  <i class="fas fa-volume-up"></i>
+                </div>
+              </div>
+              <!-- audio playing -->
+              <audio id="audio" src=""></audio>
+              </div>
+              <div id="playlist">
+                <!-- song -->
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- task modal -->
         <div class="task__modal">
           <div class="task__modal--box">
@@ -90,7 +166,6 @@
               </div>
             </div>
           </div>
-          </div>
         </div>
         
         <!-- setting -->
@@ -119,9 +194,7 @@
             </div>
             <div class="footer">
               <button type="button" class="setting-btn button">Save</button>
-              </div>
             </div>
-          </div>
           </div>
         </div>
 
@@ -142,15 +215,8 @@
                 <input type="text" class="amount" readonly>
               </div>
             </div>
-            <div class="footer">
-              <!-- <button type="button" class="ok-btn button">Ok</button> -->
-              </div>
-            </div>
-          </div>
           </div>
         </div>
-
-        
 
         <!-- pomodoro -->
         <div class="pomodoro">

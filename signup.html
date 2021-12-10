@@ -1,57 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PomoTree - Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/Signup.css">
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/Responsive.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles/Signup.css" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/Responsive.css" />
+  </head>
+  <body>
     <div class="wrapper">
-        <div class="content">
-            <div class="sign-in">
-                <div class="home-box">
-                    <a href="./login.html">Home</a>
-                </div>
-                <div class="form">
-                <form action="" method="POST" id="Sign-up">
-                    <h2>Sign up</h2>
-                    <!-- <label for="username" class="form-label">Username</label> -->
-                    <!-- <input type="text" id="username" name="username" class="form-control"> -->
-                    <div class="form-field"> 
-                        <input type="email" name="email" id="email" required placeholder=" ">
-                        <label for="Email">Email</label>
-                    </div>
-                    <div class="form-field">
-                        <input type="password" name="password" id="password" required required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    title=" Password must contain 8 or more characters that are of at least one number,
-                    and one uppercase and lowercase letter !!" placeholder="  ">
-                        <label for="password">Password</label>
-                    </div>
-                    <div class="d-grid gap-2 mx-auto">
-                        <button>SIGN UP</button>
-                    </div>
-                </form>
-                <div id="announce">
-
-                </div>
-             </div>
+      <div class="content">
+        <div class="sign-in">
+          <div class="home-box">
+            <a href="./login.html">Home</a>
+          </div>
+          <div class="form">
+            <form action="" method="POST" id="Sign-up">
+              <h2>Sign up</h2>
+              <!-- <label for="username" class="form-label">Username</label> -->
+              <!-- <input type="text" id="username" name="username" class="form-control"> -->
+              <div class="form-field">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  placeholder=" "
+                />
+                <label for="Email">Email</label>
+              </div>
+              <div class="form-field">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
+                  required
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  title=" Password must contain 8 or more characters that are of at least one number,
+                    and one uppercase and lowercase letter !!"
+                  placeholder="  "
+                />
+                <label for="password">Password</label>
+              </div>
+              <div class="d-grid gap-2 mx-auto">
+                <button>SIGN UP</button>
+              </div>
+            </form>
+            <div id="announce"></div>
+          </div>
         </div>
-     </div>
-        <div class="sidebar">
-            <!-- img  -->
-            <div class="img">
-                <img src="./images/freelancer.png" alt="">
-            </div>
-          
+      </div>
+      <div class="sidebar">
+        <!-- img  -->
+        <div class="img">
+          <img src="./images/freelancer.png" alt="" />
         </div>
-       
+      </div>
     </div>
-    
-</body>
-<script src="./scripts/Auth.js" type="module"></script>
+  </body>
+  <script src="./scripts/Auth.js" type="module"></script>
 </html>

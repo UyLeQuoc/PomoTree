@@ -1,293 +1,287 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-   
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    background: linear-gradient(45deg, #ae0c0c, #ecacac);
-    height: 100vh;
-    position: relative;
+body {
+  background: linear-gradient(45deg, #ae0c0c, #ecacac);
+  height: 100vh;
+  position: relative;
 }
- /* STYLE WAPPER  */
- 
- .content{
-     position: absolute;
-     left: 20%;
-     right: 20%;
- }
-.sign-in {
-    margin-top: 10%; 
-    width: 100%;
-    height: 30rem;
-    
-    margin: 10% 16%;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    -webkit-box-shadow: 20px 20px 40px -6px #540202;
+/* STYLE WAPPER  */
 
- }
- .sign-in h2{
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
-    display: block;
-    padding: 20px 0px;
-    font-weight: 700;
-    color: #ffffff;
-    text-align: center;
- }
- .sign-in input {
-    display: block;
-    width: 100%;
-    height: 45px;
-    border-radius: 10px;
-    border: 3px solid rgb(255, 255, 255);
-    box-sizing: border-box;
-    padding-left: 20px;
-    font-size: 20px;
-    transition: 0.5s ease;
-    margin-bottom: 30px;
- }
-input:focus{
-    border-radius: 12px;
-    border: 2px solid #a31212;
+.content {
+  position: absolute;
+  left: 20%;
+  right: 20%;
 }
-.form-field{
-    position: relative;
+.sign-in {
+  margin-top: 10%;
+  width: 100%;
+  height: 30rem;
+
+  margin: 10% 16%;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-box-shadow: 20px 20px 40px -6px #540202;
 }
-label{
-    position: absolute;
-    left: 21px;
-    top: 50%;
-    transform: translateY(-50%);
-    user-select: none;
-    color: #999;
-    pointer-events: none;
+.sign-in h2 {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  display: block;
+  padding: 20px 0px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+.sign-in input {
+  display: block;
+  width: 100%;
+  height: 45px;
+  border-radius: 10px;
+  border: 3px solid rgb(255, 255, 255);
+  box-sizing: border-box;
+  padding-left: 20px;
+  font-size: 20px;
+  transition: 0.5s ease;
+  margin-bottom: 30px;
+}
+input:focus {
+  border-radius: 12px;
+  border: 2px solid #a31212;
+}
+.form-field {
+  position: relative;
+}
+label {
+  position: absolute;
+  left: 21px;
+  top: 50%;
+  transform: translateY(-50%);
+  user-select: none;
+  color: #999;
+  pointer-events: none;
 }
 input:not(:placeholder-shown) + label,
-input:focus + label{
-    top: -15px;
-    left: 0;
-    padding: 0px 5px;
-    display: inline-block;
-   color: rgb(255, 255, 255);
-  
+input:focus + label {
+  top: -15px;
+  left: 0;
+  padding: 0px 5px;
+  display: inline-block;
+  color: rgb(255, 255, 255);
 }
-button{
-    display: block;
-    width: 100%;
-    height: 40px;
-    border-radius: 12px;
-    border-color: #612222;
-    background: #5c0f0f;
-    color: rgb(253, 251, 251);
+button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  border-color: #612222;
+  background: #5c0f0f;
+  color: rgb(253, 251, 251);
 }
- /* style content  */
- .Problem-account {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
- }
- .Problem-account p{
-    color: white;
-    padding: 0 5px;
- }
- .Problem-account a{
-    color:#ae0c0c;
-    padding: 0 5px;
- }
- .Problem-account a:hover{
-    color:#ae0c0c;
-    opacity: 0.8;
- }
- .content{
-     width: 40%;
-     z-index: 2;
- }
- .form{
-     padding: 0px 30px;
- }
- /* style sibar  */
- .sidebar{
-     width: 60%;     
- }
- /* style img  */
- .img{
-     margin: 0 auto;
-     width: 612px;
-     height: 612px;
- }
- img{
-     width: 100%;
-     height: auto;
-     overflow: hidden;
- }
- /* style drop  */
- .drops{
-     height: 100vh;
-     width: 100%;
-     display: -webkit-box;
-     display: -ms-flexbox;
-     display: flex;
-     -webkit-box-align: center;
-     -ms-flex-align: center;
-     align-items: center;
-     -webkit-box-pack: center;
-     -ms-flex-pack: center;
-     justify-content: center;
-    overflow: hidden;
- }
- .drops .scene-div{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
- }
- .drop {
-     -webkit-backdrop-filter: blur(10px);
-     backdrop-filter: blur(10px);
-     border-radius: 10px;
-     border-left: 1px solid rgba(255, 255, 255, 0.3);
-     border-top: 1px solid rgba(255, 255, 255, 0.3);
-     -webkit-box-shadow: 10px 10px 60px -8px rgba(243, 243, 243, 0.3);
-     box-shadow: 10px 10px 60px -8px rgba(255, 255, 255, 0.3);
-     position: absolute;
-     -webkit-transition: all 0.2 ease;
-     transition: all 0.2s ease;
-     height: 80px;
-     width: 80px;
-     z-index: 1;
- }
-.drop-1{
-    top: 20%;
-    left: 20%;
-    
+/* style content  */
+.Problem-account {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
-.drop-2{
-    bottom: 20%;
-    right: 30%;
+.Problem-account p {
+  color: white;
+  padding: 0 5px;
 }
-.drop-3{
-    top: 15%;
-    right: 5%;
-    height: 120px;
-    width: 120px;
+.Problem-account a {
+  color: #ae0c0c;
+  padding: 0 5px;
 }
-.drop-4{
-    bottom: 10%;
-    right: 8%;
-    height: 120px;
-    width: 120px;
+.Problem-account a:hover {
+  color: #ae0c0c;
+  opacity: 0.8;
 }
-.drop-5{
-    bottom: 80%;
-    left: 10%;
-    height: 120px;
-    width: 120px;
+.content {
+  width: 40%;
+  z-index: 2;
 }
-.drop-6{
-    bottom: 15%;
-    left: 10%;
-    height: 120px;
-    width: 120px;
+.form {
+  padding: 0px 30px;
 }
-    /* style mail varify  */
+/* style sibar  */
+.sidebar {
+  width: 60%;
+}
+/* style img  */
+.img {
+  margin: 0 auto;
+  width: 612px;
+  height: 612px;
+}
+img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+/* style drop  */
+.drops {
+  height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.drops .scene-div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.drop {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 10px 10px 60px -8px rgba(243, 243, 243, 0.3);
+  box-shadow: 10px 10px 60px -8px rgba(255, 255, 255, 0.3);
+  position: absolute;
+  -webkit-transition: all 0.2 ease;
+  transition: all 0.2s ease;
+  height: 80px;
+  width: 80px;
+  z-index: 1;
+}
+.drop-1 {
+  top: 20%;
+  left: 20%;
+}
+.drop-2 {
+  bottom: 20%;
+  right: 30%;
+}
+.drop-3 {
+  top: 15%;
+  right: 5%;
+  height: 120px;
+  width: 120px;
+}
+.drop-4 {
+  bottom: 10%;
+  right: 8%;
+  height: 120px;
+  width: 120px;
+}
+.drop-5 {
+  bottom: 80%;
+  left: 10%;
+  height: 120px;
+  width: 120px;
+}
+.drop-6 {
+  bottom: 15%;
+  left: 10%;
+  height: 120px;
+  width: 120px;
+}
+/* style mail varify  */
 
 #mail-verify {
-    position: absolute;
-    width: auto;
-    min-height: 40%;
-    top: 10%;
-    bottom: 20%;
-    left: 35%;
-    width: 30%;
-    right: 35%;
-    z-index: 2;
-    background: white;
-    display: flex;
-    place-content: space-around;
-    flex-direction: column;
-    box-sizing: initial;
-    padding: 40px;
-    border-radius: 20px;
-    display: none;
+  position: absolute;
+  width: auto;
+  min-height: 40%;
+  top: 10%;
+  bottom: 20%;
+  left: 35%;
+  width: 30%;
+  right: 35%;
+  z-index: 2;
+  background: white;
+  display: flex;
+  place-content: space-around;
+  flex-direction: column;
+  box-sizing: initial;
+  padding: 40px;
+  border-radius: 20px;
+  display: none;
 }
 #mail-verify .icon {
-    width: 30%;
-    margin: 0% 35%;
+  width: 30%;
+  margin: 0% 35%;
 }
 #mail-verify form {
-    padding: 20px;
+  padding: 20px;
 }
-#mail-verify input{
-    height: 35px;
-    border-radius: 8px;
-    font-size: 16px;
-    padding: 0 15px;
-    margin-bottom: 20px;
-    width: 100%;
+#mail-verify input {
+  height: 35px;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  width: 100%;
 }
-#mail-verify label{
-    position: absolute;
-    top: 30%;
-    transform: translateY(-50%);
-    user-select: none;
-    color: #999;
-    pointer-events: none;
+#mail-verify label {
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  user-select: none;
+  color: #999;
+  pointer-events: none;
 }
-#mail-verify h2{
-    font-size: 20px;
-    display: block;
-    padding-left: 20px;
-    margin-top: 25px
+#mail-verify h2 {
+  font-size: 20px;
+  display: block;
+  padding-left: 20px;
+  margin-top: 25px;
 }
-#mail-verify input:not(:placeholder-shown) + label, #mail-verify
-input:focus + label{
-    top: 0px;
-    left: 10px;
-    padding: 0px 10px;
-    display: inline-block;
-    background: #ffffff;
-   color: rgb(70, 10, 10);
-  
-} 
+#mail-verify input:not(:placeholder-shown) + label,
+#mail-verify input:focus + label {
+  top: 0px;
+  left: 10px;
+  padding: 0px 10px;
+  display: inline-block;
+  background: #ffffff;
+  color: rgb(70, 10, 10);
+}
 /* popup  */
 .close {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 .fas {
-    color: #1f6a86;
-
+  color: #1f6a86;
 }
-.bodyStyle{
-    width: 100%;
-    height: 100%;
-    background: #022936;
-    position: absolute;
+.bodyStyle {
+  width: 100%;
+  height: 100%;
+  background: #022936;
+  position: absolute;
 }
 
 .forgot-box {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 .forgot {
-    color:#ae0c0c;
-    margin-bottom: 10px;
+  color: #ae0c0c;
+  margin-bottom: 10px;
 }
 .forgot:hover {
-    color:#a31212;
-    opacity: 0.8;
+  color: #a31212;
+  opacity: 0.8;
 }
 
 #error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#error p{
-    font-weight: 600;
-    margin-top: 10px;
+#error p {
+  font-weight: 600;
+  margin-top: 10px;
 }

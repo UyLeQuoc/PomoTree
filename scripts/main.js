@@ -29,11 +29,7 @@ settingBtn.addEventListener("click", function () {
 settingClose.addEventListener("click", function () {
   settingModal.style.display = "none";
 });
-$(".setting__modal").addEventListener("click", function (e) {
-  if (e.target.classList == "setting__modal") {
-    settingModal.style.display = "none";
-  }
-});
+$(".setting__modal").addEventListener("click", function (e) {});
 // profile button (open,close)
 
 profileClose.addEventListener("click", function () {
