@@ -157,8 +157,8 @@
   border-radius: 100%;
 }
 /* active */
-.active {
-  color: rgb(217, 85, 80);
+.btn.active{
+  color: rgb(217, 85, 80) !important;
 }
 .song.active {
   background-color: rgb(217, 85, 80);
