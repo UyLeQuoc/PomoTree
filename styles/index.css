@@ -143,12 +143,15 @@
 }
 .pomodoro__box .study.active {
   background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 .pomodoro__box .s-break.active {
   background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 .pomodoro__box .l-break.active {
   background-color: rgba(0, 0, 0, 0.3);
+  color: white;
 }
 .pomodoro__box .timestamp {
   font-weight: bold;

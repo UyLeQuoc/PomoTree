@@ -157,6 +157,9 @@
   border-radius: 100%;
 }
 /* active */
+.active {
+  color: rgb(217, 85, 80);
+}
 .song.active {
   background-color: rgb(217, 85, 80);
   color: white;
