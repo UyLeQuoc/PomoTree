@@ -7,7 +7,10 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+body{
+  background-color: rgb(237 157 154);
 
+}
 /* default */
 .mt-16 {
   margin-top: 16px;
@@ -24,6 +27,7 @@
   justify-content: space-between;
   width: 100%;
   height: 60px;
+  background: #fefefe;
 }
 .nav__brand {
   display: flex;
@@ -33,6 +37,9 @@
 }
 .nav__brand--name {
   margin-left: 10px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #944c52;
 }
 .nav__items {
   display: flex;
@@ -40,16 +47,25 @@
   justify-content: flex-end;
   align-items: center;
 }
+.nav__items button{
+    background: #eec1c1;
+    border: none;
+    /* border-radius: 12px */
+}
 .nav .nav__item {
   display: flex;
   flex-flow: row nowrap;
-  padding: 5px 10px;
+  padding: 10px 20px;
   align-items: center;
   justify-content: center;
   margin: 0 10px;
 }
 .nav__item--name {
   margin-left: 5px;
+ 
+}
+.fas {
+  color: #944c52;
 }
 
 /* Body */
@@ -61,9 +77,8 @@
   width: 100%;
   display: flex;
   /* flex-flow: row wrap; */
-  flex-flow: column;
+  flex-flow: row;
   justify-content: center;
-  background-color: rgb(217, 85, 80);
   /* background-color: rgb(34,139,34); */
 }
 
@@ -187,6 +202,14 @@
   opacity: 0.8;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
+/* style fillters */
+.filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
+}
 /* modal */
 .task__modal--box .header,
 .profile__modal--box .header,
@@ -283,7 +306,7 @@
   transition: all 0.2s ease-in;
 }
 /* profile modal */
-.profile__modal {
+/* .profile__modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -295,8 +318,9 @@
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-}
+} */
 .profile__modal--box {
+  display: none;
   background-color: #fefefe;
   margin: auto;
   padding: 20px 30px;
@@ -306,7 +330,7 @@
 }
 
 /* setting modal */
-.setting__modal {
+/* .setting__modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -318,8 +342,9 @@
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-}
+} */
 .setting__modal--box {
+  display: none;
   background-color: #fefefe;
   margin: auto;
   padding: 20px 30px;
@@ -365,10 +390,11 @@
 
 /* body-tasklist */
 .tasklist {
-  flex-grow: 3;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+    flex-grow: 3;
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .tasklist__box {
@@ -404,12 +430,23 @@
   color: white;
 }
 .tasklist__box .tasks {
-  display: flex;
-  flex-flow: column;
-  margin-top: 10px;
-  overflow-y: scroll;
-  height: 50vh;
+    width: 100%;
+    height: 99%;
+    overflow: auto;
 }
+.tasks::-webkit-scrollbar{
+  display: none;
+}
+.par-tasks {
+    display: flex;
+    flex-flow: column;
+    margin-top: 10px;
+    /* overflow-y: scroll; */
+    height: 50vh;
+    overflow: hidden;
+
+}
+
 .tasklist__box .task {
   display: flex;
   flex-flow: row;
@@ -529,7 +566,7 @@
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  border: 2px dashed rgba(255, 255, 255, 0.4);
+  border: 2px dashed rgba(255, 255, 255, 0.404);
   margin-top: 16px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -549,7 +586,49 @@
 .btn-add .name {
   padding: 0 10px;
 }
-
+ /* style calendar  */
 .calendar input {
   display: none;
+}
+.flatpickr-calendar.inline {
+  background: rgb(219, 158, 158);
+  color: #fefefe;
+  width: 400px;
+}
+.flatpickr-day.today{
+  border: 1px solid #92353d;
+}
+.flatpickr-day {
+  color: #fefefe;
+}
+.flatpickr-innerContainer {
+  width: 100%;
+  display: block;
+}
+.flatpickr-weekday {
+  color: #fefefe!important;
+}
+.flatpickr-day.selected {
+  background: pink!important;
+  border-color: pink!important;
+  color: rgb(132 54 54);
+  font-weight: 700;
+}
+.flatpickr-months .flatpickr-month {
+  background: #f9dcdc;
+  color: rgb(132 54 54);
+  fill: rgba(0,0,0,0.9);
+  height: 45px;
+  line-height: 1;
+  text-align: center;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }

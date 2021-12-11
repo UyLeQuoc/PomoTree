@@ -1,4 +1,4 @@
-.music__modal {
+/* .music__modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -11,8 +11,9 @@
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 4;
-}
+} */
 .music__modal--box {
+  display: none;
   background-color: #fefefe;
   margin: auto;
   padding: 20px 30px;

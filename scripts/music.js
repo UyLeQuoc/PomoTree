@@ -12,9 +12,7 @@ const timeNow = $(".currentTime");
 const duration = $("#time .duration");
 const maxVolume = $(".volume-max");
 const minVolume = $(".volume-min");
-const musicClose = $(".music__modal--box .music-close");
-const musicOpen = $(".nav__items .music");
-const musicModalOverlay = $(".music__modal");
+
 
 // format time
 function formatTime(sec) {
@@ -36,25 +34,26 @@ const app = {
   songs: [
     {
       name: "Pusheen's Autumn Cat Nap",
-      path: "./sounds/music/Pusheen'sAutumnCatNap.mp3",
+      path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/Pusheen'sAutumnCatNap.mp3?alt=media&token=5d55cd78-8295-4568-a49d-e5e47b5f1614",
     },
     {
       name: "Rain And Sad Piano",
-      path: "./sounds/music/RainAndSadPiano.mp3",
+      path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/RainAndSadPiano.mp3?alt=media&token=198c58ff-5db0-40d6-a6c1-680ad7a6d90d",
     },
     {
       name: "Soft Guitar Music",
-      path: "./sounds/music/SoftGuitarMusic.mp3",
+      path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/SoftGuitarMusic.mp3?alt=media&token=b35c2ff9-2955-4d01-9bee-bbfed5b19979",
     },
     {
       name: "Nature Sound",
-      path: "./sounds/music/NatureSound.mp3",
+      path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/NatureSound.mp3?alt=media&token=c7d3b9cf-1f7a-4219-a803-68111c74342d",
     },
     {
       name: "Fire Sound",
-      path: "./sounds/music/FireSound.mp3",
+      path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/sounds_music_FireSound.mp3?alt=media&token=40df9a1c-a640-43b1-8570-077f1585238a",
     },
   ],
+
 
   // print all playlist song
   render: function () {
@@ -123,18 +122,7 @@ const app = {
   },
   hangleEvent: function () {
     const _this = this;
-    // open, close music modals
-    musicOpen.addEventListener("click", function () {
-      musicModalOverlay.style.display = "block";
-    });
-    musicClose.addEventListener("click", function () {
-      musicModalOverlay.style.display = "none";
-    });
-    musicModalOverlay.addEventListener("click", function (e) {
-      if (e.target.classList == "music__modal") {
-        musicModalOverlay.style.display = "none";
-      }
-    });
+    
     // Play when click pause and vice versa
     togglePlay.onclick = function () {
       if (_this.isPlaying) {

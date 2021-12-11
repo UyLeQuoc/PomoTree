@@ -55,10 +55,10 @@ saveBtn.addEventListener("click", (e) => {
 });
 
 // accept setting
-const settingSave = document.querySelector(".setting__modal .setting-btn");
+const settingSave = document.querySelector(".setting__modal--box .setting-btn");
 settingSave.addEventListener("click", function () {
   updateInfoToFirebase();
-  document.querySelector(".setting__modal").style.display = "none";
+  homeBtn.click();
   pomodoroSettingTime();
   stopCountDown();
 });
@@ -75,11 +75,6 @@ doneAllBtn.addEventListener("click", function () {
   printQueriedTasksFromFirebase("isDone", false);
 });
 
-const profileUpdate = document.querySelector(".nav__items .profile");
-profileUpdate.addEventListener("click", function () {
-  document.querySelector(".profile__modal").style.display = "block";
-  updateInfoToFirebase();
-});
 
 // event delete-all button
 // const deleteAllBtn = document.querySelector('.delete-all');
