@@ -8,7 +8,7 @@
   font-family: "Poppins", sans-serif;
 }
 body{
-  background-color: rgb(237 157 154);
+  background-color: #F2AE72;
 
 }
 /* default */
@@ -48,9 +48,11 @@ body{
   align-items: center;
 }
 .nav__items button{
-    background: #eec1c1;
-    border: none;
-    /* border-radius: 12px */
+  background: #588C73;
+  border: none;
+  /* border-radius: 12px; */
+  color: white;
+  font-size: 16px;
 }
 .nav .nav__item {
   display: flex;
@@ -59,13 +61,14 @@ body{
   align-items: center;
   justify-content: center;
   margin: 0 10px;
+  cursor: pointer;
 }
 .nav__item--name {
   margin-left: 5px;
  
 }
-.fas {
-  color: #944c52;
+.fa-music, .fa-cog, .fa-id-badge, .fa-sign-out-alt{
+  color: #f7f2f3;
 }
 
 /* Body */
@@ -93,7 +96,7 @@ body{
   height: 300px;
   width: 300px;
   border-radius: 50%;
-  border: 5px solid white;
+  border: 5px solid #be3636;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,7 +138,7 @@ body{
   display: flex;
   flex-flow: column;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #588C73;
   border-radius: 8px;
   padding: 20px;
   position: relative;
@@ -206,7 +209,7 @@ body{
 .filters {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     height: 100%;
     align-items: center;
 }
@@ -221,13 +224,44 @@ body{
 }
 
 .task__modal--box .footer,
-.profile__modal--box .footer,
 .setting__modal--box .footer {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
 }
+.profile__modal .body .name{
+  font-weight: 700;
+}
+
+.profile__modal .footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.profile__modal .fa-sign-out-alt {
+  margin-right: 4px;
+}
+.profile__modal .logout {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 5px 10px;
+  background: #588C73;
+  border: none;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+}
+.profile__modal .logout:hover {
+  opacity: 0.8;
+}
+.profile__modal .logout_title {
+  font-weight: 600;
+  font-size: 12px;
+}
+
 .modal-name {
   font-weight: bold;
   font-size: 20px;
@@ -246,14 +280,15 @@ body{
   background-color: rgb(239, 239, 239);
   border: 1px solid rgb(206, 205, 205);
   border-radius: 8px;
-  padding: 10px 0;
+  padding: 10px;
   width: 100%;
+  margin-top: 10px;
 }
 /* task modal */
 .task__modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -306,10 +341,10 @@ body{
   transition: all 0.2s ease-in;
 }
 /* profile modal */
-/* .profile__modal {
+.profile__modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -318,9 +353,8 @@ body{
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-} */
+}
 .profile__modal--box {
-  display: none;
   background-color: #fefefe;
   margin: auto;
   padding: 20px 30px;
@@ -330,10 +364,10 @@ body{
 }
 
 /* setting modal */
-/* .setting__modal {
+.setting__modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -342,9 +376,8 @@ body{
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-} */
+}
 .setting__modal--box {
-  display: none;
   background-color: #fefefe;
   margin: auto;
   padding: 20px 30px;
@@ -383,6 +416,7 @@ body{
   border: none;
   border-radius: 4px;
   transition: all ease-in 0.2s;
+  cursor: pointer;
 }
 .setting__modal--box .setting-btn:hover {
   opacity: 0.8;
@@ -395,6 +429,7 @@ body{
     flex-flow: row-reverse;
     align-items: center;
     justify-content: space-around;
+    margin: 0 2rem;
 }
 
 .tasklist__box {
@@ -411,7 +446,7 @@ body{
   justify-content: space-between;
   align-items: center;
   padding: 20px 15px;
-  border-bottom: 3px solid white;
+  border-bottom:3px solid #3a6a53;
   position: relative;
 }
 .header .btn-option {
@@ -427,7 +462,7 @@ body{
 .tasklist__box .header .name {
   font-weight: bold;
   font-size: 20px;
-  color: white;
+  color: #812f27;
 }
 .tasklist__box .tasks {
     width: 100%;
@@ -442,7 +477,7 @@ body{
     flex-flow: column;
     margin-top: 10px;
     /* overflow-y: scroll; */
-    height: 50vh;
+    max-height: 60vh;
     overflow: hidden;
 
 }
@@ -474,14 +509,14 @@ body{
 }
 
 .tasklist .btn-all-option {
-  border: 1px solid white;
+  border: 1px solid rgb(94, 20, 20);
   height: 30px;
   width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  color: white;
+  color: #6e1e1e;
   cursor: pointer;
 }
 .tasklist .btn-all-option:hover {
@@ -557,6 +592,9 @@ body{
   font-size: 25px;
   cursor: pointer;
 }
+.fa-check-circle {
+  color: #3a6a53;
+}
 .task .btn-check:hover {
   opacity: 0.8;
 }
@@ -566,14 +604,14 @@ body{
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  border: 2px dashed rgba(255, 255, 255, 0.404);
+  border: 2px dashed rgb(241, 239, 239);
   margin-top: 16px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgb(217, 85, 80);
   border-radius: 8px;
   padding: 10px 15px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease-in;
-  color: rgba(255, 255, 255, 0.6);
+  color: white;
   cursor: pointer;
   font-weight: bold;
 }
@@ -587,16 +625,19 @@ body{
   padding: 0 10px;
 }
  /* style calendar  */
+ .calendar{
+   margin-bottom: 30px;
+ }
 .calendar input {
   display: none;
 }
 .flatpickr-calendar.inline {
-  background: rgb(219, 158, 158);
+  background: #c0594f;
   color: #fefefe;
   width: 400px;
 }
 .flatpickr-day.today{
-  border: 1px solid #92353d;
+  border: 2px solid #ebc6c9;
 }
 .flatpickr-day {
   color: #fefefe;
@@ -605,8 +646,12 @@ body{
   width: 100%;
   display: block;
 }
-.flatpickr-weekday {
+.flatpickr-weekday{
   color: #fefefe!important;
+}
+.flatpickr-day.prevMonthDay , .flatpickr-day.nextMonthDay {
+  color: #e6bfbf!important;
+
 }
 .flatpickr-day.selected {
   background: pink!important;
@@ -614,8 +659,8 @@ body{
   color: rgb(132 54 54);
   font-weight: 700;
 }
-.flatpickr-months .flatpickr-month {
-  background: #f9dcdc;
+.flatpickr-months .flatpickr-month{
+  background: #f3f3f3;
   color: rgb(132 54 54);
   fill: rgba(0,0,0,0.9);
   height: 45px;
@@ -631,4 +676,87 @@ body{
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+
+/* style tags  */
+
+.filters .tags button {
+  min-width: 70px;
+}
+.filters .tags .tagHome, .tagFreetime {
+  display: inline-block;
+  padding: 5px;
+  border: none;
+  color: white;
+  margin: 5px;
+  border-radius: 10px;
+  background: rgb(176 81 81);
+  
+}
+.filters .tags .tagHome:hover, .tagFreetime:hover {
+  background: #c55959;
+  transition: 0.5s background;
+  cursor: pointer;
+}
+.filters .tags .tagWork, .done {
+    display: inline-block;
+    padding: 5px;
+    background: #9b5a35;
+    border: none;
+    color: white;
+    margin: 5px;
+    border-radius: 10px;
+    
+  
+}
+.filters .tags .tagWork:hover, .done:hover {
+  background: #723c1c;
+  transition: 0.5s background;
+  cursor: pointer;
+}
+.filters .tags .notdone, .all, .tagSchool {
+    display: inline-block;
+    padding: 5px;
+    background: rgb(121, 147, 81);
+    border: none;
+    color: white;
+    margin: 5px;
+    border-radius: 10px;
+}
+.filters .tags .notdone:hover, .all:hover, .tagSchool:hover {
+  background: rgb(66, 92, 24);
+  transition: 0.5s background;
+  cursor: pointer;
+}
+ /* style task modal  */
+ .task__modal--box input{
+
+ }
+ /* style profile  */
+.profile__modal .image {
+  width: 100%;
+}
+.profile__modal img{
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+}
+.profile-tree {
+  text-align: center;
+  margin: 20px 0px;
+}
+.profile-tree input, .profile-tree input:focus{
+  background: #7c2828;
+  border: 1px solid rgb(254, 254, 254);
+  font-size: 20px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 8px;
+  color: white;
+}
+.profile__modal .name{
+  color: rgb(110, 104, 104);
+}
+.footer .nav__items{
+  display: none;
 }

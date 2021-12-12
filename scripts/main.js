@@ -14,7 +14,37 @@ const cancelBtn = $(".task__modal .cancel-btn");
 const saveBtn = $(".task__modal .save-btn");
 const optionAllBox = $(".btn-all-option");
 
+// profile var
+const profileBtn = $(".nav__items .profile");
+const profileModal = $(".profile__modal");
+const profileClose = $(".profile-close");
 const treeAmount = $(".profile-tree .amount");
+// setting var
+const settingBtn = $(".nav__items .setting");
+const settingModal = $(".setting__modal");
+const settingClose = $(".setting-close");
+
+settingBtn.addEventListener("click", function () {
+  settingModal.style.display = "block";
+});
+settingClose.addEventListener("click", function () {
+  settingModal.style.display = "none";
+});
+$(".setting__modal").addEventListener("click", function (e) {
+  settingModal.style.display = "none";
+});
+
+
+// profile button (open,close)
+
+profileClose.addEventListener("click", function () {
+  profileModal.style.display = "none";
+});
+$(".profile__modal").addEventListener("click", function (e) {
+  if (e.target.classList == "profile__modal") {
+    profileModal.style.display = "none";
+  }
+});
 
 // when click "add task" button
 addTaskBtn.addEventListener("click", function () {
@@ -61,4 +91,33 @@ taskModal.addEventListener("click", function (e) {
   if (e.target.classList == "task__modal") {
     taskModal.style.display = "none";
   }
+});
+
+
+// navigation mobile
+const list = document.querySelectorAll('.list');
+function activeLink() {
+  list.forEach((item) => {
+    item.classList.remove('active');
+    this.classList.add('active');
+  })
+}
+list.forEach((item) => {
+  item.addEventListener('click',activeLink);
+})
+
+$('.music_mobile').addEventListener("click", function () {
+  musicModalOverlay.style.display = "block";
+  settingModal.style.display = "none";
+  profileModal.style.display = "none";
+});
+$('.setting_mobile').addEventListener("click", function () {
+  settingModal.style.display = "block";
+  musicModalOverlay.style.display = "none";
+  profileModal.style.display = "none";
+});
+$('.profile_mobile').addEventListener("click", function () {
+  profileModal.style.display = "block";
+  musicModalOverlay.style.display = "none";
+  settingModal.style.display = "none";
 });

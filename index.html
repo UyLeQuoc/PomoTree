@@ -14,19 +14,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/musicModal.css">
+    <link rel="stylesheet" href="./styles/ResponsiveIndex.css">
     <title>PomoTree</title>
+    <script src="./scripts/app.js" type="module" defer></script>
+    <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/time.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./scripts/filter.js" type="module" defer></script>
+    <script src="./scripts/music.js" defer></script>
   </head>
   <body>
     <div class="wrapper">
-    <!-- ----------------------- -->
-      <div class="test">
-        <button class="test1">Home</button>
-        <button class="test2">Tasks</button>
-        <button class="test3">Music</button>
-        <button class="test4">Setting</button>
-        <button class="test5">Profile</button>
-      </div>
-    <!-- ------------------------ -->
       <div class="nav">
         <div class="nav__brand">
           <div class="nav__brand--logo">
@@ -40,10 +38,6 @@
           <div class="menu-title">Menu</div>
         </button> -->
         <div class="nav__items">
-          <button class="home nav__item">
-            <i class="fas fa-home"></i>
-            <div class="nav__item--name">Home</div>
-          </button>
           <button class="music nav__item">
             <i class="fas fa-music"></i>
             <div class="nav__item--name">Music</div>
@@ -60,6 +54,80 @@
       </div>
 
       <div id="body">
+        <!-- music modal -->
+        <div class="music__modal">
+          <div class="music__modal--box">
+            <div class="header">
+              <div class="modal-name">Music</div>
+              <div class="music-close modal-close">
+                  <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div id="dashboard">
+                <span>Now Playing:</span>
+              <p class="name-wrap"></p>
+               <!-- button -->
+              <div id="control">
+                <div class="btn btn-repeat">
+                  <i class="fas fa-redo"></i>
+                </div>
+                <div class="btn btn-prev">
+                  <i class="fas fa-step-backward"></i>
+                </div>
+                <div class="btn btn-pause-play">
+                  <i class="fas fa-pause icon-pause"></i>
+                  <i class="fas fa-play icon-play"></i>
+                </div>
+                <div class="btn btn-next">
+                  <i class="fas fa-step-backward"></i>
+                </div>
+                <div class="btn btn-random">
+                  <i class="fas fa-random"></i>
+                </div>
+              </div>
+              <!-- Time -->
+              <div id="time">
+                <span class="currentTime">0:00</span>
+                <input
+                  id="progress"
+                  class="progress"
+                  max="100"
+                  min="0"
+                  step="1"
+                  type="range"
+                  value="0"
+                />
+                <span class="duration">0:00</span>
+              </div>
+              <!-- Volume -->
+              <div id="volume">
+                <div class="volume-min vl-btn">
+                  <i class="fas fa-volume-mute"></i>
+                </div>
+                <input
+                  id="volume-progress"
+                  class="progress"
+                  max="50"
+                  min="0"
+                  step="1"
+                  type="range"
+                  value="100"
+                />
+                <div class="volume-max vl-btn">
+                  <i class="fas fa-volume-up"></i>
+                </div>
+              </div>
+              <!-- audio playing -->
+              <audio id="audio" src=""></audio>
+              </div>
+              <div id="playlist">
+                <!-- song -->
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- task modal -->
         <div class="task__modal">
           <div class="task__modal--box">
@@ -92,12 +160,71 @@
               <button type="button" class="delete-btn button">Delete</button>
               <div class="footer-button">
                 <button type="button" class="cancel-btn button">Cancel</button>
-                <button type="button" class="save-btn button">Save</button>
+                <button type="button" class="save-btn button">OK</button>
               </div>
             </div>
           </div>
         </div>
         
+        <!-- setting -->
+        <div class="setting__modal">
+          <div class="setting__modal--box">
+            <div class="header">
+              <div class="modal-name">Setting</div>
+              <div class="setting-close modal-close">
+                  <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div class="setting__time">Time (Minutes)</div>
+              <div class="pomodoro-duration">
+                <div class="name">Pomodoro Duration</div>
+                <input class="setting-input" type="number" value="25">
+              </div>
+              <div class="short-duration">
+                <div class="name">Short Break Duration</div>
+                <input class="setting-input" type="number" value="5">
+              </div>
+              <div class="long-duration">
+                <div class="name">Long Break Duration</div>
+                <input class="setting-input" type="number" value="15">
+              </div>
+            </div>
+            <div class="footer">
+              <button type="button" class="setting-btn button">OK</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- profile -->
+        <div class="profile__modal">
+          <div class="profile__modal--box">
+            <div class="header">
+              <div class="modal-name">Profile</div>
+              <div class="profile-close modal-close">
+                  <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div class="name">Username (Gmail) : <span class="gmail"></span></div>
+              
+              <div class="profile-tree">
+                <div class="info">Trees had planted: </div>
+                <input type="text" class="amount" readonly>
+              </div>
+              <div class="image">
+                <img src="images/Chika Dance Chika Fujiwara Sticker - Chika Dance Chika Chika Fujiwara - Descubre & Comparte GIFs.gif" alt="">
+              </div>
+              <div class="footer">
+                <button class="logout">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <div class="logout_title">Log Out</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- pomodoro -->
         <div class="pomodoro">
           <div class="pomodoro__box">
@@ -128,17 +255,20 @@
                 <input type="datetime">
               </div>
               <div class="tags">
-                <label>Tags</label>
+                <!-- <label>Tags: </label> -->
                 <button class="tagHome">Home</button>
                 <button class="tagWork">Work</button>
                 <button class="tagFreetime">Freetime</button>
                 <button class="tagSchool">School</button>
                 <button class="done">Done</button>
+                
+              </div>
+              <div class="tags">
+               
                 <button class="notdone">Not done</button>
                 <button class="all">All</button>
               </div>
             </div>
-
             <div class="tasklist__box">
               <div class="header">
                 <div class="name">Tasks</div>
@@ -188,134 +318,39 @@
           </div>
         </div>
       </div>
-      <div id="footer">
-        <div class="music__modal--box">
-          <div class="header">
-            <div class="modal-name">Music</div>
-            <div class="music-close modal-close">
-                <i class="fas fa-times"></i>
-            </div>
-          </div>
-          <div class="body">
-            <div id="dashboard">
-              <span>Now Playing:</span>
-            <p class="name-wrap"></p>
-             <!-- button -->
-            <div id="control">
-              <div class="btn btn-repeat">
-                <i class="fas fa-redo"></i>
-              </div>
-              <div class="btn btn-prev">
-                <i class="fas fa-step-backward"></i>
-              </div>
-              <div class="btn btn-pause-play">
-                <i class="fas fa-pause icon-pause"></i>
-                <i class="fas fa-play icon-play"></i>
-              </div>
-              <div class="btn btn-next">
-                <i class="fas fa-step-backward"></i>
-              </div>
-              <div class="btn btn-random">
-                <i class="fas fa-random"></i>
-              </div>
-            </div>
-            <!-- Time -->
-            <div id="time">
-              <span class="currentTime">0:00</span>
-              <input
-                id="progress"
-                class="progress"
-                max="100"
-                min="0"
-                step="1"
-                type="range"
-                value="0"
-              />
-              <span class="duration">0:00</span>
-            </div>
-            <!-- Volume -->
-            <div id="volume">
-              <div class="volume-min vl-btn">
-                <i class="fas fa-volume-mute"></i>
-              </div>
-              <input
-                id="volume-progress"
-                class="progress"
-                max="50"
-                min="0"
-                step="1"
-                type="range"
-                value="100"
-              />
-              <div class="volume-max vl-btn">
-                <i class="fas fa-volume-up"></i>
-              </div>
-            </div>
-            <!-- audio playing -->
-            <audio id="audio" src=""></audio>
-            </div>
-            <div id="playlist">
-              <!-- song -->
-            </div>
-          </div>
-        </div>
-        <div class="setting__modal--box">
-          <div class="header">
-            <div class="modal-name">Setting</div>
-            <div class="setting-close modal-close">
-                <i class="fas fa-times"></i>
-            </div>
-          </div>
-          <div class="body">
-            <div class="setting__time">Time (Minutes)</div>
-            <div class="pomodoro-duration">
-              <div class="name">Pomodoro Duration</div>
-              <input class="setting-input" type="number" value="25">
-            </div>
-            <div class="short-duration">
-              <div class="name">Short Break Duration</div>
-              <input class="setting-input" type="number" value="5">
-            </div>
-            <div class="long-duration">
-              <div class="name">Long Break Duration</div>
-              <input class="setting-input" type="number" value="15">
-            </div>
-          </div>
-          <div class="footer">
-            <button type="button" class="setting-btn button">Save</button>
-          </div>
-        </div>
-        <div class="profile__modal--box">
-          <div class="header">
-            <div class="modal-name">Profile</div>
-            <div class="profile-close modal-close">
-                <i class="fas fa-times"></i>
-            </div>
-          </div>
-          <div class="body">
-            <div class="name">Username(Gmail):</div>
-            <div class="gmail"></div>
-            <div class="profile-tree">
-              <div class="info">Trees had planted: </div>
-              <input type="text" class="amount" readonly>
-            </div>
-          </div>
-          <div class="footer">
-            <button class="logout">
+    <div class="wp-footer">
+      <div class="footer">
+        <ul class="nav__items">
+          <li class="list">
+            <a class="music_mobile music nav__item">
+              <i class="fas fa-music"></i>
+              <div class="nav__item--name">Music</div>
+            </a>
+          </li>
+         <li class="list active">
+          <a class="setting_mobile setting nav__item">
+            <i class="fas fa-cog"></i>
+            <div class="nav__item--name">Setting</div>
+          </a>
+         </li>
+          <li class="list">
+            <a class="profile_mobile profile nav__item">
+              <i class="fas fa-id-badge"></i>
+              <div class="nav__item--name">Profile</div>
+            </a>
+          </li>
+          <!-- <li class="list">
+            <a class="logout nav__item" href="">
               <i class="fas fa-sign-out-alt"></i>
-              <div class="profile-item">Log Out</div>
-            </button>
-          </div>
-        </div>
+              <div class="nav__item--name">Log Out</div>
+            </a>
+          </li> -->
+         <div class="indicator"></div>
+        </ul>
       </div>
     </div>
+      
+    </div>
 
-  </body>
-  <script src="./scripts/app.js" type="module" defer></script>
-    <script src="./scripts/main.js" defer></script>
-    <script src="./scripts/time.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./scripts/filter.js" type="module" defer></script>
-    <script src="./scripts/music.js" defer></script>
-    <script src="./scripts/navigation.js" defer></script>
+  </body>  
 </html>

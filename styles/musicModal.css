@@ -1,4 +1,4 @@
-/* .music__modal {
+.music__modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -10,10 +10,9 @@
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 4;
-} */
+  z-index: 5;
+}
 .music__modal--box {
-  display: none;
   background-color: #fefefe;
   margin: auto;
   padding: 20px 30px;
@@ -109,8 +108,10 @@
 
 /* playlist */
 #playlist {
+  overflow-y: scroll;
   z-index: 10;
   padding: 10px;
+  height: 300px;
 }
 .song {
   display: flex;
@@ -120,7 +121,8 @@
   padding: 8px 16px;
   border: 1px solid black;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  border-radius: 4px;
+  transition: all 0.1s ease;
 }
 .song:not(.active):hover {
   opacity: 0.8;
@@ -167,4 +169,10 @@
 }
 .song.active .title {
   color: #fff;
+}
+#dashboard {
+  text-align: center;
+}
+#dashboard>span{
+  font-weight: 700;
 }

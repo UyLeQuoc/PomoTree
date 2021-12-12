@@ -55,10 +55,10 @@ saveBtn.addEventListener("click", (e) => {
 });
 
 // accept setting
-const settingSave = document.querySelector(".setting__modal--box .setting-btn");
+const settingSave = document.querySelector(".setting__modal .setting-btn");
 settingSave.addEventListener("click", function () {
   updateInfoToFirebase();
-  homeBtn.click();
+  document.querySelector(".setting__modal").style.display = "none";
   pomodoroSettingTime();
   stopCountDown();
 });
@@ -75,6 +75,11 @@ doneAllBtn.addEventListener("click", function () {
   printQueriedTasksFromFirebase("isDone", false);
 });
 
+const profileUpdate = document.querySelector(".nav__items .profile");
+profileUpdate.addEventListener("click", function () {
+  document.querySelector(".profile__modal").style.display = "block";
+  updateInfoToFirebase();
+});
 
 // event delete-all button
 // const deleteAllBtn = document.querySelector('.delete-all');
@@ -150,7 +155,7 @@ function printTasksFromFirebase() {
 						</div>
 						<div class="name">
 							<div class="title">${task.data().title}</div>
-							<div class="date">${task.data().date}</div>
+							<div class="date">${settingDisplayTime(task.data().date)}</div>
 							<div class="note">${task.data().description}</div>
 						</div>
 						<div class="btn-option" id="${task.id}">
@@ -165,9 +170,25 @@ function printTasksFromFirebase() {
     addDoneEvent();
   });
 }
-
+function settingDisplayTime(time) {
+  // DD/MM/YYYY
+  return `${time.slice(8)}/${time.slice(5,7)}/${time.slice(0,4)}`
+}
 function printQueriedTasksFromFirebase(field, value) {
-  $(".tasklist__box .header .name").innerHTML = `${value} Tasks`;
+  if (typeof value === "boolean") {
+    if (value === true) {
+      $(".tasklist__box .header .name").innerHTML = `Done Tasks`;
+    }
+    else if (value === false) {
+      $(".tasklist__box .header .name").innerHTML = `Not Done Tasks`;
+    }
+  }
+  else if(value.length == 10){
+    $(".tasklist__box .header .name").innerHTML = `${settingDisplayTime(value)} Tasks`;
+  }
+  else {
+    $(".tasklist__box .header .name").innerHTML = `${value} Tasks`;
+  }
   $(".tasks").innerHTML = "";
   getDocs(
     query(
@@ -184,7 +205,7 @@ function printQueriedTasksFromFirebase(field, value) {
 						</div>
 						<div class="name">
 							<div class="title">${task.data().title}</div>
-							<div class="date">${task.data().date}</div>
+							<div class="date">${settingDisplayTime(task.data().date)}</div>
 							<div class="note">${task.data().description}</div>
 						</div>
 						<div class="btn-option" id="${task.id}">

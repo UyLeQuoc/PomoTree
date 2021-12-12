@@ -12,7 +12,9 @@ const timeNow = $(".currentTime");
 const duration = $("#time .duration");
 const maxVolume = $(".volume-max");
 const minVolume = $(".volume-min");
-
+const musicClose = $(".music__modal--box .music-close");
+const musicOpen = $(".nav__items .music");
+const musicModalOverlay = $(".music__modal");
 
 // format time
 function formatTime(sec) {
@@ -52,8 +54,19 @@ const app = {
       name: "Fire Sound",
       path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/sounds_music_FireSound.mp3?alt=media&token=40df9a1c-a640-43b1-8570-077f1585238a",
     },
+    {
+      name: "Lofi Chill Mix - 30 min",
+      path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/ChillLofiMix-30mix.mp3?alt=media&token=566d0785-441b-4ec8-9ee9-a4bf2511df6a",
+    },
+    {
+      name: "Cute Japanese Lofi Mix",
+      path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/cute%20lofi%20mix%20%20songs%20to%20help%20you%20be%20happy%20-%20%E5%AF%9B%E3%81%92%E3%82%8B%20%5B%20J%20A%20P%20A%20N%20E%20S%20E%20%20%20L%20O%20F%20I%20%20%20F%20U%20T%20U%20R%20E%20%20%20B%20A%20S%20S%5D(MP3_128K).mp3?alt=media&token=fdd577a1-0874-4b17-badf-a06477cb15b8",
+    },
+    {
+      name: "Japanese Night Cafe Vibes",
+      path: "https://firebasestorage.googleapis.com/v0/b/mockdb-123.appspot.com/o/japanese%20night%20cafe%20vibes%20_%20a%20lofi%20hip%20hop%20mix%20_%20chill%20with%20taiki.mp3?alt=media&token=90958042-1b05-4c2a-b6a3-802272825164",
+    },
   ],
-
 
   // print all playlist song
   render: function () {
@@ -122,7 +135,18 @@ const app = {
   },
   hangleEvent: function () {
     const _this = this;
-    
+    // open, close music modals
+    musicOpen.addEventListener("click", function () {
+      musicModalOverlay.style.display = "block";
+    });
+    musicClose.addEventListener("click", function () {
+      musicModalOverlay.style.display = "none";
+    });
+    musicModalOverlay.addEventListener("click", function (e) {
+      if (e.target.classList == "music__modal") {
+        musicModalOverlay.style.display = "none";
+      }
+    });
     // Play when click pause and vice versa
     togglePlay.onclick = function () {
       if (_this.isPlaying) {

@@ -21,7 +21,7 @@ body {
   width: 100%;
   height: 30rem;
 
-  margin: 10% 16%;
+  margin: 10% 24%;
   border-radius: 20px;
   backdrop-filter: blur(10px);
   -webkit-box-shadow: 20px 20px 40px -6px #540202;
@@ -91,11 +91,11 @@ button {
   padding: 0 5px;
 }
 .Problem-account a {
-  color: #ae0c0c;
+  color: #fdf9f9;
   padding: 0 5px;
 }
 .Problem-account a:hover {
-  color: #ae0c0c;
+  color: #fefffe;
   opacity: 0.8;
 }
 .content {
@@ -267,11 +267,11 @@ img {
   justify-content: flex-end;
 }
 .forgot {
-  color: #ae0c0c;
+  color: #f7f0f0;
   margin-bottom: 10px;
 }
 .forgot:hover {
-  color: #a31212;
+  color: #f7ecec;
   opacity: 0.8;
 }
 
