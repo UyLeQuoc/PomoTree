@@ -289,7 +289,7 @@ body{
   display: none;
   position: fixed;
   z-index: 5;
-  padding-top: 100px;
+  padding-top: 30px;
   left: 0;
   top: 0;
   width: 100%;
@@ -345,7 +345,7 @@ body{
   display: none;
   position: fixed;
   z-index: 5;
-  padding-top: 100px;
+  padding-top: 30px;
   left: 0;
   top: 0;
   width: 100%;
@@ -368,7 +368,7 @@ body{
   display: none;
   position: fixed;
   z-index: 5;
-  padding-top: 100px;
+  padding-top: 30px;
   left: 0;
   top: 0;
   width: 100%;
@@ -679,10 +679,7 @@ body{
 }
 
 /* style tags  */
-.filters .tags {
-  display: flex;
-  justify-content: center;
-}
+
 .filters .tags button {
   min-width: 70px;
 }

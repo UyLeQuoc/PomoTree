@@ -53,7 +53,7 @@ addTaskBtn.addEventListener("click", function () {
   taskModal.style.display = "block";
   // filter.style.display = "none";
   deleteBtn.style.display = "none";
-  // $(".modal-name").innerHTML = "Add Task";
+  $(".task__modal .modal-name").innerHTML = "Add Task";
   $(".task__modal .save-btn").id = "";
   titleTask.value = "";
   dateTask.value = "";
