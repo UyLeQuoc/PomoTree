@@ -66,7 +66,7 @@ skipBtn.addEventListener("click", function () {
 function pomodoroSettingTime() {
   console.log(1);
   timeStamp.innerHTML = `${pomodoroDuration.value}:00`;
-  document.title = `PomoTree - ${pomodoroDuration.value}:00`
+  document.title = `PomoTree - ${pomodoroDuration.value}:00`;
   startingMinutes = Math.ceil(Number(pomodoroDuration.value));
   time = startingMinutes * 60;
   pomodoroMode.classList.add("active");
@@ -82,7 +82,7 @@ function pomodoroSettingTime() {
 function shortBreakSettingTime() {
   console.log(2);
   timeStamp.innerHTML = `${shortBreakDuration.value}:00`;
-  document.title = `PomoTree - ${shortBreakDuration.value}:00`
+  document.title = `PomoTree - ${shortBreakDuration.value}:00`;
   startingMinutes = Math.ceil(Number(shortBreakDuration.value));
   time = startingMinutes * 60;
   pomodoroMode.classList.remove("active");
@@ -97,7 +97,7 @@ function shortBreakSettingTime() {
 function longBreakSettingTime() {
   console.log(3);
   timeStamp.innerHTML = `${longBreakDuration.value}:00`;
-  document.title = `PomoTree - ${longBreakDuration.value}:00`
+  document.title = `PomoTree - ${longBreakDuration.value}:00`;
   startingMinutes = Math.ceil(Number(longBreakDuration.value));
   time = startingMinutes * 60;
   pomodoroMode.classList.remove("active");
@@ -132,7 +132,7 @@ function updateCountdown() {
   //console.log(startingMinutes, startingMinutes*60 - time, progressPercent)
   checkProgress(progressPercent);
   timeStamp.innerHTML = `${minutes}:${seconds}`;
-  document.title = `PomoTree - ${minutes}:${seconds}`
+  document.title = `PomoTree - ${minutes}:${seconds}`;
   //When countDown = 0;
   if (time === -1) {
     timeUpAudio.play();

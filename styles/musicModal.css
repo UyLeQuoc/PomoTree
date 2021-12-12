@@ -160,7 +160,7 @@
   border-radius: 100%;
 }
 /* active */
-.btn.active{
+.btn.active {
   color: rgb(217, 85, 80) !important;
 }
 .song.active {
@@ -173,6 +173,6 @@
 #dashboard {
   text-align: center;
 }
-#dashboard>span{
+#dashboard > span {
   font-weight: 700;
 }

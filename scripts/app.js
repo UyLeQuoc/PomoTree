@@ -172,21 +172,20 @@ function printTasksFromFirebase() {
 }
 function settingDisplayTime(time) {
   // DD/MM/YYYY
-  return `${time.slice(8)}/${time.slice(5,7)}/${time.slice(0,4)}`
+  return `${time.slice(8)}/${time.slice(5, 7)}/${time.slice(0, 4)}`;
 }
 function printQueriedTasksFromFirebase(field, value) {
   if (typeof value === "boolean") {
     if (value === true) {
       $(".tasklist__box .header .name").innerHTML = `Done Tasks`;
-    }
-    else if (value === false) {
+    } else if (value === false) {
       $(".tasklist__box .header .name").innerHTML = `Not Done Tasks`;
     }
-  }
-  else if(value.length == 10){
-    $(".tasklist__box .header .name").innerHTML = `${settingDisplayTime(value)} Tasks`;
-  }
-  else {
+  } else if (value.length == 10) {
+    $(".tasklist__box .header .name").innerHTML = `${settingDisplayTime(
+      value
+    )} Tasks`;
+  } else {
     $(".tasklist__box .header .name").innerHTML = `${value} Tasks`;
   }
   $(".tasks").innerHTML = "";

@@ -36,7 +36,6 @@ $(".setting__modal").addEventListener("click", function (e) {
   }
 });
 
-
 // profile button (open,close)
 
 profileClose.addEventListener("click", function () {
@@ -95,30 +94,29 @@ taskModal.addEventListener("click", function (e) {
   }
 });
 
-
 // navigation mobile
-const list = document.querySelectorAll('.list');
+const list = document.querySelectorAll(".list");
 function activeLink() {
   list.forEach((item) => {
-    item.classList.remove('active');
-    this.classList.add('active');
-  })
+    item.classList.remove("active");
+    this.classList.add("active");
+  });
 }
 list.forEach((item) => {
-  item.addEventListener('click',activeLink);
-})
+  item.addEventListener("click", activeLink);
+});
 
-$('.music_mobile').addEventListener("click", function () {
+$(".music_mobile").addEventListener("click", function () {
   musicModalOverlay.style.display = "block";
   settingModal.style.display = "none";
   profileModal.style.display = "none";
 });
-$('.setting_mobile').addEventListener("click", function () {
+$(".setting_mobile").addEventListener("click", function () {
   settingModal.style.display = "block";
   musicModalOverlay.style.display = "none";
   profileModal.style.display = "none";
 });
-$('.profile_mobile').addEventListener("click", function () {
+$(".profile_mobile").addEventListener("click", function () {
   profileModal.style.display = "block";
   musicModalOverlay.style.display = "none";
   settingModal.style.display = "none";

@@ -7,9 +7,8 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-body{
-  background-color: #F2AE72;
-
+body {
+  background-color: #f2ae72;
 }
 /* default */
 .mt-16 {
@@ -47,8 +46,8 @@ body{
   justify-content: flex-end;
   align-items: center;
 }
-.nav__items button{
-  background: #588C73;
+.nav__items button {
+  background: #588c73;
   border: none;
   /* border-radius: 12px; */
   color: white;
@@ -65,9 +64,11 @@ body{
 }
 .nav__item--name {
   margin-left: 5px;
- 
 }
-.fa-music, .fa-cog, .fa-id-badge, .fa-sign-out-alt{
+.fa-music,
+.fa-cog,
+.fa-id-badge,
+.fa-sign-out-alt {
   color: #f7f2f3;
 }
 
@@ -138,7 +139,7 @@ body{
   display: flex;
   flex-flow: column;
   align-items: center;
-  background-color: #588C73;
+  background-color: #588c73;
   border-radius: 8px;
   padding: 20px;
   position: relative;
@@ -207,11 +208,11 @@ body{
 }
 /* style fillters */
 .filters {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
 }
 /* modal */
 .task__modal--box .header,
@@ -230,7 +231,7 @@ body{
   justify-content: space-between;
   align-items: center;
 }
-.profile__modal .body .name{
+.profile__modal .body .name {
   font-weight: 700;
 }
 
@@ -247,7 +248,7 @@ body{
   flex-flow: row nowrap;
   align-items: center;
   padding: 5px 10px;
-  background: #588C73;
+  background: #588c73;
   border: none;
   font-size: 16px;
   color: white;
@@ -424,12 +425,12 @@ body{
 
 /* body-tasklist */
 .tasklist {
-    flex-grow: 3;
-    display: flex;
-    flex-flow: row-reverse;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0 2rem;
+  flex-grow: 3;
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 2rem;
 }
 
 .tasklist__box {
@@ -446,7 +447,7 @@ body{
   justify-content: space-between;
   align-items: center;
   padding: 20px 15px;
-  border-bottom:3px solid #3a6a53;
+  border-bottom: 3px solid #3a6a53;
   position: relative;
 }
 .header .btn-option {
@@ -465,21 +466,20 @@ body{
   color: #812f27;
 }
 .tasklist__box .tasks {
-    width: 100%;
-    height: 99%;
-    overflow: auto;
+  width: 100%;
+  height: 99%;
+  overflow: auto;
 }
-.tasks::-webkit-scrollbar{
+.tasks::-webkit-scrollbar {
   display: none;
 }
 .par-tasks {
-    display: flex;
-    flex-flow: column;
-    margin-top: 10px;
-    /* overflow-y: scroll; */
-    max-height: 60vh;
-    overflow: hidden;
-
+  display: flex;
+  flex-flow: column;
+  margin-top: 10px;
+  /* overflow-y: scroll; */
+  max-height: 60vh;
+  overflow: hidden;
 }
 
 .tasklist__box .task {
@@ -624,10 +624,10 @@ body{
 .btn-add .name {
   padding: 0 10px;
 }
- /* style calendar  */
- .calendar{
-   margin-bottom: 30px;
- }
+/* style calendar  */
+.calendar {
+  margin-bottom: 30px;
+}
 .calendar input {
   display: none;
 }
@@ -636,7 +636,7 @@ body{
   color: #fefefe;
   width: 400px;
 }
-.flatpickr-day.today{
+.flatpickr-day.today {
   border: 2px solid #ebc6c9;
 }
 .flatpickr-day {
@@ -646,23 +646,23 @@ body{
   width: 100%;
   display: block;
 }
-.flatpickr-weekday{
-  color: #fefefe!important;
+.flatpickr-weekday {
+  color: #fefefe !important;
 }
-.flatpickr-day.prevMonthDay , .flatpickr-day.nextMonthDay {
-  color: #e6bfbf!important;
-
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  color: #e6bfbf !important;
 }
 .flatpickr-day.selected {
-  background: pink!important;
-  border-color: pink!important;
+  background: pink !important;
+  border-color: pink !important;
   color: rgb(132 54 54);
   font-weight: 700;
 }
-.flatpickr-months .flatpickr-month{
+.flatpickr-months .flatpickr-month {
   background: #f3f3f3;
   color: rgb(132 54 54);
-  fill: rgba(0,0,0,0.9);
+  fill: rgba(0, 0, 0, 0.9);
   height: 45px;
   line-height: 1;
   text-align: center;
@@ -683,7 +683,8 @@ body{
 .filters .tags button {
   min-width: 70px;
 }
-.filters .tags .tagHome, .tagFreetime {
+.filters .tags .tagHome,
+.tagFreetime {
   display: inline-block;
   padding: 5px;
   border: none;
@@ -691,61 +692,65 @@ body{
   margin: 5px;
   border-radius: 10px;
   background: rgb(176 81 81);
-  
 }
-.filters .tags .tagHome:hover, .tagFreetime:hover {
+.filters .tags .tagHome:hover,
+.tagFreetime:hover {
   background: #c55959;
   transition: 0.5s background;
   cursor: pointer;
 }
-.filters .tags .tagWork, .done {
-    display: inline-block;
-    padding: 5px;
-    background: #9b5a35;
-    border: none;
-    color: white;
-    margin: 5px;
-    border-radius: 10px;
-    
-  
+.filters .tags .tagWork,
+.done {
+  display: inline-block;
+  padding: 5px;
+  background: #9b5a35;
+  border: none;
+  color: white;
+  margin: 5px;
+  border-radius: 10px;
 }
-.filters .tags .tagWork:hover, .done:hover {
+.filters .tags .tagWork:hover,
+.done:hover {
   background: #723c1c;
   transition: 0.5s background;
   cursor: pointer;
 }
-.filters .tags .notdone, .all, .tagSchool {
-    display: inline-block;
-    padding: 5px;
-    background: rgb(121, 147, 81);
-    border: none;
-    color: white;
-    margin: 5px;
-    border-radius: 10px;
+.filters .tags .notdone,
+.all,
+.tagSchool {
+  display: inline-block;
+  padding: 5px;
+  background: rgb(121, 147, 81);
+  border: none;
+  color: white;
+  margin: 5px;
+  border-radius: 10px;
 }
-.filters .tags .notdone:hover, .all:hover, .tagSchool:hover {
+.filters .tags .notdone:hover,
+.all:hover,
+.tagSchool:hover {
   background: rgb(66, 92, 24);
   transition: 0.5s background;
   cursor: pointer;
 }
- /* style task modal  */
- .task__modal--box input{
-
- }
- /* style profile  */
+/* style task modal  */
+.task__modal--box input {
+}
+/* style profile  */
 .profile__modal .image {
   width: 100%;
 }
-.profile__modal img{
-    overflow: hidden;
-    width: 100%;
-    height: auto;
+.profile__modal img {
+  overflow: hidden;
+  width: 100%;
+  height: auto;
 }
 .profile-tree {
   text-align: center;
   margin: 20px 0px;
 }
-.profile-tree input, .profile-tree input:focus{
+.profile-tree input,
+.profile-tree input:focus {
   background: #7c2828;
   border: 1px solid rgb(254, 254, 254);
   font-size: 20px;
@@ -754,9 +759,9 @@ body{
   border-radius: 8px;
   color: white;
 }
-.profile__modal .name{
+.profile__modal .name {
   color: rgb(110, 104, 104);
 }
-.footer .nav__items{
+.footer .nav__items {
   display: none;
 }
