@@ -679,7 +679,10 @@ body{
 }
 
 /* style tags  */
-
+.filters .tags {
+  display: flex;
+  justify-content: center;
+}
 .filters .tags button {
   min-width: 70px;
 }
