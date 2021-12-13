@@ -52,17 +52,26 @@ SignupForm.addEventListener("submit", (e) => {
       createUserProfile(userCredential.user.uid)
         .then(() => {
           // in ra innerHTML bạn đã đăng nhập thành công
-          announce.innerHTML =
-            "<p class = 'text-danger'>Bạn đã tạo tài khoản thành công</p>";
           window.location.assign("index.html");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          toast({
+            title: 'Error',
+            messenger: `Fail To Create Account`,
+            type: 'error',
+            duration: 3000
+          });
+        });
     })
-    .catch((error) => {
-      announce.innerHTML =
-        "<p class = 'text-danger'>Địa chỉ email của bạn đã tồn tại</p>";
-      console.log(error);
+    .catch((err) => {
+      toast({
+        title: 'Warning',
+        messenger: 'Email Address Has Been Used',
+        type: 'warning',
+        duration: 3000
+      });
     });
+        
 });
 
 function createUserProfile(UID) {

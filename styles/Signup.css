@@ -100,11 +100,11 @@ img {
 
 .home-box {
   display: flex;
-  justify-content: center;
-  padding: 0 10px;
-  margin-top: 10px;
+  justify-content: flex-start;
+  padding: 0 20px;
+  margin-top: 15px;
   margin-left: 10px;
-  
+  font-size: 20px;
 }
 .home-box a {
   color: #b70000;

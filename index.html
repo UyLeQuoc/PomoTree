@@ -16,9 +16,11 @@
       href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
     />
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/toast.css">
     <link rel="stylesheet" href="./styles/musicModal.css" />
     <link rel="stylesheet" href="./styles/ResponsiveIndex.css" />
     <title>PomoTree</title>
+    <script src="./scripts/toast.js" defer></script>
     <script src="./scripts/app.js" type="module" defer></script>
     <script src="./scripts/main.js" defer></script>
     <script src="./scripts/time.js" defer></script>
@@ -28,6 +30,7 @@
   </head>
   <body>
     <div class="wrapper">
+      <div id="toast"></div>
       <div class="nav">
         <div class="nav__brand">
           <div class="nav__brand--logo">
@@ -281,7 +284,7 @@
               ></audio>
             </div>
           </div>
-          <div class="tasklist">
+          <!-- <div class="tasklist"> -->
             <div class="filters">
               <div class="calendar">
                 <input type="datetime" />
@@ -343,7 +346,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
       <div class="wp-footer">
         <div class="footer">

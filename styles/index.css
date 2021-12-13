@@ -1,11 +1,12 @@
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 /* Reset CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 body {
   background-color: #f2ae72;
@@ -84,6 +85,8 @@ body {
   flex-flow: row;
   justify-content: center;
   /* background-color: rgb(34,139,34); */
+  align-items: center;
+  
 }
 
 /* body-pemodoro */
@@ -92,6 +95,8 @@ body {
   flex-flow: column;
   align-items: center;
   flex-grow: 2;
+  order: 2;
+  padding-bottom: 20px;
 }
 .pomodoro__box .circle {
   height: 300px;
@@ -213,6 +218,8 @@ body {
   justify-content: center;
   height: 100%;
   align-items: center;
+  order: 1;
+  padding: 10px;
 }
 /* modal */
 .task__modal--box .header,
@@ -284,6 +291,7 @@ body {
   padding: 10px;
   width: 100%;
   margin-top: 10px;
+  font-weight: 600;
 }
 /* task modal */
 .task__modal {
@@ -298,6 +306,7 @@ body {
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
+  font-family: 'Source Sans Pro', sans-serif;
 }
 .task__modal--box {
   background-color: #fefefe;
@@ -424,22 +433,25 @@ body {
 }
 
 /* body-tasklist */
-.tasklist {
+/* .tasklist {
   flex-grow: 3;
   display: flex;
   flex-flow: row-reverse;
   align-items: center;
   justify-content: space-around;
   margin: 0 2rem;
-}
+} */
 
 .tasklist__box {
   max-width: 800px;
-  padding: 20px;
+  padding: 10px;
   /* background-color: rgb(217, 85, 80); */
   border-radius: 20px;
-  min-width: 400px;
+  min-width: 300px;
   max-width: 400px;
+  order: 3;
+  align-items: stretch;
+  width: 100%;
 }
 .tasklist__box .header {
   display: flex;
@@ -508,7 +520,7 @@ body {
   display: flex;
 }
 
-.tasklist .btn-all-option {
+.tasklist__box .btn-all-option {
   border: 1px solid rgb(94, 20, 20);
   height: 30px;
   width: 30px;
@@ -519,10 +531,10 @@ body {
   color: #6e1e1e;
   cursor: pointer;
 }
-.tasklist .btn-all-option:hover {
+.tasklist__box .btn-all-option:hover {
   opacity: 0.6;
 }
-.tasklist .options-box {
+.tasklist__box .options-box {
   display: none;
   position: absolute;
   top: 60px;

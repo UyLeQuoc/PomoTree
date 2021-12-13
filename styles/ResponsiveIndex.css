@@ -1,16 +1,25 @@
 @media screen and (max-width: 1024px) {
   .pomodoro {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
   }
   .par-tasks {
     display: flex;
     flex-flow: column;
     margin-top: 10px;
-    height: 29vh;
+    height: 50vh;
     overflow: hidden;
   }
   .pomodoro__box {
-    margin-bottom: 5rem;
+    order: 1;
+  }
+  .filters{
+    order: 2;
+  }
+  .tasklist__box{
+    order: 3;
   }
 }
 

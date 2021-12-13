@@ -39,7 +39,7 @@ FormMail.addEventListener("submit", (e) => {
       window.location = "login.html";
     })
     .catch((error) => {
-      // some error
+      console.log(error)
     });
 });
 LoginForm.addEventListener("submit", (e) => {
@@ -53,8 +53,12 @@ LoginForm.addEventListener("submit", (e) => {
       window.location = "index.html";
     })
     .catch((error) => {
-      errorinner.innerHTML =
-        " <p class='text-light'>Bạn đã nhập sai email hoặc mật khẩu</p>";
+      toast({
+        title: 'Error',
+        messenger: 'Username or Password is Incorrect',
+        type: 'error',
+        duration: 3000
+      });
     });
 });
 
@@ -68,7 +72,6 @@ forgot.addEventListener("click", (e) => {
   for (let i = 0; i <= decor.length; i++) {
     decor[i].src = "./images/rabbit.png";
   }
-  console.log(decor);
 });
 close.onclick = function () {
   popup.style.display = "none";

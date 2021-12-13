@@ -64,7 +64,6 @@ skipBtn.addEventListener("click", function () {
 
 // add time html and setting countDown time
 function pomodoroSettingTime() {
-  console.log(1);
   timeStamp.innerHTML = `${pomodoroDuration.value}:00`;
   document.title = `PomoTree - ${pomodoroDuration.value}:00`;
   startingMinutes = Math.ceil(Number(pomodoroDuration.value));
@@ -74,13 +73,8 @@ function pomodoroSettingTime() {
   longBreakMode.classList.remove("active");
   imageIndex = 0;
   changeTreeImage(imageIndex);
-  // test case 2
-  // timeStamp.innerHTML = `00:15`
-  // startingMinutes = 0.25;
-  // time =15;
 }
 function shortBreakSettingTime() {
-  console.log(2);
   timeStamp.innerHTML = `${shortBreakDuration.value}:00`;
   document.title = `PomoTree - ${shortBreakDuration.value}:00`;
   startingMinutes = Math.ceil(Number(shortBreakDuration.value));
@@ -89,13 +83,8 @@ function shortBreakSettingTime() {
   shortBreakMode.classList.add("active");
   longBreakMode.classList.remove("active");
   changeShortBreakImage();
-  // test case
-  // timeStamp.innerHTML = `00:15`
-  // startingMinutes = 0.25;
-  // time =15;
 }
 function longBreakSettingTime() {
-  console.log(3);
   timeStamp.innerHTML = `${longBreakDuration.value}:00`;
   document.title = `PomoTree - ${longBreakDuration.value}:00`;
   startingMinutes = Math.ceil(Number(longBreakDuration.value));
@@ -104,10 +93,6 @@ function longBreakSettingTime() {
   shortBreakMode.classList.remove("active");
   longBreakMode.classList.add("active");
   changeLongBreakImage();
-  // test case
-  // timeStamp.innerHTML = `00:15`
-  // startingMinutes = 0.25;
-  // time =15;
 }
 // start and stop countdown function
 function startCountDown() {
@@ -129,7 +114,6 @@ function updateCountdown() {
   // Progress CountDown
   let progressPercent =
     ((startingMinutes * 60 - time) * 100) / (startingMinutes * 60);
-  //console.log(startingMinutes, startingMinutes*60 - time, progressPercent)
   checkProgress(progressPercent);
   timeStamp.innerHTML = `${minutes}:${seconds}`;
   document.title = `PomoTree - ${minutes}:${seconds}`;
@@ -139,18 +123,35 @@ function updateCountdown() {
     if (mode == "pomodoro") {
       plantOneTree();
       countBreak += 1;
-      console.log(countBreak, "index");
-      if (countBreak === 3) {
+      if (countBreak >= 3) {
         mode = "longbreak";
         countBreak = 0;
         longBreakSettingTime();
+        toast({
+          title: "Long Break Time",
+          messenger: `It's time to have a long break`,
+          type: "success",
+          duration: 2000,
+        });
       } else {
         mode = "shortbreak";
         shortBreakSettingTime();
+        toast({
+          title: "Short Break Time",
+          messenger: `It's time to have a short break`,
+          type: "warning",
+          duration: 2000,
+        });
       }
     } else if (mode == "shortbreak" || mode == "longbreak") {
       mode = "pomodoro";
       pomodoroSettingTime();
+      toast({
+        title: "Study Time",
+        messenger: `It's time to study`,
+        type: "error",
+        duration: 2000,
+      });
     }
   }
 }

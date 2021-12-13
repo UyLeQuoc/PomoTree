@@ -1,0 +1,139 @@
+#toast {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 100;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 20px 0;
+  border-left: solid 4px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  max-width: 500px;
+  z-index: 100;
+  transition: all linear 1s;
+}
+@keyframes slideInLeft {
+  from{
+      opacity: 0;
+      transform: translateX(calc(100% + 32px));
+  }
+  to{
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  to{
+      opacity: 0;
+  }
+}
+.toast + .toast {
+  margin-top: 16px;
+}
+.toast__icon {
+  font-size: 24px;
+}
+.toast__icon,
+.toast__close {
+  padding: 0 16px;
+}
+.toast__body {
+  flex-grow: 1;
+}
+.toast__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+.toast__msg {
+  margin-top: 4px;
+  color: #888;
+  line-height: 1.5;
+}
+.toast__close {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+.toast__close:hover {
+  color: rgba(0, 0, 0, 0.2);
+}
+/* success */
+.toast--success {
+  border-color: #3a6a53;
+}
+.toast--success .toast__icon {
+  color: #3a6a53;
+}
+/* info */
+.toast--info {
+  border-color: #2f86eb;
+}
+.toast--info .toast__icon {
+  color: #2f86eb;
+}
+/* warning */
+.toast--warning {
+  border-color: #ffc021;
+}
+.toast--warning .toast__icon {
+  color: #ffc021;
+}
+/* error */
+.toast--error {
+  border-color: #f72121;
+}
+.toast--error .toast__icon {
+  color: #f72121;
+}
+
+
+
+
+
+/* button
+.btn{
+  display: inline-block;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 12px 48px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.btn + .btn{
+  margin-left: 16px;
+}
+.btn:hover{
+  opacity: 0.8;
+}
+.btn--success{
+  background-color: #71be34;
+}
+.btn--info{
+  background-color: #2f86eb;
+}
+.btn--warning{
+  background-color: #ffb702;
+}
+.btn--error{
+  background-color: #ff623d;
+}
+.btn--disabled{
+  opacity: 0.5 !important;
+  cursor: default;
+}
+.box-button{
+  display: grid;
+  grid-template-rows: repeat(4,1fr);
+  gap: 50px;
+} */

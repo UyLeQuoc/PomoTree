@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +9,7 @@ body {
   background: linear-gradient(45deg, #ae0c0c, #ecacac);
   height: 100vh;
   position: relative;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 /* STYLE WAPPER  */
 
@@ -27,7 +29,6 @@ body {
   -webkit-box-shadow: 20px 20px 40px -6px #540202;
 }
 .sign-in h2 {
-  font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   display: block;
   padding: 20px 0px;
@@ -79,6 +80,7 @@ button {
   border-color: #612222;
   background: #5c0f0f;
   color: rgb(253, 251, 251);
+  cursor: pointer;
 }
 /* style content  */
 .Problem-account {
@@ -251,9 +253,16 @@ img {
 /* popup  */
 .close {
   padding-bottom: 20px;
+  
 }
-.fas {
-  color: #1f6a86;
+.close .fa-arrow-circle-left {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+.close .fa-arrow-circle-left:hover {
+  opacity: 0.7;
 }
 .bodyStyle {
   width: 100%;
@@ -261,7 +270,9 @@ img {
   background: #022936;
   position: absolute;
 }
-
+#mail-verify .close {
+  color: #022936;
+}
 .forgot-box {
   display: flex;
   justify-content: flex-end;

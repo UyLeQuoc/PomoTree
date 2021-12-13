@@ -5,25 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="./styles/login.css" />
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/Responsive_login.css" />
+    <link rel="stylesheet" href="./styles/toast.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    />    
   </head>
   <body>
     <div class="body">
+      <div id="toast"></div>
       <div class="wrapper">
         <div class="content">
           <div class="sign-in">
@@ -106,7 +102,7 @@
 
     <div id="mail-verify" class="popup">
       <div class="close">
-        <i class="fas fa-heart-broken"></i>
+        <i class="fas fa-arrow-circle-left"></i>
       </div>
       <div class="icon">
         <img src="./images/favorite.png" alt="" />
@@ -132,5 +128,7 @@
     var scene = document.getElementById("scene");
     var parallaxInstance = new Parallax(scene);
   </script>
-  <script src="./scripts/login.js" type="module"></script>
+    <script src="./scripts/toast.js"></script>
+    <script src="./scripts/login.js" type="module">
+  </script>
 </html>

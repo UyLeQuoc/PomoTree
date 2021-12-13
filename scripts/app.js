@@ -45,8 +45,20 @@ saveBtn.addEventListener("click", (e) => {
   if (e.target.id != "") {
     console.log(e.target.id);
     updateTaskToFirebase(e.target.id);
+    toast({
+      title: 'Edit Task',
+      messenger: 'Successful',
+      type: 'info',
+      duration: 1000
+    });
   } else {
     addTaskToFirebase();
+    toast({
+      title: 'Add Task',
+      messenger: 'Successful',
+      type: 'success',
+      duration: 1000
+    });
   }
   taskModal.style.display = "none";
   printQueriedTasksFromFirebase("isDone", false);
@@ -61,6 +73,12 @@ settingSave.addEventListener("click", function () {
   document.querySelector(".setting__modal").style.display = "none";
   pomodoroSettingTime();
   stopCountDown();
+  toast({
+    title: 'Info',
+    messenger: 'Setting Changed',
+    type: 'info',
+    duration: 1000
+});
 });
 
 // event done-all button
@@ -68,9 +86,14 @@ const doneAllBtn = document.querySelector(".done-all");
 doneAllBtn.addEventListener("click", function () {
   const doneBtns = $$(".task .btn-check");
   doneBtns.forEach((doneBtn) => {
-    console.log(doneBtn.id);
-    console.log(doneBtn);
+    resetTask()
     uploadDoneTaskToFirebase(doneBtn.id);
+  });
+  toast({
+    title: 'All Tasks',
+    messenger: `All tasks has been done`,
+    type: 'info',
+    duration: 2000
   });
   printQueriedTasksFromFirebase("isDone", false);
 });
@@ -84,10 +107,15 @@ profileUpdate.addEventListener("click", function () {
 // event delete-all button
 // const deleteAllBtn = document.querySelector('.delete-all');
 document.querySelector(".delete-all").addEventListener("click", function () {
-  const doneBtns = $$(".task .btn-check");
-  doneBtns.forEach((doneBtn) => {
-    console.log(doneBtn.id);
-    deleteTaskFromFirebase(doneBtn.id);
+  const deleteBtns = $$(".task .btn-check");
+  deleteBtns.forEach((deleteBtn) => {
+    deleteTaskFromFirebase(deleteBtn.id);
+  });
+  toast({
+    title: 'Delete All Tasks',
+    messenger: `All tasks has been deleted`,
+    type: 'info',
+    duration: 2000
   });
   printQueriedTasksFromFirebase("isDone", false);
   // $(`.${filterMode}`).click();
@@ -119,7 +147,6 @@ function addTaskToFirebase() {
       isDone: false,
     }
   )
-    .then(console.log("task added"))
     .catch((err) => console.log(err, "add file to firebase failed"));
 }
 
@@ -136,8 +163,14 @@ function updateTaskToFirebase(idTask) {
       description: descTask.value,
     }
   )
-    .then(console.log("task update"))
-    .catch((err) => console.log(err, "update file to firebase failed"));
+    .catch((err) => {
+      toast({
+        title: 'Error',
+        messenger: `Upload Task To Firebase Failed`,
+        type: 'error',
+        duration: 1000
+    });
+    });
 }
 
 function printTasksFromFirebase() {
@@ -245,11 +278,18 @@ function addOptionEvent() {
           $("#tags").value = snapshot.data().tag;
           $("#description").value = snapshot.data().description;
           $(".task__modal .save-btn").id = idTask;
+          isEdit = true;
           deleteBtn.id = idTask;
           deleteBtn.addEventListener("click", function () {
             deleteTaskFromFirebase(idTask);
             // test
             taskModal.style.display = "none";
+            toast({
+              title: 'Delete 1 Task',
+              messenger: `Task has been deleted`,
+              type: 'info',
+              duration: 1000
+          });
             printQueriedTasksFromFirebase("isDone", false);
             // $(`.${filterMode}`).click();
           });
@@ -264,7 +304,6 @@ function addDoneEvent() {
   const doneBtns = $$(".task .btn-check");
   doneBtns.forEach((doneBtn) => {
     doneBtn.addEventListener("click", function (e) {
-      console.log(e.target.classList);
       let taskDone;
       if (e.target.classList == "btn-check") {
         taskDone = e.currentTarget.parentNode;
@@ -281,6 +320,12 @@ function addDoneEvent() {
         }
         printQueriedTasksFromFirebase("isDone", false);
         // $(`.${filterMode}`).click();
+        toast({
+          title: 'Task has been done',
+          messenger: `Done Task Successful`,
+          type: 'info',
+          duration: 2000
+        });
       }
     });
   });
@@ -377,6 +422,12 @@ function updateInfoToFirebase() {
 // done
 onAuthStateChanged(auth, (userCred) => {
   if (userCred) {
+    toast({
+      title: 'Success',
+      messenger: 'Login Succesful',
+      type: 'success',
+      duration: 1000
+    });
     window.sessionStorage.setItem("UID", userCred.uid);
     document.querySelector(".gmail").innerHTML = userCred.email;
     updateTagsFromFirebase();

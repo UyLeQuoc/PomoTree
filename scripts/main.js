@@ -13,6 +13,9 @@ const deleteBtn = $(".task__modal .delete-btn");
 const cancelBtn = $(".task__modal .cancel-btn");
 const saveBtn = $(".task__modal .save-btn");
 const optionAllBox = $(".btn-all-option");
+// boolean
+let isEdit = false;
+
 
 // profile var
 const profileBtn = $(".nav__items .profile");
@@ -52,12 +55,10 @@ addTaskBtn.addEventListener("click", function () {
   taskModal.style.display = "block";
   // filter.style.display = "none";
   deleteBtn.style.display = "none";
+  resetTask();
   $(".task__modal .modal-name").innerHTML = "Add Task";
   $(".task__modal .save-btn").id = "";
-  titleTask.value = "";
-  dateTask.value = "";
-  tagsTask.value = "";
-  descTask.value = "";
+  
 });
 closeTaskBtn.addEventListener("click", function () {
   taskModal.style.display = "none";
@@ -121,3 +122,14 @@ $(".profile_mobile").addEventListener("click", function () {
   musicModalOverlay.style.display = "none";
   settingModal.style.display = "none";
 });
+
+
+function resetTask() {
+  if (isEdit) {
+    titleTask.value = "";
+    dateTask.value = "";
+    tagsTask.value = "";
+    descTask.value = "";
+    isEdit = false;
+  } 
+}
