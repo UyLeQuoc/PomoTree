@@ -179,7 +179,7 @@ function printTasksFromFirebase() {
     collection(db, "users", window.sessionStorage.getItem("UID"), "tasks")
   ).then((snapshot) => {
     let htmls = snapshot.docs.map((task) => {
-      let icon = task.data().isDone == true ? "times-circle" : "check-circle";
+      let icon = task.data().isDone == true ? "plus-circle" : "check-circle";
       console.log(task);
       const newElement = `
 					<div class="task" data-id-task="${task.id}" data-isDone="${task.data().isDone}">
