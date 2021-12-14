@@ -746,8 +746,8 @@ body {
   cursor: pointer;
 }
 /* style task modal  */
-.task__modal--box input {
-}
+/* .task__modal--box input {
+} */
 /* style profile  */
 .profile__modal .image {
   width: 100%;
