@@ -18,7 +18,6 @@
 /* style content  */
 .content {
   width: 60%;
-  height: 60%;
   display: flex;
   /* margin: 3rem 8rem; */
   justify-content: center;
@@ -31,6 +30,7 @@
   width: 50%;
   height: 100%;
   background-color: #ffb4af57;
+  padding-bottom: 15px;
 }
 .sign-in h2 {
   font-family: "Roboto", sans-serif;
