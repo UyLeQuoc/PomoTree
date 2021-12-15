@@ -32,14 +32,18 @@ const decor = document.querySelectorAll(".decor");
 FormMail.addEventListener("submit", (e) => {
   e.preventDefault();
   const email = FormMail["email"].value;
-  // console.log(email)
   const auth = getAuth();
   sendPasswordResetEmail(auth, email)
     .then(() => {
       window.location = "login.html";
     })
     .catch((error) => {
-      console.log(error)
+      toast({
+        title: "Error",
+        messenger: `Something went wrong`,
+        type: "error",
+        duration: 3000,
+      });
     });
 });
 LoginForm.addEventListener("submit", (e) => {

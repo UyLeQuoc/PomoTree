@@ -15,8 +15,6 @@ const saveBtn = $(".task__modal .save-btn");
 const optionAllBox = $(".btn-all-option");
 // boolean
 let isEdit = false;
-
-
 // profile var
 const profileBtn = $(".nav__items .profile");
 const profileModal = $(".profile__modal");
@@ -27,6 +25,7 @@ const settingBtn = $(".nav__items .setting");
 const settingModal = $(".setting__modal");
 const settingClose = $(".setting-close");
 
+// setting button (open,close)
 settingBtn.addEventListener("click", function () {
   settingModal.style.display = "block";
 });
@@ -62,11 +61,9 @@ addTaskBtn.addEventListener("click", function () {
 });
 closeTaskBtn.addEventListener("click", function () {
   taskModal.style.display = "none";
-  // filter.style.display = "block";
 });
 cancelBtn.addEventListener("click", function () {
   taskModal.style.display = "none";
-  // filter.style.display = "block";
 });
 
 // when click option to select all in tasks box
@@ -107,6 +104,7 @@ list.forEach((item) => {
   item.addEventListener("click", activeLink);
 });
 
+// navigation mobile
 $(".music_mobile").addEventListener("click", function () {
   musicModalOverlay.style.display = "block";
   settingModal.style.display = "none";

@@ -1,19 +1,5 @@
 /* Sign In  */
 @media screen and (max-width: 1024px) {
-  /* .wrapper{
-        display: flex;
-    }
-    .content{
-       margin: 0 auto;
-        width: 90%;
-        margin-top: 26%;
-    }
-    
-    .img{
-        margin: 0 auto;
-        width: 512px;
-        height: 512px;
-    } */
   .sign-in {
     margin: 0;
   }
@@ -27,13 +13,11 @@
   #mail-verify {
     position: absolute;
     width: auto;
-    /* height: 20%; */
     top: 10%;
     bottom: 15%;
     left: 14%;
     width: 60%;
     right: 20%;
-    /* margin: 0px auto; */
     z-index: 2;
     background: white;
     display: flex;
@@ -47,23 +31,6 @@
 }
 
 @media screen and (max-width: 800px) {
-  /* .wrapper{
-        display: block;
-    }
-    .sidebar {
-        display: none;
-    }
-    .content{
-      
-        width: 90%;
-        margin-top: 10rem;
-    }
-    
-    .img{
-        margin: 0 auto;
-        width: 512px;
-        height: 512px;
-    } */
   .sign-in {
     margin: 0;
   }
@@ -77,13 +44,11 @@
   #mail-verify {
     position: absolute;
     width: auto;
-    /* height: 20%; */
     top: 10%;
     bottom: 20%;
     left: 15%;
     width: 60%;
     right: 20%;
-    /* margin: 0px auto; */
     z-index: 2;
     background: white;
     display: flex;
@@ -111,13 +76,11 @@
   #mail-verify {
     position: absolute;
     width: auto;
-    /* height: 20%; */
     top: 10%;
     bottom: 15%;
     left: 14%;
     width: 60%;
     right: 20%;
-    /* margin: 0px auto; */
     z-index: 2;
     background: white;
     display: flex;
@@ -172,7 +135,6 @@
     left: 10%;
     width: 60%;
     right: 20%;
-    /* margin: 0px auto; */
     z-index: 2;
     background: white;
     display: flex;

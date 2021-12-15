@@ -35,14 +35,9 @@
         <div class="nav__brand">
           <div class="nav__brand--logo">
             <img src="images/house.png" alt="" />
-            <!-- <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M20.655 22.122v-2.197c1.907-.418 3.345-2.235 3.345-4.41 0-1.381-.292-1.662-3.536-10.041-.012 0-.16-.459-.646-.459-.488 0-.633.461-.643.461-.611 1.58-1.11 2.863-1.528 3.937.73 1.813.853 2.414.853 3.435 0 1.969-.884 3.737-2.289 4.935.59 1.085 1.59 1.883 2.771 2.142v1.744c-1.538-.339-3.53-.586-6.065-.637v-2.761c2.599-.436 4.583-2.7 4.583-5.423 0-1.687-.384-2.031-4.653-12.271-.014 0-.209-.562-.847-.562-.643 0-.833.564-.847.564-4.633 11.145-4.653 10.837-4.653 12.269 0 2.723 1.984 4.987 4.583 5.423v2.761c-2.562.051-4.571.303-6.116.648v-1.755c1.186-.263 2.187-1.077 2.769-2.186-1.375-1.198-2.236-2.946-2.236-4.891 0-.934.024-1.277.844-3.324-.424-1.088-.938-2.41-1.567-4.05-.011 0-.157-.459-.638-.459-.484 0-.627.461-.637.461-3.487 9.119-3.502 8.867-3.502 10.039 0 2.175 1.423 3.992 3.311 4.41v2.208c-2.587.852-3.311 1.882-3.311 1.882h24s-.732-1.038-3.345-1.893z"/></svg> -->
           </div>
           <div class="nav__brand--name">PomoTree</div>
         </div>
-        <!-- <button class="menu">
-          <i class="fas fa-bars"></i>
-          <div class="menu-title">Menu</div>
-        </button> -->
         <div class="nav__items">
           <button class="music nav__item">
             <i class="fas fa-music"></i>
@@ -63,8 +58,13 @@
         <!-- music modal -->
         <div class="music__modal">
           <div class="music__modal--box">
+            <div class="image">
+              <img src="./images/modal_Images/DangerousRoads.jpg" alt="Dangerous Roads" />
+            </div>
             <div class="header">
+              <i class="fas fa-music"></i>
               <div class="modal-name">Music</div>
+              <i class="fas fa-mug-hot"></i>
               <div class="music-close modal-close">
                 <i class="fas fa-times"></i>
               </div>
@@ -137,8 +137,13 @@
         <!-- task modal -->
         <div class="task__modal">
           <div class="task__modal--box">
+            <div class="image">
+              <img src="./images/modal_Images/MagicalTree.jpg" alt="Magical Tree" />
+            </div>
             <div class="header">
+              <i class="fas fa-book-open"></i>
               <div class="modal-name">Add Task</div>
+              <i class="fas fa-pen"></i>
               <div class="btn-close modal-close">
                 <i class="fas fa-times"></i>
               </div>
@@ -188,17 +193,23 @@
               <button type="button" class="delete-btn button">Delete</button>
               <div class="footer-button">
                 <button type="button" class="cancel-btn button">Cancel</button>
-                <button type="button" class="save-btn button">OK</button>
+                <button type="button" class="save-btn button">Save</button>
               </div>
             </div>
           </div>
+
         </div>
 
         <!-- setting -->
         <div class="setting__modal">
           <div class="setting__modal--box">
+            <div class="image">
+              <img src="./images/modal_Images/TreeOfLife.jpg" alt="Tree Of Tree" />
+            </div>
             <div class="header">
+              <i class="fas fa-cogs"></i>
               <div class="modal-name">Setting</div>
+              <i class="fas fa-stopwatch"></i>
               <div class="setting-close modal-close">
                 <i class="fas fa-times"></i>
               </div>
@@ -227,8 +238,13 @@
         <!-- profile -->
         <div class="profile__modal">
           <div class="profile__modal--box">
+            <div class="image">
+              <img src="./images/modal_Images/ForestOfLiars.jpg" alt="Forest Of Liars" />
+            </div>
             <div class="header">
+              <i class="fas fa-user-alt"></i>
               <div class="modal-name">Profile</div>
+              <i class="fas fa-tree"></i>
               <div class="profile-close modal-close">
                 <i class="fas fa-times"></i>
               </div>
@@ -237,16 +253,9 @@
               <div class="name">
                 Username (Gmail) : <span class="gmail"></span>
               </div>
-
               <div class="profile-tree">
                 <div class="info">Trees had planted:</div>
                 <input type="text" class="amount" readonly />
-              </div>
-              <div class="image">
-                <img
-                  src="images/Chika Dance Chika Fujiwara Sticker - Chika Dance Chika Chika Fujiwara - Descubre & Comparte GIFs.gif"
-                  alt=""
-                />
               </div>
               <div class="footer">
                 <button class="logout">
@@ -284,13 +293,11 @@
               ></audio>
             </div>
           </div>
-          <!-- <div class="tasklist"> -->
             <div class="filters">
               <div class="calendar">
                 <input type="datetime" />
               </div>
               <div class="tags">
-                <!-- <label>Tags: </label> -->
                 <button class="tagHome">Home</button>
                 <button class="tagWork">Work</button>
                 <button class="tagFreetime">Freetime</button>
@@ -311,7 +318,11 @@
                 <div class="options-box">
                   <div class="done-all">
                     <i class="fas fa-check-circle"></i>
-                    <div class="title">Done all tasks</div>
+                    <div class="title">All tasks change Done</div>
+                  </div>
+                  <div class="add-all">
+                    <i class="fas fa-plus-circle"></i>
+                    <div class="title">All tasks change Not Done</div>
                   </div>
                   <div class="delete-all">
                     <i class="far fa-trash-alt"></i>

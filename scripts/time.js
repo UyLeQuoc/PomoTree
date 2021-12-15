@@ -17,19 +17,12 @@ let countDown,
 let countBreak = 0;
 
 // default value
-// timeStamp.innerHTML = `${pomodoroDuration.value}:00`
-// stopBtn.classList.toggle('hidden');
-// skipBtn.classList.add('hidden');
 let time, startingMinutes;
 let mode = "pomodoro";
 stopBtn.classList.toggle("hidden");
 skipBtn.classList.add("hidden");
-// startingMinutes =  Math.floor(Number(pomodoroDuration.value));
-// time = startingMinutes * 60;
 
-// EVENT
-
-// 3 mode (pomodoro)
+// Time Countdown (3 modes)
 pomodoroMode.addEventListener("click", function () {
   mode = "pomodoro";
   pomodoroSettingTime();
@@ -45,6 +38,7 @@ longBreakMode.addEventListener("click", function () {
   longBreakSettingTime();
   stopCountDown();
 });
+
 // when click start
 startBtn.addEventListener("click", function () {
   isCountDown = true;
@@ -55,13 +49,14 @@ stopBtn.addEventListener("click", function () {
   isCountDown = false;
   stopCountDown();
 });
+// when click skip
 skipBtn.addEventListener("click", function () {
   time = 0;
   setTimeout(stopCountDown, 1000);
 });
 
-// FUNCTION
 
+// FUNCTION
 // add time html and setting countDown time
 function pomodoroSettingTime() {
   timeStamp.innerHTML = `${pomodoroDuration.value}:00`;
@@ -155,6 +150,8 @@ function updateCountdown() {
     }
   }
 }
+
+// check progress to change image
 function checkProgress(percent) {
   let percentRound = Math.floor(percent);
   let index = Math.floor(percentRound / 4);

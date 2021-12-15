@@ -7,19 +7,30 @@
 /* STYLE WAPPER  */
 .wrapper {
   display: flex;
-  justify-content: space-around;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/cool-background.svg);
+  background-size: cover;
+  background-position: center;
 }
 /* style content  */
 .content {
-  width: 40%;
-}
-.sign-in {
-  margin-top: 10%;
-  width: 100%;
-  height: 30rem;
-  margin: 10% 16%;
+  width: 60%;
+  height: 60%;
+  display: flex;
+  /* margin: 3rem 8rem; */
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
   border: 3px solid #b70000;
+  background-color: white;
+}
+.sign-in {
+  width: 50%;
+  height: 100%;
+  background-color: #ffb4af57;
 }
 .sign-in h2 {
   font-family: "Roboto", sans-serif;
@@ -82,15 +93,12 @@ button {
   background: #5c0f0f;
   color: rgb(253, 251, 251);
 }
-/* style sibar  */
-.sidebar {
-  width: 60%;
-}
+
 /* style img  */
 .img {
-  margin: 0 auto;
-  width: 612px;
-  height: 612px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }
 img {
   max-width: 100%;
