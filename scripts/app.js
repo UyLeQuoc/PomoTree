@@ -108,7 +108,7 @@ notDoneAllBtn.addEventListener("click", function () {
     type: "info",
     duration: 2000,
   });
-  printQueriedTasksFromFirebase("isDone", false);
+  printQueriedTasksFromFirebase("isDone", true);
 });
 
 const profileUpdate = document.querySelector(".nav__items .profile");
