@@ -131,7 +131,6 @@ document.querySelector(".delete-all").addEventListener("click", function () {
     duration: 2000,
   });
   printQueriedTasksFromFirebase("isDone", false);
-  // $(`.${filterMode}`).click();
 });
 
 const logoutBtn = document.querySelector(".logout");
@@ -360,7 +359,6 @@ function addDoneEvent() {
           });
         }
         printQueriedTasksFromFirebase("isDone", false);
-        // $(`.${filterMode}`).click();
       }
     });
   });
@@ -438,16 +436,16 @@ function updateInfoFromFirebase() {
   );
 }
 function updateInfoToFirebase() {
+  const pomoDura = typeof Number($(".pomodoro-duration .setting-input").value) != "Number" ? 25 : Math.ceil(Number($(".pomodoro-duration .setting-input").value));
+  const shortDura = typeof Number($(".short-duration .setting-input").value) != "Number" ? 5 : Math.ceil(Number($(".short-duration .setting-input").value));
+  const longDura = typeof Number($(".long-duration .setting-input").value) != "Number" ? 15 : Math.ceil(Number($(".long-duration .setting-input").value));
+  $(".pomodoro-duration .setting-input").value = pomoDura;
+  $(".short-duration .setting-input").value = shortDura;
+  $(".long-duration .setting-input").value = longDura;
   updateDoc(doc(db, "users", window.sessionStorage.getItem("UID")), {
-    pomodoroDuration: Math.ceil(
-      Number($(".pomodoro-duration .setting-input").value)
-    ),
-    shortBreakDuration: Math.ceil(
-      Number($(".short-duration .setting-input").value)
-    ),
-    longBreakDuration: Math.ceil(
-      Number($(".long-duration .setting-input").value)
-    ),
+    pomodoroDuration: pomoDura,
+    shortBreakDuration: shortDura,
+    longBreakDuration: longDura,
     trees: Number($(".profile-tree .amount").value),
   })
     .then()

@@ -219,7 +219,6 @@ body {
   height: 100%;
   align-items: center;
   order: 1;
-  padding: 10px;
 }
 
 .task__modal--box .footer,
@@ -434,6 +433,9 @@ body {
   width: 100%;
   padding: 10px 10px;
   font-weight: 600;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-top: 4px;
 }
 .setting__modal--box .footer {
   display: flex;

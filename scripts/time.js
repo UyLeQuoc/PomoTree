@@ -59,9 +59,10 @@ skipBtn.addEventListener("click", function () {
 // FUNCTION
 // add time html and setting countDown time
 function pomodoroSettingTime() {
-  timeStamp.innerHTML = `${pomodoroDuration.value}:00`;
-  document.title = `PomoTree - ${pomodoroDuration.value}:00`;
-  startingMinutes = Math.ceil(Number(pomodoroDuration.value));
+  const pomoDura = typeof Number($(".pomodoro-duration .setting-input").value) != "Number" ? 25 : Math.ceil(Number($(".pomodoro-duration .setting-input").value));
+  timeStamp.innerHTML = `${pomoDura}:00`;
+  document.title = `PomoTree - ${pomoDura}:00`;
+  startingMinutes = Math.ceil(Number(pomoDura));
   time = startingMinutes * 60;
   pomodoroMode.classList.add("active");
   shortBreakMode.classList.remove("active");
@@ -70,9 +71,10 @@ function pomodoroSettingTime() {
   changeTreeImage(imageIndex);
 }
 function shortBreakSettingTime() {
-  timeStamp.innerHTML = `${shortBreakDuration.value}:00`;
-  document.title = `PomoTree - ${shortBreakDuration.value}:00`;
-  startingMinutes = Math.ceil(Number(shortBreakDuration.value));
+  const shortDura = typeof Number($(".short-duration .setting-input").value) != "Number" ? 5 : Math.ceil(Number($(".short-duration .setting-input").value));
+  timeStamp.innerHTML = `${shortDura}:00`;
+  document.title = `PomoTree - ${shortDura}:00`;
+  startingMinutes = Math.ceil(Number(shortDura));
   time = startingMinutes * 60;
   pomodoroMode.classList.remove("active");
   shortBreakMode.classList.add("active");
@@ -80,9 +82,10 @@ function shortBreakSettingTime() {
   changeShortBreakImage();
 }
 function longBreakSettingTime() {
-  timeStamp.innerHTML = `${longBreakDuration.value}:00`;
-  document.title = `PomoTree - ${longBreakDuration.value}:00`;
-  startingMinutes = Math.ceil(Number(longBreakDuration.value));
+  const longDura = typeof Number($(".long-duration .setting-input").value) != "Number" ? 15 : Math.ceil(Number($(".long-duration .setting-input").value));
+  timeStamp.innerHTML = `${longDura}:00`;
+  document.title = `PomoTree - ${longDura}:00`;
+  startingMinutes = Math.ceil(Number(longDura));
   time = startingMinutes * 60;
   pomodoroMode.classList.remove("active");
   shortBreakMode.classList.remove("active");
