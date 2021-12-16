@@ -14,6 +14,7 @@
   }
   .pomodoro__box {
     order: 1;
+    padding: 10px 20px;
   }
   .filters{
     order: 2;
@@ -98,8 +99,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
     width: 100%;
-    text-align: center;
     text-decoration: none;
   }
   .footer .nav__items .nav__item--name {
@@ -126,14 +127,14 @@
     color: rgb(36, 77, 32);
   }
   .footer .nav__items li.active a .fas {
-    transform: translateY(-32px);
+    transform: translateY(-35px);
   }
 
   .indicator {
     position: absolute;
     top: -50%;
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     background: #95d49c;
     border-radius: 50%;
     /* border: 6px solid; */

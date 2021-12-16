@@ -81,10 +81,8 @@ body {
 .pomodoro {
   width: 100%;
   display: flex;
-  /* flex-flow: row wrap; */
   flex-flow: row;
-  justify-content: center;
-  /* background-color: rgb(34,139,34); */
+  justify-content: space-around;
   align-items: center;
   
 }
@@ -94,9 +92,8 @@ body {
   display: flex;
   flex-flow: column;
   align-items: center;
-  flex-grow: 2;
   order: 2;
-  padding-bottom: 20px;
+  padding: 0 10px 20px;
 }
 .pomodoro__box .circle {
   height: 300px;
@@ -659,7 +656,7 @@ body {
 .flatpickr-calendar.inline {
   background: #c0594f;
   color: #fefefe;
-  width: 400px;
+  width: 350px;
 }
 .flatpickr-day.today {
   border: 2px solid #ebc6c9;

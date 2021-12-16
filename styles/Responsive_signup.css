@@ -1,0 +1,20 @@
+@media screen and (max-width: 800px) {
+  .img {
+    display: none;
+  }
+  .sign-in {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .content {
+    width: 330px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #toast {
+    right: 0px;
+  }
+}

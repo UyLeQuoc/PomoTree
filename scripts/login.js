@@ -22,7 +22,7 @@ const errorinner = document.querySelector("#error");
 const LoginForm = document.querySelector("#Login");
 const forgot = document.querySelector(".forgot");
 const popup = document.querySelector("#mail-verify");
-const close = document.querySelector(".close");
+const close = document.querySelector(".closeIcon");
 const body = document.querySelector(".body");
 const signIn = document.querySelector(".sign-in");
 /// login form
@@ -35,12 +35,17 @@ FormMail.addEventListener("submit", (e) => {
   const auth = getAuth();
   sendPasswordResetEmail(auth, email)
     .then(() => {
-      window.location = "login.html";
+      toast({
+        title: "Reset Password Successful",
+        messenger: `Please check email to change your password`,
+        type: "success",
+        duration: 4000,
+      });
     })
     .catch((error) => {
       toast({
-        title: "Error",
-        messenger: `Something went wrong`,
+        title: "Reset Password Failed",
+        messenger: `Wrong Email`,
         type: "error",
         duration: 3000,
       });
@@ -85,13 +90,13 @@ close.onclick = function () {
     decor[i].src = "./images/favorite.png";
   }
 };
-window.onclick = function (event) {
-  if (event.target == popup) {
-    popup.style.display = "none";
-    signIn.style.display = "block";
-    body.classList.remove("bodyStyle");
-    for (let i = 0; i <= decor.length; i++) {
-      decor[i].src = "./images/favorite.png";
-    }
-  }
-};
+// window.onclick = function (event) {
+//   if (event.target == popup) {
+//     popup.style.display = "none";
+//     signIn.style.display = "block";
+//     body.classList.remove("bodyStyle");
+//     for (let i = 0; i <= decor.length; i++) {
+//       decor[i].src = "./images/favorite.png";
+//     }
+//   }
+// };
