@@ -327,6 +327,7 @@ body {
   position: relative;
   background-color: #fefefe;
   border-radius: 8px;
+  width: 80%;
   max-width: 480px;
 }
 .music__modal--box .header,
@@ -402,15 +403,6 @@ body {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
   font-family: 'Source Sans Pro', sans-serif;
-}
-.setting__modal--box {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  position: relative;
-  background-color: #fefefe;
-  border-radius: 8px;
-  max-width: 480px;
 }
 .setting__modal--box .setting__time {
   font-weight: 600;
