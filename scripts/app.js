@@ -436,9 +436,9 @@ function updateInfoFromFirebase() {
   );
 }
 function updateInfoToFirebase() {
-  const pomoDura = typeof Number($(".pomodoro-duration .setting-input").value) != "Number" ? 25 : Math.ceil(Number($(".pomodoro-duration .setting-input").value));
-  const shortDura = typeof Number($(".short-duration .setting-input").value) != "Number" ? 5 : Math.ceil(Number($(".short-duration .setting-input").value));
-  const longDura = typeof Number($(".long-duration .setting-input").value) != "Number" ? 15 : Math.ceil(Number($(".long-duration .setting-input").value));
+  const pomoDura = !isNumber($(".pomodoro-duration .setting-input").value) ? 25 : Math.ceil(Number($(".pomodoro-duration .setting-input").value));
+  const shortDura = !isNumber($(".short-duration .setting-input").value) ? 5 : Math.ceil(Number($(".short-duration .setting-input").value));
+  const longDura = !isNumber($(".long-duration .setting-input").value) ? 15 : Math.ceil(Number($(".long-duration .setting-input").value));
   $(".pomodoro-duration .setting-input").value = pomoDura;
   $(".short-duration .setting-input").value = shortDura;
   $(".long-duration .setting-input").value = longDura;
@@ -450,6 +450,9 @@ function updateInfoToFirebase() {
   })
     .then()
     .catch();
+}
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && !isNaN(n - 0) && n>0;
 }
 // done
 onAuthStateChanged(auth, (userCred) => {

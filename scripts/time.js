@@ -59,7 +59,7 @@ skipBtn.addEventListener("click", function () {
 // FUNCTION
 // add time html and setting countDown time
 function pomodoroSettingTime() {
-  const pomoDura = typeof Number($(".pomodoro-duration .setting-input").value) != "Number" ? 25 : Math.ceil(Number($(".pomodoro-duration .setting-input").value));
+  const pomoDura = ($(".pomodoro-duration .setting-input").value)
   timeStamp.innerHTML = `${pomoDura}:00`;
   document.title = `PomoTree - ${pomoDura}:00`;
   startingMinutes = Math.ceil(Number(pomoDura));
@@ -71,7 +71,7 @@ function pomodoroSettingTime() {
   changeTreeImage(imageIndex);
 }
 function shortBreakSettingTime() {
-  const shortDura = typeof Number($(".short-duration .setting-input").value) != "Number" ? 5 : Math.ceil(Number($(".short-duration .setting-input").value));
+  const shortDura = ($(".short-duration .setting-input").value)
   timeStamp.innerHTML = `${shortDura}:00`;
   document.title = `PomoTree - ${shortDura}:00`;
   startingMinutes = Math.ceil(Number(shortDura));
@@ -82,7 +82,7 @@ function shortBreakSettingTime() {
   changeShortBreakImage();
 }
 function longBreakSettingTime() {
-  const longDura = typeof Number($(".long-duration .setting-input").value) != "Number" ? 15 : Math.ceil(Number($(".long-duration .setting-input").value));
+  const longDura = ($(".long-duration .setting-input").value)
   timeStamp.innerHTML = `${longDura}:00`;
   document.title = `PomoTree - ${longDura}:00`;
   startingMinutes = Math.ceil(Number(longDura));
