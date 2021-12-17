@@ -429,9 +429,8 @@ function updateInfoFromFirebase() {
           : Number(snapshot.data().longBreakDuration);
       $(".profile-tree .amount").value = Number(snapshot.data().trees);
       // dedault
-      $(".timestamp").innerHTML = `${pomo}:00`;
-      startingMinutes = Math.floor(pomo);
-      time = startingMinutes * 60;
+      pomodoroSettingTime()
+      processInput()
     }
   );
 }

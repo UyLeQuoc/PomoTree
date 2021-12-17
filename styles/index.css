@@ -145,6 +145,7 @@ body {
   border-radius: 8px;
   padding: 20px;
   position: relative;
+  max-width: 300px;
 }
 .pomodoro__box .period {
   display: flex;

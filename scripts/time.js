@@ -55,11 +55,10 @@ skipBtn.addEventListener("click", function () {
   setTimeout(stopCountDown, 1000);
 });
 
-
 // FUNCTION
 // add time html and setting countDown time
 function pomodoroSettingTime() {
-  const pomoDura = ($(".pomodoro-duration .setting-input").value)
+  const pomoDura = $(".pomodoro-duration .setting-input").value;
   timeStamp.innerHTML = `${pomoDura}:00`;
   document.title = `PomoTree - ${pomoDura}:00`;
   startingMinutes = Math.ceil(Number(pomoDura));
@@ -68,10 +67,11 @@ function pomodoroSettingTime() {
   shortBreakMode.classList.remove("active");
   longBreakMode.classList.remove("active");
   imageIndex = 0;
+  processInput();
   changeTreeImage(imageIndex);
 }
 function shortBreakSettingTime() {
-  const shortDura = ($(".short-duration .setting-input").value)
+  const shortDura = $(".short-duration .setting-input").value;
   timeStamp.innerHTML = `${shortDura}:00`;
   document.title = `PomoTree - ${shortDura}:00`;
   startingMinutes = Math.ceil(Number(shortDura));
@@ -79,10 +79,11 @@ function shortBreakSettingTime() {
   pomodoroMode.classList.remove("active");
   shortBreakMode.classList.add("active");
   longBreakMode.classList.remove("active");
+  processInput();
   changeShortBreakImage();
 }
 function longBreakSettingTime() {
-  const longDura = ($(".long-duration .setting-input").value)
+  const longDura = $(".long-duration .setting-input").value;
   timeStamp.innerHTML = `${longDura}:00`;
   document.title = `PomoTree - ${longDura}:00`;
   startingMinutes = Math.ceil(Number(longDura));
@@ -90,6 +91,7 @@ function longBreakSettingTime() {
   pomodoroMode.classList.remove("active");
   shortBreakMode.classList.remove("active");
   longBreakMode.classList.add("active");
+  processInput();
   changeLongBreakImage();
 }
 // start and stop countdown function
@@ -181,4 +183,18 @@ function changeLongBreakImage() {
 function plantOneTree() {
   $(".profile-tree .amount").value =
     Number($(".profile-tree .amount").value) + 1;
+}
+
+// dynamic time countdown html (Auto font size)
+const outputContainer = $(".pomodoro__box .box");
+function resize_to_fit() {
+  let fontSize = window.getComputedStyle(timeStamp).fontSize;
+  while (timeStamp.clientWidth >= outputContainer.clientWidth - 20) {
+    fontSize = window.getComputedStyle(timeStamp).fontSize;
+    timeStamp.style.fontSize = parseFloat(fontSize) - 2 + "px";
+  }
+}
+function processInput() {
+  timeStamp.style.fontSize = "80px"; // Default font size
+  resize_to_fit();
 }
