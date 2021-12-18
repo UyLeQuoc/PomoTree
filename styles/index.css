@@ -1,6 +1,12 @@
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+/* var */
+:root{
+  --icon-color: rgb(217, 85, 80);
+}
+
 /* Reset CSS */
 * {
   margin: 0;
@@ -449,7 +455,6 @@ body {
   position: relative;
   max-width: 800px;
   padding: 10px;
-  /* background-color: rgb(217, 85, 80); */
   border-radius: 20px;
   min-width: 300px;
   max-width: 400px;
@@ -463,7 +468,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 15px;
-  border-bottom: 3px solid #3a6a53;
+  border-bottom: 3px solid var(--icon-color);
 }
 .header .btn-option {
   color: white;
@@ -505,7 +510,7 @@ body {
   padding: 15px 15px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.1s ease-in;
-  border-left: 3px solid rgb(240, 68, 77);
+  border-left: 3px solid var(--icon-color);
   transition: border 0.1s ease-in;
 }
 .tasklist__box .task + .task {
@@ -598,17 +603,18 @@ body {
   font-size: 14px;
 }
 .task .btn-check {
-  color: #238823;
+  color: var(--icon-color);
   font-size: 25px;
   cursor: pointer;
+  padding: 5px;
 }
 .task .btn-check .plus-circle {
   color: #238823;
   font-size: 25px;
   cursor: pointer;
 }
-.task .btn-check .fa-check-circle {
-  color: rgb(217, 85, 80);
+.task .btn-check .fa-trash-can {
+  color: black;
 }
 .task .btn-check:hover {
   opacity: 0.8;
@@ -621,7 +627,7 @@ body {
   align-items: center;
   border: 2px dashed rgb(241, 239, 239);
   margin-top: 16px;
-  background-color: rgb(217, 85, 80);
+  background-color: var(--icon-color);
   border-radius: 8px;
   padding: 10px 15px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);

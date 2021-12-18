@@ -104,7 +104,7 @@ notDoneAllBtn.addEventListener("click", function () {
   });
   toast({
     title: "All Tasks",
-    messenger: `All tasks had changed "Not Done"`,
+    messenger: `All tasks had changed "Unfinished Tasks"`,
     type: "info",
     duration: 2000,
   });
@@ -190,53 +190,11 @@ function updateTaskToFirebase(idTask) {
   });
 }
 
-function printTasksFromFirebase() {
-  $(".tasklist__box .header .name").innerHTML = `All Tasks`;
-  getDocs(
-    collection(db, "users", window.sessionStorage.getItem("UID"), "tasks")
-  ).then((snapshot) => {
-    let htmls = snapshot.docs.map((task) => {
-      let icon = task.data().isDone == true ? "plus-circle" : "check-circle";
-      const newElement = `
-					<div class="task" data-id-task="${task.id}" data-isDone="${task.data().isDone}">
-						<div class="btn-check" id="${task.id} ${task.data().isDone}">
-							<i class="fas fa-${icon}"></i>
-						</div>
-						<div class="name">
-							<div class="title">${task.data().title}</div>
-							<div class="date">${settingDisplayTime(task.data().date)}</div>
-							<div class="note">${task.data().description}</div>
-						</div>
-						<div class="btn-option" id="${task.id}">
-							<i class="fas fa-ellipsis-v"></i>
-						</div>
-					</div>
-					`;
-      return newElement;
-    });
-    $(".tasks").innerHTML = htmls.join("");
-    addOptionEvent();
-    addDoneEvent();
-  });
-}
 function settingDisplayTime(time) {
   // DD/MM/YYYY
   return `${time.slice(8)}/${time.slice(5, 7)}/${time.slice(0, 4)}`;
 }
 function printQueriedTasksFromFirebase(field, value) {
-  if (typeof value === "boolean") {
-    if (value === true) {
-      $(".tasklist__box .header .name").innerHTML = `Done Tasks`;
-    } else if (value === false) {
-      $(".tasklist__box .header .name").innerHTML = `Not Done Tasks`;
-    }
-  } else if (value.length == 10) {
-    $(".tasklist__box .header .name").innerHTML = `${settingDisplayTime(
-      value
-    )} Tasks`;
-  } else {
-    $(".tasklist__box .header .name").innerHTML = `${value} Tasks`;
-  }
   $(".tasks").innerHTML = "";
   // --------------
   if (field == "tag" || field == "date") {
@@ -253,7 +211,7 @@ function printQueriedTasksFromFirebase(field, value) {
   }
   getDocs(q).then((snapshot) => {
     let htmls = snapshot.docs.map((task) => {
-      let icon = task.data().isDone == true ? "plus-circle" : "check-circle";
+      let icon = task.data().isDone == true ? "trash-alt" : "check-circle";
       const newElement = `
 					<div class="task" data-id-task="${task.id}" data-isDone="${task.data().isDone}">
 						<div class="btn-check" id="${task.id}">
@@ -272,6 +230,33 @@ function printQueriedTasksFromFirebase(field, value) {
       return newElement;
     });
     $(".tasks").innerHTML = htmls.join("");
+    if (typeof value === "boolean") {
+      if (value === true) {
+        $(".tasklist__box .header .name").innerHTML = `History Tasks`;
+        $('.tasklist__box .btn-add').style.display = 'none';
+        $(':root').style.setProperty('--icon-color','rgb(217, 85, 80)');
+        $$('.btn-option').forEach((btn) => {
+          btn.style.display = 'none';
+        });
+        $$('.btn-check').forEach((btn) => {
+          btn.style.order = 1;
+        });
+      } else if (value === false) {
+        $(".tasklist__box .header .name").innerHTML = `Unfinished Tasks`;
+        $('.tasklist__box .btn-add').style.display = 'flex';
+        $(':root').style.setProperty('--icon-color','rgb(121, 147, 81)');
+      }
+    } else if (value.length == 10) {
+      $(".tasklist__box .header .name").innerHTML = `${settingDisplayTime(
+        value
+      )} Tasks`;
+      $('.tasklist__box .btn-add').style.display = 'flex';
+      $(':root').style.setProperty('--icon-color','rgb(121, 147, 81)');
+    } else {
+      $(".tasklist__box .header .name").innerHTML = `${value} Tasks`;
+      $('.tasklist__box .btn-add').style.display = 'flex';
+      $(':root').style.setProperty('--icon-color','rgb(121, 147, 81)');
+    }
     addOptionEvent();
     addDoneEvent();
   });
@@ -342,10 +327,10 @@ function addDoneEvent() {
         const isDone = taskDone.getAttribute("data-isDone");
         const idTask = taskDone.getAttribute("data-id-task");
         if (isDone == "true") {
-          uploadNotDoneTaskToFirebase(idTask);
+          deleteTaskFromFirebase(idTask);
           toast({
             title: "Task",
-            messenger: `Add Task Successful`,
+            messenger: `Delete Task Successful`,
             type: "success",
             duration: 2000,
           });
@@ -358,7 +343,7 @@ function addDoneEvent() {
             duration: 2000,
           });
         }
-        printQueriedTasksFromFirebase("isDone", false);
+        printQueriedTasksFromFirebase("isDone", isDone == "true" ? true : false);
       }
     });
   });
@@ -505,6 +490,5 @@ function updateTreeToFirebase(tree) {
 
 export {
   printQueriedTasksFromFirebase,
-  printTasksFromFirebase,
   updateTreeToFirebase,
 };

@@ -1,6 +1,5 @@
 import {
-  printQueriedTasksFromFirebase,
-  printTasksFromFirebase,
+  printQueriedTasksFromFirebase
 } from "./app.js";
 
 flatpickr("input[type=datetime]", { inline: true }).config.onChange.push(
@@ -25,7 +24,4 @@ $(".done").addEventListener("click", () => {
 });
 $(".notdone").addEventListener("click", () => {
   printQueriedTasksFromFirebase("isDone", false);
-});
-$(".all").addEventListener("click", () => {
-  printTasksFromFirebase();
 });
