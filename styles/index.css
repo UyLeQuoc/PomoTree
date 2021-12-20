@@ -120,8 +120,7 @@ body {
   background-image: url(../images/tree/tree-0.png);
   background-size: contain;
   background-repeat: no-repeat;
-  /* -webkit-animation: fadeinout 1s linear forwards;
-  animation: fadeinout 1s linear forwards; */
+  margin-right: 15px;
 }
 @-webkit-keyframes fadeinout {
   0%,
@@ -223,6 +222,7 @@ body {
   height: 100%;
   align-items: center;
   order: 1;
+  padding: 20px 0;
 }
 
 .task__modal--box .footer,
@@ -336,7 +336,27 @@ body {
   border-radius: 8px;
   width: 80%;
   max-width: 480px;
+  animation: drop 0.5s ease;
 }
+@keyframes drop {
+  from {
+    opacity: 0;
+    top: 0;
+  }
+  to {
+    opacity: 1;
+    top: 50%;
+  }
+}
+@-webkit-keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
 .music__modal--box .header,
 .setting__modal--box .header,
 .profile__modal--box .header,
@@ -467,7 +487,7 @@ body {
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 15px;
+  padding: 20px 15px 10px;
   border-bottom: 3px solid var(--icon-color);
 }
 .header .btn-option {

@@ -2,14 +2,13 @@
   .pomodoro {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-flow: row wrap;
   }
   .par-tasks {
     display: flex;
     flex-flow: column;
     margin-top: 10px;
-    height: 50vh;
     overflow: hidden;
   }
   .pomodoro__box {
@@ -29,7 +28,6 @@
     display: flex;
     flex-flow: column;
     margin-top: 10px;
-    min-height: 30vh;
     overflow: hidden;
   }
   .flatpickr-calendar.inline {
@@ -78,7 +76,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
   }
 
   .footer .nav__items li {
