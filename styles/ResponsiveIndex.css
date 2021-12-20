@@ -1,0 +1,196 @@
+@media screen and (max-width: 1024px) {
+  .pomodoro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+  }
+  .par-tasks {
+    display: flex;
+    flex-flow: column;
+    margin-top: 10px;
+    height: 50vh;
+    overflow: hidden;
+  }
+  .pomodoro__box {
+    order: 1;
+    padding: 10px 20px;
+  }
+  .filters{
+    order: 2;
+  }
+  .tasklist__box{
+    order: 3;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .par-tasks {
+    display: flex;
+    flex-flow: column;
+    margin-top: 10px;
+    min-height: 30vh;
+    overflow: hidden;
+  }
+  .flatpickr-calendar.inline {
+    background: rgb(192, 89, 79);
+    color: rgb(254, 254, 254);
+    width: 340px;
+  }
+  .tasklist {
+    /* flex-grow: 3; */
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0px 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav .nav__items {
+    display: none;
+  }
+  .wrapper .nav {
+    justify-content: center;
+  }
+  .footer .nav__items {
+    display: block;
+  }
+  .tasklist {
+    /* flex-grow: 3; */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0px 2rem;
+  }
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer .nav__items {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+
+  .footer .nav__items li {
+    background: none;
+    border: none;
+    border-radius: 0px;
+    color: white;
+    font-size: 16px;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+    list-style: none;
+    cursor: pointer;
+  }
+  .footer .nav__items a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+  }
+  .footer .nav__items .nav__item--name {
+    font-weight: 700;
+    position: absolute;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    color: #030c05;
+    opacity: 0;
+    transform: translateY(20px);
+    text-align: center;
+  }
+  .footer .nav__items li.active .nav__item--name {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  .footer .nav__items .fas {
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5rem;
+    text-align: center;
+    transition: 0.5s;
+    color: rgb(36, 77, 32);
+  }
+  .footer .nav__items li.active a .fas {
+    transform: translateY(-35px);
+  }
+
+  .indicator {
+    position: absolute;
+    top: -50%;
+    width: 70px;
+    height: 70px;
+    background: #95d49c;
+    border-radius: 50%;
+    /* border: 6px solid; */
+    transition: 0.5s;
+  }
+  .indicator::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    /* box-shadow: 0px -10px 0 0 #F2AE72; */
+  }
+  .indicator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    /* box-shadow: 0px -10px 0 0 #e6ae7d; */
+  }
+  /* xóa chỗ này nếu ông add active có vấ đề  */
+  .footer .nav__items li:nth-child(1).active ~ .indicator {
+    transform: translateX(calc(70px * -1));
+  }
+  .footer .nav__items li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(70px * 0));
+  }
+  .footer .nav__items li:nth-child(3).active ~ .indicator {
+    transform: translateX(calc(70px * 1));
+  }
+  /* xóa tới đây là dừng  */
+  #body {
+    margin-bottom: 10rem;
+  }
+  .tasklist__box {
+    min-width: 100%;
+  }
+  .wp-footer {
+    position: relative;
+    z-index: 4;
+  }
+  .wp-footer .footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+  }
+  .flatpickr-calendar.inline {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 280px) {
+}

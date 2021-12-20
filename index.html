@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/toast.css">
+    <link rel="stylesheet" href="./styles/musicModal.css" />
+    <link rel="stylesheet" href="./styles/ResponsiveIndex.css" />
+    <title>PomoTree</title>
+    <script src="./scripts/toast.js" defer></script>
+    <script src="./scripts/app.js" type="module" defer></script>
+    <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/time.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="./scripts/filter.js" type="module" defer></script>
+    <script src="./scripts/music.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="toast"></div>
+      <div class="nav">
+        <div class="nav__brand">
+          <div class="nav__brand--logo">
+            <img src="images/house.png" alt="" />
+          </div>
+          <div class="nav__brand--name">PomoTree</div>
+        </div>
+        <div class="nav__items">
+          <button class="music nav__item">
+            <i class="fas fa-music"></i>
+            <div class="nav__item--name">Music</div>
+          </button>
+          <button class="setting nav__item">
+            <i class="fas fa-cog"></i>
+            <div class="nav__item--name">Setting</div>
+          </button>
+          <button class="profile nav__item">
+            <i class="fas fa-id-badge"></i>
+            <div class="nav__item--name">Profile</div>
+          </button>
+        </div>
+      </div>
+
+      <div id="body">
+        <!-- music modal -->
+        <div class="music__modal">
+          <div class="music__modal--box">
+            <div class="image">
+              <img src="./images/modal_Images/DangerousRoads.jpg" alt="Dangerous Roads" />
+            </div>
+            <div class="header">
+              <i class="fas fa-music"></i>
+              <div class="modal-name">Music</div>
+              <i class="fas fa-mug-hot"></i>
+              <div class="music-close modal-close">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div id="dashboard">
+                <span>Now Playing:</span>
+                <p class="name-wrap"></p>
+                <!-- button -->
+                <div id="control">
+                  <div class="btn btn-repeat">
+                    <i class="fas fa-redo"></i>
+                  </div>
+                  <div class="btn btn-prev">
+                    <i class="fas fa-step-backward"></i>
+                  </div>
+                  <div class="btn btn-pause-play">
+                    <i class="fas fa-pause icon-pause"></i>
+                    <i class="fas fa-play icon-play"></i>
+                  </div>
+                  <div class="btn btn-next">
+                    <i class="fas fa-step-backward"></i>
+                  </div>
+                  <div class="btn btn-random">
+                    <i class="fas fa-random"></i>
+                  </div>
+                </div>
+                <!-- Time -->
+                <div id="time">
+                  <span class="currentTime">0:00</span>
+                  <input
+                    id="progress"
+                    class="progress"
+                    max="100"
+                    min="0"
+                    step="1"
+                    type="range"
+                    value="0"
+                  />
+                  <span class="duration">0:00</span>
+                </div>
+                <!-- Volume -->
+                <div id="volume">
+                  <div class="volume-min vl-btn">
+                    <i class="fas fa-volume-mute"></i>
+                  </div>
+                  <input
+                    id="volume-progress"
+                    class="progress"
+                    max="50"
+                    min="0"
+                    step="1"
+                    type="range"
+                    value="100"
+                  />
+                  <div class="volume-max vl-btn">
+                    <i class="fas fa-volume-up"></i>
+                  </div>
+                </div>
+                <!-- audio playing -->
+                <audio id="audio" src=""></audio>
+              </div>
+              <div id="playlist">
+                <!-- song -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- task modal -->
+        <div class="task__modal">
+          <div class="task__modal--box">
+            <div class="image">
+              <img src="./images/modal_Images/MagicalTree.jpg" alt="Magical Tree" />
+            </div>
+            <div class="header">
+              <i class="fas fa-book-open"></i>
+              <div class="modal-name">Add Task</div>
+              <i class="fas fa-pen"></i>
+              <div class="btn-close modal-close">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div class="title-box mt-16">
+                <div class="name">Title:</div>
+                <input
+                  type="text"
+                  class="modal-input"
+                  placeholder="Title"
+                  id="title"
+                />
+              </div>
+              <div class="date-box mt-16">
+                <div class="name">Date:</div>
+                <input
+                  type="date"
+                  class="modal-input"
+                  id="date"
+                  name="trip-start"
+                />
+              </div>
+              <div class="tags-box mt-16">
+                <div class="name">Tags:</div>
+                <input
+                  type="text"
+                  class="modal-input"
+                  placeholder="Tags"
+                  id="tags"
+                  list="suggestions"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="description-box mt-16">
+                <div class="name">Description:</div>
+                <input
+                  type="text"
+                  class="modal-input"
+                  placeholder="Take note"
+                  id="description"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="footer mt-16">
+              <button type="button" class="delete-btn button">Delete</button>
+              <div class="footer-button">
+                <button type="button" class="cancel-btn button">Cancel</button>
+                <button type="button" class="save-btn button">Save</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- setting -->
+        <div class="setting__modal">
+          <div class="setting__modal--box">
+            <div class="image">
+              <img src="./images/modal_Images/TreeOfLife.jpg" alt="Tree Of Tree" />
+            </div>
+            <div class="header">
+              <i class="fas fa-cogs"></i>
+              <div class="modal-name">Setting</div>
+              <i class="fas fa-stopwatch"></i>
+              <div class="setting-close modal-close">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div class="setting__time">Time (Minutes)</div>
+              <div class="pomodoro-duration">
+                <div class="name">Pomodoro Duration</div>
+                <input class="setting-input" type="number" value="25" />
+              </div>
+              <div class="short-duration">
+                <div class="name">Short Break Duration</div>
+                <input class="setting-input" type="number" value="5" />
+              </div>
+              <div class="long-duration">
+                <div class="name">Long Break Duration</div>
+                <input class="setting-input" type="number" value="15" />
+              </div>
+            </div>
+            <div class="footer">
+              <div class="note">Note: If the value is not a number, it changes the default value</div>
+              <button type="button" class="setting-btn button">OK</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- profile -->
+        <div class="profile__modal">
+          <div class="profile__modal--box">
+            <div class="image">
+              <img src="./images/modal_Images/ForestOfLiars.jpg" alt="Forest Of Liars" />
+            </div>
+            <div class="header">
+              <i class="fas fa-user-alt"></i>
+              <div class="modal-name">Profile</div>
+              <i class="fas fa-tree"></i>
+              <div class="profile-close modal-close">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="body">
+              <div class="name">
+                Username (Gmail) : <span class="gmail"></span>
+              </div>
+              <div class="profile-tree">
+                <div class="info">Trees had planted:</div>
+                <input type="text" class="amount" readonly />
+              </div>
+              <div class="footer">
+                <button class="logout">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <div class="logout_title">Log Out</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- pomodoro -->
+        <div class="pomodoro">
+          <div class="pomodoro__box">
+            <div class="circle">
+              <div class="image"></div>
+            </div>
+            <div class="box">
+              <div class="period">
+                <div class="study active">Pomodoro</div>
+                <div class="s-break">Short Break</div>
+                <div class="l-break">Long Break</div>
+              </div>
+              <div class="timestamp">0:00</div>
+              <div class="footer">
+                <div class="start">Start</div>
+                <div class="stop">Stop</div>
+                <div class="skip">
+                  <i class="fas fa-forward"></i>
+                </div>
+              </div>
+              <audio
+                class="time-up"
+                src="./sounds/rings/DigitalClockRing.mp3"
+              ></audio>
+            </div>
+          </div>
+            <div class="filters">
+              <div class="calendar">
+                <input type="datetime" />
+              </div>
+              <div class="tags">
+                <button class="tagHome">Home</button>
+                <button class="tagWork">Work</button>
+                <button class="tagFreetime">Freetime</button>
+                <button class="tagSchool">School</button>
+              </div>
+              <div class="tags">
+                <button class="done">History</button>
+                <button class="notdone">Unfinished</button>
+              </div>
+            </div>
+            <div class="tasklist__box">
+              <div class="header">
+                <div class="name">Tasks</div>
+                <div class="btn-all-option">
+                  <i class="fas fa-ellipsis-v icon-option"></i>
+                </div>
+                <div class="options-box">
+                  <div class="done-all">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="title">All tasks change Done</div>
+                  </div>
+                  <div class="add-all">
+                    <i class="fas fa-plus-circle"></i>
+                    <div class="title">All tasks change Not Done</div>
+                  </div>
+                  <div class="delete-all">
+                    <i class="far fa-trash-alt"></i>
+                    <div class="title">Delete all tasks</div>
+                  </div>
+                </div>
+              </div>
+              <div class="par-tasks">
+                <div class="tasks"></div>
+              </div>
+
+              <!-- task sample -->
+              <!-- <div class="task">
+                  <div class="btn-check">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="name">
+                    <div class="title">Test</div>
+                    <div class="date">Test</div>
+                    <div class="note">Test</div>
+                  </div>
+                  <div class="btn-option">
+                    <i class="fas fa-ellipsis-v"></i>
+                  </div>
+                </div> -->
+
+              <div class="btn-add">
+                <div class="plus-icon">
+                  <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="name">Add Task</div>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+      <div class="wp-footer">
+        <div class="footer">
+          <ul class="nav__items">
+            <li class="list">
+              <a class="music_mobile music nav__item">
+                <i class="fas fa-music"></i>
+                <div class="nav__item--name">Music</div>
+              </a>
+            </li>
+            <li class="list active">
+              <a class="setting_mobile setting nav__item">
+                <i class="fas fa-cog"></i>
+                <div class="nav__item--name">Setting</div>
+              </a>
+            </li>
+            <li class="list">
+              <a class="profile_mobile profile nav__item">
+                <i class="fas fa-id-badge"></i>
+                <div class="nav__item--name">Profile</div>
+              </a>
+            </li>
+            <!-- <li class="list">
+            <a class="logout nav__item" href="">
+              <i class="fas fa-sign-out-alt"></i>
+              <div class="nav__item--name">Log Out</div>
+            </a>
+          </li> -->
+            <div class="indicator"></div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./styles/login.css" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/Responsive_login.css" />
+    <link rel="stylesheet" href="./styles/toast.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />    
+  </head>
+  <body>
+    <div class="body">
+      <div id="toast"></div>
+      <div class="wrapper">
+        <div class="content">
+          <div class="sign-in">
+            <div class="form">
+              <form action="" method="post" id="Login">
+                <h2>Login</h2>
+                <div class="form-field">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    placeholder=" "
+                  />
+                  <label for="Email">Email</label>
+                </div>
+                <div class="form-field">
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    required
+                    required
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title=" Password must contain 8 or more characters that are of at least one number,
+											and one uppercase and lowercase letter !!"
+                    placeholder="  "
+                  />
+                  <label for="password">Password</label>
+                </div>
+                <div class="forgot-box">
+                  <a href="" class="forgot">Forgot Password</a>
+                </div>
+                <div>
+                  <button>LOGIN</button>
+                </div>
+              </form>
+            </div>
+            <div id="error"></div>
+            <div class="Problem-account">
+              <p>Not a member?</p>
+              <a href="./signup.html">Create account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="drops" id="scene">
+      <div class="scene-div" data-depth="1">
+        <div class="drop drop-1">
+          <img src="./images/christmas-tree.png" alt="" class="decor" />
+        </div>
+      </div>
+      <div class="scene-div" data-depth="2">
+        <div class="drop drop-2">
+          <img src="./images/christmas-tree.png" alt="" class="decor" />
+        </div>
+      </div>
+      <div class="scene-div" data-depth="3">
+        <div class="drop drop-3">
+          <img src="./images/christmas-tree.png" alt="" class="decor" />
+        </div>
+      </div>
+      <div class="scene-div" data-depth="4">
+        <div class="drop drop-4">
+          <img src="./images/christmas-tree.png" alt="" class="decor" />
+        </div>
+      </div>
+      <div class="scene-div" data-depth="2">
+        <div class="drop drop-5">
+          <img src="./images/christmas-tree.png" alt="" class="decor" />
+        </div>
+      </div>
+      <div class="scene-div" data-depth="1">
+        <div class="drop drop-6">
+          <img src="./images/christmas-tree.png" alt="" class="decor" />
+        </div>
+      </div>
+    </div>
+
+    <div id="mail-verify" class="popup">
+      <div class="close">
+        <i class="fas fa-arrow-circle-left closeIcon"></i>
+      </div>
+      <div class="icon">
+        <img src="./images/favorite.png" alt="" />
+      </div>
+      <h2>Enter your email</h2>
+      <form action="" method="post" id="mail">
+        <div class="form-field">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            placeholder=" "
+          />
+          <label for="Email">Email</label>
+        </div>
+        <button class="verify">Send</button>
+      </form>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+  <script>
+    var scene = document.getElementById("scene");
+    var parallaxInstance = new Parallax(scene);
+  </script>
+    <script src="./scripts/toast.js"></script>
+    <script src="./scripts/login.js" type="module">
+  </script>
+</html>
