@@ -96,21 +96,6 @@ doneAllBtn.addEventListener("click", function () {
   printQueriedTasksFromFirebase("isDone", false);
 });
 
-const notDoneAllBtn = document.querySelector(".add-all");
-notDoneAllBtn.addEventListener("click", function () {
-  const notDoneBtns = $$(".task .btn-check");
-  notDoneBtns.forEach((notDoneBtn) => {
-    uploadNotDoneTaskToFirebase(notDoneBtn.id);
-  });
-  toast({
-    title: "All Tasks",
-    messenger: `All tasks had changed "Unfinished Tasks"`,
-    type: "info",
-    duration: 2000,
-  });
-  printQueriedTasksFromFirebase("isDone", true);
-});
-
 const profileUpdate = document.querySelector(".nav__items .profile");
 profileUpdate.addEventListener("click", function () {
   document.querySelector(".profile__modal").style.display = "block";
