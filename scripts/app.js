@@ -226,10 +226,12 @@ function printQueriedTasksFromFirebase(field, value) {
         $$('.btn-check').forEach((btn) => {
           btn.style.order = 1;
         });
+        $('.done-all').style.display = 'none';
       } else if (value === false) {
         $(".tasklist__box .header .name").innerHTML = `Unfinished Tasks`;
         $('.tasklist__box .btn-add').style.display = 'flex';
         $(':root').style.setProperty('--icon-color','rgb(121, 147, 81)');
+        $('.done-all').style.display = 'flex';
       }
     } else if (value.length == 10) {
       $(".tasklist__box .header .name").innerHTML = `${settingDisplayTime(
@@ -237,10 +239,12 @@ function printQueriedTasksFromFirebase(field, value) {
       )} Tasks`;
       $('.tasklist__box .btn-add').style.display = 'flex';
       $(':root').style.setProperty('--icon-color','rgb(121, 147, 81)');
+      $('.done-all').style.display = 'flex';
     } else {
       $(".tasklist__box .header .name").innerHTML = `${value} Tasks`;
       $('.tasklist__box .btn-add').style.display = 'flex';
       $(':root').style.setProperty('--icon-color','rgb(121, 147, 81)');
+      $('.done-all').style.display = 'flex';
     }
     addOptionEvent();
     addDoneEvent();
